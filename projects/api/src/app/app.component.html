@@ -1,0 +1,8 @@
+<button (click)="getWeatherClick()">GET Weather</button>
+<div *ngFor="let item of weatherList">
+    <button (click)="postWeatherClick(item)">POST Weather</button>
+    {{item.date}}, {{item.temperatureC}}, {{item.summary}}
+    <ng-template [ngIf]="item.postResult">
+        <b>Post result => {{item.postResult}}</b>
+    </ng-template>
+</div>

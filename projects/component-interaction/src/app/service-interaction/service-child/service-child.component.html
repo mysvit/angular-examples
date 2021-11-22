@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="small edit">
+        <button (click)="saveClick()">Save</button>
+        <button (click)="cancelClick()">Cancel</button>
+    </div>
+    <div class="small edit">
+        <input [(ngModel)]="selectedItem.id">
+    </div>
+    <div class="edit">
+        <input [(ngModel)]="selectedItem.name">
+    </div>
+</div>

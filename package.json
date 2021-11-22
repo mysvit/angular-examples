@@ -2,11 +2,11 @@
   "name": "angular-examples",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "API  - 4201": "ng serve --project=api --port=4201",
+    "RxJS - 4202": "ng serve --project=rxjs --port=4202",
+    "Lifecycle hooks        - 4203": "ng serve --project=lifecycle-hooks --port=4203",
+    "Component interaction  - 4204": "ng serve --project=component-interaction --port=4204",
+    "Test Jasmine": "ng test --project=test"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +23,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~13.0.3",
     "@angular/cli": "~13.0.1",
     "@angular/compiler-cli": "~13.0.0",
     "@types/jasmine": "~3.10.0",
