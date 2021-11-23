@@ -1,7 +1,7 @@
-<h3>Interaction by Service</h3>
+<h3>Interaction by @ViewChildren & @ViewChild decorator</h3>
 
 <div class="checkbox">
-    <input type="checkbox" id="edit_copy" name="edit_copy" [(ngModel)]="interactionService.isCopyObj">
+    <input type="checkbox" id="edit_copy" name="edit_copy" [(ngModel)]="this.isCopyObj">
     <label for="edit_copy">Copy object for Edit</label>
 </div>
 
@@ -12,7 +12,7 @@
         <div>Name</div>
     </div>
 
-    <ng-container *ngFor="let item of interactionService.interactions;">
+    <ng-container *ngFor="let item of interactions;">
         <div class="content">
             <div class="small">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -36,13 +36,30 @@
             <div class="small" [ngClass]="{'edit': item.isDelete}">
                 {{item.id}}
             </div>
-            <div  [ngClass]="{'edit': item.isDelete}">
+            <div [ngClass]="{'edit': item.isDelete}">
                 {{item.name}}
             </div>
         </div>
 
-        <ng-template [ngIf]="item.isEdit || item.isDelete">
-            <app-service-child [id]="item.id"></app-service-child>
+        <ng-template [ngIf]="item.isEdit">
+            <div class="content">
+                <div class="small edit">
+                    <button (click)="saveChildClick(item)">Save</button>
+                    <button (click)="cancelChildClick(item)">Cancel</button>
+                </div>
+                <app-vc-child [item]="item" [isCopyObj]="isCopyObj"></app-vc-child>
+            </div>
+        </ng-template>
+        <ng-template [ngIf]="item.isDelete">
+            <div class="content">
+                <div>
+                    Do you want delete selected row?
+                </div>
+                <div>
+                    <button (click)="saveChildClick(item)">Delete</button>
+                    <button (click)="cancelChildClick(item)">Cancel</button>
+                </div>
+            </div>
         </ng-template>
     </ng-container>
 
@@ -51,14 +68,21 @@
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="19px" height="19px" viewBox="0 0 15 15"
                  class="grid-button" (click)="addRow()">
-                <path d="M7.5,0C3.364,0,0,3.364,0,7.5S3.364,15,7.5,15S15,11.636,15,7.5S11.636,0,7.5,0z M7.5,14C3.916,14,1,11.084,1,7.5  S3.916,1,7.5,1S14,3.916,14,7.5S11.084,14,7.5,14z"/><polygon points="8,3.5 7,3.5 7,7 3.5,7 3.5,8 7,8 7,11.5 8,11.5 8,8 11.5,8 11.5,7 8,7 "/>
+                <path d="M7.5,0C3.364,0,0,3.364,0,7.5S3.364,15,7.5,15S15,11.636,15,7.5S11.636,0,7.5,0z M7.5,14C3.916,14,1,11.084,1,7.5  S3.916,1,7.5,1S14,3.916,14,7.5S11.084,14,7.5,14z"/>
+                <polygon points="8,3.5 7,3.5 7,7 3.5,7 3.5,8 7,8 7,11.5 8,11.5 8,8 11.5,8 11.5,7 8,7 "/>
             </svg>
         </div>
-        <div class="small">Count: {{interactionService.interactions.length}}</div>
+        <div class="small">Count: {{interactions.length}}</div>
         <div></div>
     </div>
 </div>
 
-<div class="grid-flex" *ngIf="interactionService.newInteraction">
-    <app-service-child></app-service-child>
+<div class="grid-flex" *ngIf="newInteraction">
+    <div class="content">
+        <div class="small edit">
+            <button (click)="saveChildClick(newInteraction)">Save</button>
+            <button (click)="cancelChildClick(newInteraction)">Cancel</button>
+        </div>
+        <app-vc-child></app-vc-child>
+    </div>
 </div>

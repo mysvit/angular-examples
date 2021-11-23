@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
-import {interactionList} from '../interaction.model'
+import {interactionList, InteractionSRV} from '../interaction.model'
+import * as _ from 'lodash'
 
 @Injectable({
     providedIn: 'root'
 })
 export class InteractionService {
 
-    interactions = interactionList;
+    interactions: Array<InteractionSRV> = _.cloneDeep(interactionList)
+    isCopyObj: boolean = false
+    newInteraction?: InteractionSRV
 
     constructor() {
     }

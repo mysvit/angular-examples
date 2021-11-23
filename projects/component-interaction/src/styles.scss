@@ -2,8 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-.button {
+.grid-button {
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .checkbox {
@@ -14,6 +15,14 @@ html {
       cursor: pointer;
     }
   }
+}
+
+.st0 {
+  fill: #4D4D4D;
+}
+
+.st1 {
+  fill: #FFFFFF;
 }
 
 .grid-flex {

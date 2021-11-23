@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {InteractionService} from '../interaction.service'
-import {InteractionModel} from '../../interaction.model'
+import {InteractionSRV} from '../../interaction.model'
+import * as _ from 'lodash'
 
 @Component({
     selector: 'app-service-child',
@@ -9,29 +10,73 @@ import {InteractionModel} from '../../interaction.model'
 })
 export class ServiceChildComponent implements OnInit {
 
-    @Input() id!: number
-    selectedItem!: InteractionModel
+    @Input() id?: number
+    selectedItem!: InteractionSRV
 
     constructor(public interactionService: InteractionService) {
     }
 
     ngOnInit(): void {
-        this.selectedItem = this.interactionService.interactions.find(f => f.id === this.id)
-            || <InteractionModel>{}
+        // New
+        if (this.interactionService.newInteraction) {
+            this.selectedItem = _.cloneDeep(this.interactionService.newInteraction)
+            return;
+        }
+        // Edit or Delete
+        const tmpObject = this.interactionService.interactions.find(f => f.id === this.id) || <InteractionSRV>{}
+        if (this.interactionService.isCopyObj) {
+            this.selectedItem = _.cloneDeep(tmpObject)
+        } else {
+            this.selectedItem = tmpObject
+        }
     }
 
     saveClick() {
-        this.save(true)
+        if (this.interactionService.newInteraction) {
+            this.addCommand(true)
+        } else {
+            this.editCommand(true)
+        }
+    }
+
+    deleteClick() {
+        this.deleteCommand(true)
     }
 
     cancelClick() {
-        this.save(false)
+        if (this.interactionService.newInteraction) {
+            this.addCommand(false);
+        } else if (this.selectedItem.isEdit) {
+            this.editCommand(false)
+        } else {
+            this.deleteCommand(false)
+        }
     }
 
-    save(isSave: boolean) {
-        this.selectedItem.isEdit = false
+    addCommand(isSave: boolean) {
         if (isSave) {
-            // this.selectedItem
+            this.selectedItem.isEdit = false
+            this.interactionService.interactions.push(this.selectedItem)
+        }
+        this.interactionService.newInteraction = undefined
+    }
+
+    editCommand(isSave: boolean) {
+        const index = this.interactionService.interactions.findIndex(f => f.id === this.id)
+        if (isSave) {
+            this.selectedItem.isEdit = false
+            this.interactionService.interactions.splice(index, 1, this.selectedItem)
+        } else {
+            this.interactionService.interactions[index].isEdit = false
+        }
+    }
+
+    deleteCommand(isDelete: boolean) {
+        const index = this.interactionService.interactions.findIndex(f => f.id === this.id)
+        if (isDelete) {
+            this.interactionService.interactions.splice(index, 1)
+        } else {
+            this.interactionService.interactions[index].isDelete = false
         }
     }
 

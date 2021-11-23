@@ -1,0 +1,8 @@
+<ng-template [ngIf]="item?.isEdit">
+    <div class="small edit">
+        <input [(ngModel)]="item.id" [disabled]="true">
+    </div>
+    <div class="edit">
+        <input [(ngModel)]="item.name">
+    </div>
+</ng-template>
