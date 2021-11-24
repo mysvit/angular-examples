@@ -29,8 +29,9 @@ export class InteractionVC implements InteractionModel {
     isDelete?: boolean
 }
 
-export const interactionList: Array<InteractionSRV | InteractionIO> = [
-    <InteractionModel>{id: 0, name: 'Service'},
-    <InteractionModel>{id: 1, name: 'Input/Output'},
-    <InteractionModel>{id: 2, name: 'ViewChild'},
+export const interactionList: Array<InteractionSRV | InteractionIO | InteractionVC> = [
+    <InteractionModel>{id: 0, name: 'Dialog'},
+    <InteractionModel>{id: 1, name: 'Service'},
+    <InteractionModel>{id: 2, name: 'Input/Output'},
+    <InteractionModel>{id: 3, name: 'ViewChild'},
 ];

@@ -1,42 +1,34 @@
-<h3>Interaction by Input & Output binding</h3>
+<h3>Interaction by Dialog</h3>
 
 <mat-checkbox [(ngModel)]="isCopyObj">Copy object for Edit</mat-checkbox>
 
 <div class="grid-flex">
     <div class="header">
-        <div class="small"></div>
+        <div class="btn"></div>
         <div class="small">ID</div>
         <div>Name</div>
     </div>
 
     <ng-container *ngFor="let item of interactions;">
         <div class="content">
-            <div class="small">
+            <div class="btn">
                 <mat-icon class="grid-button" (click)="editRow(item)">edit</mat-icon>
                 <mat-icon class="grid-button" (click)="deleteRow(item)">delete</mat-icon>
             </div>
-            <div class="small" [ngClass]="{'edit': item.isDelete}">
+            <div class="small">
                 {{item.id}}
             </div>
-            <div [ngClass]="{'edit': item.isDelete}">
+            <div>
                 {{item.name}}
             </div>
         </div>
-
-        <ng-template [ngIf]="item.isEdit">
-            <app-io-child [item]="item" [isCopyObj]="isCopyObj" (result)="resultEvent($event)"></app-io-child>
-        </ng-template>
     </ng-container>
 
     <div class="bottom">
-        <div class="small">
+        <div class="btn">
             <mat-icon class="grid-button" (click)="addRow()">add_circle_outline</mat-icon>
         </div>
         <div class="small">Count: {{interactions.length}}</div>
         <div></div>
     </div>
-</div>
-
-<div class="grid-flex" *ngIf="newInteraction">
-    <app-io-child [item]="newInteraction" [isCopyObj]="isCopyObj" (result)="resultEvent($event)"></app-io-child>
 </div>

@@ -24,10 +24,12 @@ export class ServiceParentComponent implements OnInit {
 
     editRow(item: InteractionSRV) {
         item.isEdit = true
+        item.isDelete = false
     }
 
     deleteRow(item: InteractionSRV) {
         item.isDelete = true
+        item.isEdit = false
     }
 
 }

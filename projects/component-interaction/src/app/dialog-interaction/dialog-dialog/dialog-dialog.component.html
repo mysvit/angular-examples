@@ -1,0 +1,38 @@
+<ng-container [ngSwitch]="data.dialogType">
+
+    <ng-container *ngSwitchCase="data.dialogType === DialogType.New">
+    </ng-container>
+
+    <ng-container *ngSwitchCase="data.dialogType === DialogType.Edit">
+        <h2 mat-dialog-title>Edit</h2>
+        <mat-dialog-content class="mat-typography">
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>ID</mat-label>
+                    <input matInput placeholder="Name" name="id" disabled [(ngModel)]="data.item.id">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" name="name" [(ngModel)]="data.item.name">
+                </mat-form-field>
+            </form>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-button (click)="cancelClick()">Cancel</button>
+            <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+        </mat-dialog-actions>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="data.dialogType === DialogType.Delete">
+        <h2 mat-dialog-title>Delete?</h2>
+        <mat-dialog-content class="mat-typography">
+            <h3>Do you want delete this record?</h3>
+            <p>ID: <b>{{data.item.id}}</b>, Name: <b>{{data.item.name}}</b></p>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-button (click)="cancelClick()">Cancel</button>
+            <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Delete</button>
+        </mat-dialog-actions>
+    </ng-container>
+
+</ng-container>

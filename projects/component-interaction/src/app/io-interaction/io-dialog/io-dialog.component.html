@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Delete?</h2>
+<mat-dialog-content class="mat-typography">
+    <h3>Do you want delete this record?</h3>
+    <p>ID: <b>{{data.id}}</b>, Name: <b>{{data.name}}</b></p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="cancelClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Delete</button>
+</mat-dialog-actions>

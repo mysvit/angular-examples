@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
 html {
   box-sizing: border-box;
 }
@@ -5,16 +8,6 @@ html {
 .grid-button {
   cursor: pointer;
   margin-left: 5px;
-}
-
-.checkbox {
-  label, input {
-    margin: 5px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
 }
 
 .st0 {
@@ -59,9 +52,15 @@ html {
       flex: 1;
     } @else if $size == 'small' {
       &.small {
-        flex: 0 0 130px
+        flex: 0 0 130px;
+      }
+    } @else if $size == 'btn' {
+      &.btn {
+        flex: 0 0 60px;
       }
     }
+    display: flex;
+    align-items: center;
     border-right: black 1px solid;
     padding: 5px;
   }
@@ -92,4 +91,10 @@ html {
 .header, .content, .bottom {
   @include cell('auto');
   @include cell('small');
+  @include cell('btn');
+}
+
+// Exception for hover
+.content div.btn {
+  background-color: azure !important;
 }

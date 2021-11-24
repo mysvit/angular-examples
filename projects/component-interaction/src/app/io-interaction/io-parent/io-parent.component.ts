@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {InteractionIO, interactionList} from '../../interaction.model'
 import * as _ from 'lodash'
+import {MatDialog} from '@angular/material/dialog'
+import {IoDialogComponent} from '../io-dialog/io-dialog.component'
 
 @Component({
     selector: 'app-io-parent',
@@ -13,7 +15,7 @@ export class IoParentComponent implements OnInit {
     interactions: Array<InteractionIO> = _.cloneDeep(interactionList)
     newInteraction?: InteractionIO
 
-    constructor() {
+    constructor(public dialog: MatDialog) {
     }
 
     ngOnInit(): void {
@@ -29,7 +31,14 @@ export class IoParentComponent implements OnInit {
     }
 
     deleteRow(item: InteractionIO) {
-        item.isDelete = true
+        item.isEdit = false
+        const dialogRef = this.dialog.open(IoDialogComponent, {data: item})
+        dialogRef.afterClosed().subscribe(data => {
+            if (data) {
+                const index = this.interactions.findIndex(f => f.id === data.id)
+                this.interactions.splice(index, 1)
+            }
+        });
     }
 
     resultEvent($event: InteractionIO) {

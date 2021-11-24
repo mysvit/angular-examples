@@ -23,27 +23,28 @@ export class VcParentComponent implements OnInit {
     }
 
     addRow() {
-        // const maxObj = _.maxBy(this.interactions, 'id') || <InteractionIO>{id: 0};
-        // this.newInteraction = <InteractionIO>{id: maxObj.id + 1, isAdd: true};
+        const maxObj = _.maxBy(this.interactions, 'id') || <InteractionVC>{id: 0};
+        this.newInteraction = <InteractionVC>{id: maxObj.id + 1, isAdd: true};
     }
 
     editRow(item: InteractionVC) {
         item.isEdit = true
+        item.isDelete = false
     }
 
     deleteRow(item: InteractionVC) {
         item.isDelete = true
+        item.isEdit = false
     }
 
     saveChildClick(item: InteractionVC) {
         const childItem = this.vcChildList.find(f => f.item?.id === item.id)?.item
             || <InteractionVC>{}
         const index = this.interactions.findIndex(f => f.id === childItem?.id)
-        // if ($event.isAdd) {
-        //     this.newInteraction = undefined
-        //     $event.isAdd = false
-        //     this.interactions.push($event)
-        // }
+        if (this.newInteraction) {
+            this.interactions.push(this.newInteraction)
+            this.newInteraction = undefined
+        }
         if (item.isEdit) {
             childItem.isEdit = false
             this.interactions.splice(index, 1, childItem)
@@ -51,7 +52,6 @@ export class VcParentComponent implements OnInit {
         if (item.isDelete) {
             this.interactions.splice(index, 1)
         }
-
         item.isEdit = false
         item.isDelete = false
     }

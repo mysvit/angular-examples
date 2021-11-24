@@ -2,6 +2,7 @@
   "name": "angular-examples",
   "version": "0.0.0",
   "scripts": {
+    "ng": "ng",
     "API  - 4201": "ng serve --project=api --port=4201",
     "RxJS - 4202": "ng serve --project=rxjs --port=4202",
     "Lifecycle hooks        - 4203": "ng serve --project=lifecycle-hooks --port=4203",
@@ -11,10 +12,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.0.0",
+    "@angular/cdk": "^13.0.2",
     "@angular/common": "~13.0.0",
     "@angular/compiler": "~13.0.0",
     "@angular/core": "~13.0.0",
     "@angular/forms": "~13.0.0",
+    "@angular/material": "^13.0.2",
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",

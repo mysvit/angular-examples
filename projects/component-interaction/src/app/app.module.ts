@@ -8,6 +8,15 @@ import {IoParentComponent} from './io-interaction/io-parent/io-parent.component'
 import {IoChildComponent} from './io-interaction/io-child/io-child.component';
 import {VcParentComponent} from './vc-interaction/vc-parent/vc-parent.component';
 import {VcChildComponent} from './vc-interaction/vc-child/vc-child.component'
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {MatIconModule} from '@angular/material/icon';
+import {IoDialogComponent} from './io-interaction/io-dialog/io-dialog.component'
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatButtonModule} from '@angular/material/button';
+import {DialogParentComponent} from './dialog-interaction/dialog-parent/dialog-parent.component';
+import {DialogDialogComponent} from './dialog-interaction/dialog-dialog/dialog-dialog.component'
+import {MatInputModule} from '@angular/material/input'
 
 @NgModule({
     declarations: [
@@ -17,10 +26,20 @@ import {VcChildComponent} from './vc-interaction/vc-child/vc-child.component'
         IoParentComponent,
         IoChildComponent,
         VcParentComponent,
-        VcChildComponent
+        VcChildComponent,
+        IoDialogComponent,
+        DialogParentComponent,
+        DialogDialogComponent
     ],
     imports: [
-        BrowserModule, FormsModule
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatInputModule
     ],
     providers: [],
     bootstrap: [AppComponent]
