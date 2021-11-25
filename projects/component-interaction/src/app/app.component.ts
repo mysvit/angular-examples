@@ -6,8 +6,8 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    isDialogInteraction: boolean = false
+    isDialogInteraction: boolean = true
     isIOInteraction: boolean = false
     isServiceInteraction: boolean = false
-    isVCInteraction: boolean = true
+    isVCInteraction: boolean = false
 }

@@ -5,7 +5,6 @@ import {ServiceInteractionService} from '../service-interaction.service'
 @Component({
     selector: 'app-service-child',
     templateUrl: './service-child.component.html',
-    styleUrls: ['./service-child.component.scss']
 })
 export class ServiceChildComponent {
 
