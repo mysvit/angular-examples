@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {interactionList, InteractionModel} from '../../interaction.model'
+import {InteractionDlg, interactionList, ModificationType} from '../../interaction.model'
 import * as _ from 'lodash'
 import {MatDialog} from '@angular/material/dialog'
-import {DialogData, DialogType} from './dialog.model'
+import {DialogData} from '../dialog.model'
 import {DialogDialogComponent} from '../dialog-dialog/dialog-dialog.component'
 
 @Component({
@@ -13,29 +13,29 @@ import {DialogDialogComponent} from '../dialog-dialog/dialog-dialog.component'
 export class DialogParentComponent {
 
     isCopyObj: boolean = false
-    interactions: Array<InteractionModel> = _.cloneDeep(interactionList)
+    interactions: Array<InteractionDlg> = _.cloneDeep(interactionList)
 
     constructor(public dialog: MatDialog) {
     }
 
-    addRow() {
-        const maxObj = _.maxBy(this.interactions, 'id') || <InteractionModel>{id: 0}
-        const newItem = <InteractionModel>{id: maxObj.id + 1, isAdd: true}
-        this.openDialog(DialogType.Edit, newItem)
+    addRowClick() {
+        const maxObj = _.maxBy(this.interactions, 'id') || <InteractionDlg>{id: 0}
+        const newItem = <InteractionDlg>{id: maxObj.id + 1, isAdd: true}
+        this.openDialog(ModificationType.New, newItem)
     }
 
-    editRow(item: InteractionModel) {
-        this.openDialog(DialogType.Edit, item)
+    editRowClick(item: InteractionDlg) {
+        this.openDialog(ModificationType.Edit, item)
     }
 
-    deleteRow(item: InteractionModel) {
-        this.openDialog(DialogType.Delete, item)
+    deleteRowClick(item: InteractionDlg) {
+        this.openDialog(ModificationType.Delete, item)
     }
 
-    private openDialog(dialogType: DialogType, item: InteractionModel) {
+    private openDialog(dialogType: ModificationType, item: InteractionDlg) {
         const dialogRef = this.dialog.open(DialogDialogComponent, {
             data: <DialogData>{
-                dialogType: dialogType,
+                modificationType: dialogType,
                 item: this.isCopyObj ? _.cloneDeep(item) : item
             }
         })
@@ -47,14 +47,14 @@ export class DialogParentComponent {
             return
         }
         const index = this.interactions.findIndex(f => f.id === data.item.id)
-        switch (data.dialogType) {
-            case DialogType.New:
+        switch (data.modificationType) {
+            case ModificationType.New:
                 this.interactions.push(data.item)
                 break
-            case DialogType.Edit:
+            case ModificationType.Edit:
                 this.interactions.splice(index, 1, data.item)
                 break
-            case DialogType.Delete:
+            case ModificationType.Delete:
                 this.interactions.splice(index, 1)
                 break
         }

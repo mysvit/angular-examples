@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {InteractionIO, interactionList} from '../../interaction.model'
 import * as _ from 'lodash'
 import {MatDialog} from '@angular/material/dialog'
-import {IoDialogComponent} from '../io-dialog/io-dialog.component'
 
 @Component({
     selector: 'app-io-parent',
@@ -21,24 +20,19 @@ export class IoParentComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    addRow() {
+    addRowClick() {
         const maxObj = _.maxBy(this.interactions, 'id') || <InteractionIO>{id: 0};
         this.newInteraction = <InteractionIO>{id: maxObj.id + 1, isAdd: true};
     }
 
-    editRow(item: InteractionIO) {
+    editRowClick(item: InteractionIO) {
         item.isEdit = true
+        item.isDelete = false
     }
 
-    deleteRow(item: InteractionIO) {
+    deleteRowClick(item: InteractionIO) {
         item.isEdit = false
-        const dialogRef = this.dialog.open(IoDialogComponent, {data: item})
-        dialogRef.afterClosed().subscribe(data => {
-            if (data) {
-                const index = this.interactions.findIndex(f => f.id === data.id)
-                this.interactions.splice(index, 1)
-            }
-        });
+        item.isDelete = true
     }
 
     resultEvent($event: InteractionIO) {

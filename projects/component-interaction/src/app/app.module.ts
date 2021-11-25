@@ -11,7 +11,6 @@ import {VcChildComponent} from './vc-interaction/vc-child/vc-child.component'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {MatIconModule} from '@angular/material/icon';
-import {IoDialogComponent} from './io-interaction/io-dialog/io-dialog.component'
 import {MatDialogModule} from '@angular/material/dialog'
 import {MatButtonModule} from '@angular/material/button';
 import {DialogParentComponent} from './dialog-interaction/dialog-parent/dialog-parent.component';
@@ -27,7 +26,6 @@ import {MatInputModule} from '@angular/material/input'
         IoChildComponent,
         VcParentComponent,
         VcChildComponent,
-        IoDialogComponent,
         DialogParentComponent,
         DialogDialogComponent
     ],

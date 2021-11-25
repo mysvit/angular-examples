@@ -1,4 +1,4 @@
-<h3>Interaction by Dialog</h3>
+<h3>Interaction by Dialog & Observable</h3>
 
 <mat-checkbox [(ngModel)]="isCopyObj">Copy object for Edit</mat-checkbox>
 
@@ -6,14 +6,14 @@
     <div class="header">
         <div class="btn"></div>
         <div class="small">ID</div>
-        <div>Name</div>
+        <div>Interaction name</div>
     </div>
 
     <ng-container *ngFor="let item of interactions;">
         <div class="content">
             <div class="btn">
-                <mat-icon class="grid-button" (click)="editRow(item)">edit</mat-icon>
-                <mat-icon class="grid-button" (click)="deleteRow(item)">delete</mat-icon>
+                <mat-icon class="grid-button" (click)="editRowClick(item)">edit</mat-icon>
+                <mat-icon class="grid-button" (click)="deleteRowClick(item)">delete</mat-icon>
             </div>
             <div class="small">
                 {{item.id}}
@@ -26,7 +26,7 @@
 
     <div class="bottom">
         <div class="btn">
-            <mat-icon class="grid-button" (click)="addRow()">add_circle_outline</mat-icon>
+            <mat-icon class="grid-button" (click)="addRowClick()">add_circle_outline</mat-icon>
         </div>
         <div class="small">Count: {{interactions.length}}</div>
         <div></div>

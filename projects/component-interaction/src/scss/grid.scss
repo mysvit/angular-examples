@@ -1,0 +1,103 @@
+
+.grid-button {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.grid-flex {
+  display: flex;
+  flex-direction: column;
+  border-top: black 1px solid;
+}
+
+@mixin row($type) {
+  display: flex;
+  flex-direction: row;
+  border: {
+    left: black 1px solid;
+    bottom: black 1px solid;
+  }
+  @if $type == 'content' {
+    background-color: azure;
+    &:hover {
+      background-color: deepskyblue;
+    }
+  } @else {
+    font-weight: bold;
+    @if $type == 'header' {
+      background-color: cornflowerblue;
+    } @else {
+      background-color: darkgrey;
+    }
+  }
+}
+
+@mixin cell($size) {
+  div {
+    @if $size == 'auto' {
+      flex: 1;
+    } @else if $size == 'small' {
+      &.small {
+        flex: 0 0 130px;
+      }
+    } @else if $size == 'btn' {
+      &.btn {
+        flex: 0 0 60px;
+      }
+    }
+    display: flex;
+    align-items: center;
+    border-right: black 1px solid;
+    padding: 5px;
+  }
+}
+
+.edit {
+  background-color: red;
+
+  input {
+    width: calc(100% - 10px);
+  }
+}
+
+// build a rows
+
+.header {
+  @include row('header');
+}
+
+.content {
+  @include row('content');
+}
+
+.bottom {
+  @include row('bottom');
+}
+
+.header, .content, .bottom {
+  @include cell('auto');
+  @include cell('small');
+  @include cell('btn');
+}
+
+// Exception for hover
+.content div.btn {
+  background-color: azure !important;
+}
+
+.content {
+  &.not-hover {
+    &:hover {
+      background-color: unset !important;
+    }
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    margin-right: 10px;
+  }
+}

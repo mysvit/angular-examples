@@ -1,35 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {InteractionService} from '../interaction.service'
-import {InteractionSRV} from '../../interaction.model'
-import * as _ from 'lodash'
+import {Component} from '@angular/core';
+import {ServiceInteractionService} from '../service-interaction.service'
+import {InteractionSRV, ModificationType} from '../../interaction.model'
 
 @Component({
     selector: 'app-service-parent',
     templateUrl: './service-parent.component.html',
     styleUrls: ['./service-parent.component.scss'],
-    providers: [InteractionService]
+    providers: [ServiceInteractionService]
 })
-export class ServiceParentComponent implements OnInit {
+export class ServiceParentComponent {
 
-    constructor(public interactionService: InteractionService) {
+    ModificationType = ModificationType
+
+    constructor(public si: ServiceInteractionService) {
     }
 
-    ngOnInit(): void {
+    addRowClick() {
+        this.si.selectItem(<InteractionSRV>{}, ModificationType.New)
     }
 
-    addRow() {
-        const maxObj = _.maxBy(this.interactionService.interactions, 'id') || <InteractionSRV>{id: 0};
-        this.interactionService.newInteraction = <InteractionSRV>{id: maxObj.id + 1, isEdit: true};
+    editRowClick(item: InteractionSRV) {
+        this.si.selectItem(item, ModificationType.Edit)
     }
 
-    editRow(item: InteractionSRV) {
-        item.isEdit = true
-        item.isDelete = false
-    }
-
-    deleteRow(item: InteractionSRV) {
-        item.isDelete = true
-        item.isEdit = false
+    deleteRowClick(item: InteractionSRV) {
+        this.si.selectItem(item, ModificationType.Delete)
     }
 
 }

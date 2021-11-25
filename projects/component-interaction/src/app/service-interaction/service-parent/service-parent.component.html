@@ -1,42 +1,43 @@
 <h3>Interaction by Service</h3>
 
-<mat-checkbox [(ngModel)]="interactionService.isCopyObj">Copy object for Edit</mat-checkbox>
+<mat-checkbox [(ngModel)]="si.isCopyObj">Copy object for Edit</mat-checkbox>
 
 <div class="grid-flex">
     <div class="header">
-        <div class="small"></div>
+        <div class="btn"></div>
         <div class="small">ID</div>
-        <div>Name</div>
+        <div>Interaction name</div>
     </div>
 
-    <ng-container *ngFor="let item of interactionService.interactions;">
+    <ng-container *ngFor="let item of si.interactions;">
         <div class="content">
-            <div class="small">
-                <mat-icon class="grid-button" (click)="editRow(item)">edit</mat-icon>
-                <mat-icon class="grid-button" (click)="deleteRow(item)">delete</mat-icon>
+            <div class="btn">
+                <mat-icon class="grid-button" (click)="editRowClick(item)">edit</mat-icon>
+                <mat-icon class="grid-button" (click)="deleteRowClick(item)">delete</mat-icon>
             </div>
-            <div class="small" [ngClass]="{'edit': item.isDelete}">
+            <div class="small">
                 {{item.id}}
             </div>
-            <div [ngClass]="{'edit': item.isDelete}">
+            <div>
                 {{item.name}}
             </div>
         </div>
 
-        <ng-template [ngIf]="item.isEdit">
-            <app-service-child [id]="item.id"></app-service-child>
+        <ng-template [ngIf]="(si.modificationType === ModificationType.Edit || si.modificationType === ModificationType.Delete)
+                             && si.selectedItem.id === item.id">
+            <app-service-child></app-service-child>
         </ng-template>
     </ng-container>
 
     <div class="bottom">
-        <div class="small">
-            <mat-icon class="grid-button" (click)="addRow()">add_circle_outline</mat-icon>
+        <div class="btn">
+            <mat-icon class="grid-button" (click)="addRowClick()">add_circle_outline</mat-icon>
         </div>
-        <div class="small">Count: {{interactionService.interactions.length}}</div>
+        <div class="small">Count: {{si.interactions.length}}</div>
         <div></div>
     </div>
 </div>
 
-<div class="grid-flex" *ngIf="interactionService.newInteraction">
+<div class="grid-flex" *ngIf="si.modificationType === ModificationType.New">
     <app-service-child></app-service-child>
 </div>

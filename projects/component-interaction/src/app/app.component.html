@@ -1,4 +1,11 @@
-<app-dialog-parent></app-dialog-parent>
-<!--<app-io-parent></app-io-parent>-->
-<!--<app-service-parent></app-service-parent>-->
-<!--<app-vc-parent></app-vc-parent>-->
+<div class="select-group">
+    <mat-checkbox [(ngModel)]="isDialogInteraction">Interaction by Dialog & Observable</mat-checkbox>
+    <mat-checkbox [(ngModel)]="isIOInteraction">Interaction by Input & Output binding</mat-checkbox>
+    <mat-checkbox [(ngModel)]="isServiceInteraction">Interaction by Service</mat-checkbox>
+    <mat-checkbox [(ngModel)]="isVCInteraction">Interaction by @ViewChildren & @ViewChild decorator</mat-checkbox>
+</div>
+
+<app-dialog-parent *ngIf="isDialogInteraction"></app-dialog-parent>
+<app-io-parent *ngIf="isIOInteraction"></app-io-parent>
+<app-service-parent *ngIf="isServiceInteraction"></app-service-parent>
+<app-vc-parent *ngIf="isVCInteraction"></app-vc-parent>

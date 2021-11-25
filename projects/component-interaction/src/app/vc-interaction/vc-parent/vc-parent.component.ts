@@ -1,64 +1,81 @@
-import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {interactionList, InteractionVC} from '../../interaction.model'
+import {Component, ViewChild} from '@angular/core';
+import {interactionList, InteractionVC, ModificationType} from '../../interaction.model'
 import * as _ from 'lodash'
 import {VcChildComponent} from '../vc-child/vc-child.component'
+import {interval, take, takeWhile} from 'rxjs'
 
 @Component({
     selector: 'app-vc-parent',
     templateUrl: './vc-parent.component.html',
     styleUrls: ['./vc-parent.component.scss']
 })
-export class VcParentComponent implements OnInit {
+export class VcParentComponent {
 
-    isCopyObj: boolean = false
+    ModificationType = ModificationType
     interactions: Array<InteractionVC> = _.cloneDeep(interactionList)
-    newInteraction?: InteractionVC
+    isCopyObj: boolean = false
+    selectedItem: InteractionVC = <InteractionVC>{}
+    modificationType?: ModificationType
 
-    @ViewChildren(VcChildComponent) vcChildList!: QueryList<VcChildComponent>;
+    @ViewChild(VcChildComponent) vcChild!: VcChildComponent
 
     constructor() {
     }
 
-    ngOnInit(): void {
+    childAssign() {
+        interval(5).pipe(
+            takeWhile(() => {
+                if (this.vcChild === undefined) {
+                    return true
+                } else {
+                    this.vcChild.item = this.selectedItem
+                    return false
+                }
+            }),
+            take(10)
+        ).subscribe();
     }
 
-    addRow() {
-        const maxObj = _.maxBy(this.interactions, 'id') || <InteractionVC>{id: 0};
-        this.newInteraction = <InteractionVC>{id: maxObj.id + 1, isAdd: true};
+    addRowClick() {
+        const maxId = (_.maxBy(this.interactions, 'id') || <InteractionVC>{id: 0}).id + 1
+        this.selectedItem = <InteractionVC>{id: maxId}
+        this.modificationType = ModificationType.New
+        this.childAssign()
     }
 
-    editRow(item: InteractionVC) {
-        item.isEdit = true
-        item.isDelete = false
+    editRowClick(item: InteractionVC) {
+        this.selectedItem = this.isCopyObj ? _.cloneDeep(item) : item
+        this.modificationType = ModificationType.Edit
+        this.childAssign()
     }
 
-    deleteRow(item: InteractionVC) {
-        item.isDelete = true
-        item.isEdit = false
+    deleteRowClick(item: InteractionVC) {
+        this.selectedItem = this.isCopyObj ? _.cloneDeep(item) : item
+        this.modificationType = ModificationType.Delete
     }
 
-    saveChildClick(item: InteractionVC) {
-        const childItem = this.vcChildList.find(f => f.item?.id === item.id)?.item
-            || <InteractionVC>{}
-        const index = this.interactions.findIndex(f => f.id === childItem?.id)
-        if (this.newInteraction) {
-            this.interactions.push(this.newInteraction)
-            this.newInteraction = undefined
+    saveChildClick() {
+        if (this.modificationType === ModificationType.New) {
+            this.interactions.push(this.vcChild.item)
+        } else {
+            const index = this.interactions.findIndex(f => f.id === this.selectedItem.id)
+            this.interactions.splice(index, 1, this.vcChild.item)
         }
-        if (item.isEdit) {
-            childItem.isEdit = false
-            this.interactions.splice(index, 1, childItem)
-        }
-        if (item.isDelete) {
-            this.interactions.splice(index, 1)
-        }
-        item.isEdit = false
-        item.isDelete = false
+        this.clearSelected()
     }
 
-    cancelChildClick(item: InteractionVC) {
-        item.isEdit = false
-        item.isDelete = false
+    deleteChildClick() {
+        const index = this.interactions.findIndex(f => f.id === this.selectedItem.id)
+        this.interactions.splice(index, 1)
+    }
+
+    cancelChildClick() {
+        this.clearSelected()
+    }
+
+    private clearSelected() {
+        this.selectedItem = <InteractionVC>{}
+        this.modificationType = undefined
     }
 
 }

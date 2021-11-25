@@ -1,9 +1,6 @@
 <ng-template [ngIf]="item?.isAdd || item?.isEdit">
     <div class="content">
-        <div class="small edit">
-            <button (click)="saveClick()">Save</button>
-            <button (click)="cancelClick()">Cancel</button>
-        </div>
+        <div class="btn edit"></div>
         <div class="small edit">
             <input [(ngModel)]="item.id" [disabled]="true">
         </div>
@@ -11,16 +8,22 @@
             <input [(ngModel)]="item.name">
         </div>
     </div>
+    <div class="content not-hover">
+        <div class="buttons-container">
+            <button mat-stroked-button color="primary" (click)="saveClick()">Save</button>
+            <button mat-stroked-button (click)="cancelClick()">Cancel</button>
+        </div>
+    </div>
 </ng-template>
 
 <ng-template [ngIf]="item?.isDelete">
-    <div class="content">
+    <div class="content not-hover">
         <div>
-            Do you want delete selected row?
+            Do you want to delete selected row Id:<b>{{item.id}}</b>?
         </div>
-        <div>
-            <button (click)="deleteClick()">Delete</button>
-            <button (click)="cancelClick()">Cancel</button>
+        <div class="buttons-container">
+            <button mat-stroked-button color="warn" (click)="deleteClick()">Delete</button>
+            <button mat-stroked-button (click)="cancelClick()">Cancel</button>
         </div>
     </div>
 </ng-template>

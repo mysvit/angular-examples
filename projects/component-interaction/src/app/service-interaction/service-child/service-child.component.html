@@ -1,26 +1,29 @@
-<ng-template [ngIf]="selectedItem.isEdit">
-    <div class="content">
-        <div class="small edit">
-            <button (click)="saveClick()">Save</button>
-            <button (click)="cancelClick()">Cancel</button>
+<ng-container *ngIf="si.modificationType === ModificationType.Delete">
+    <div class="content not-hover">
+        <div>
+            Do you want to delete selected row Id:<b>{{si.selectedItem.id}}</b>?
         </div>
+        <div class="buttons-container">
+            <button mat-stroked-button color="warn" (click)="deleteClick()">Delete</button>
+            <button mat-stroked-button (click)="cancelClick()">Cancel</button>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="si.modificationType === ModificationType.New || si.modificationType === ModificationType.Edit">
+    <div class="content">
+        <div class="btn edit"></div>
         <div class="small edit">
-            <input [(ngModel)]="selectedItem.id" [disabled]="true">
+            <input [(ngModel)]="si.selectedItem.id" [disabled]="true">
         </div>
         <div class="edit">
-            <input [(ngModel)]="selectedItem.name">
+            <input [(ngModel)]="si.selectedItem.name">
         </div>
     </div>
-</ng-template>
-
-<ng-template [ngIf]="selectedItem.isDelete">
-    <div class="content">
-        <div>
-            Do you want delete selected row?
-        </div>
-        <div>
-            <button (click)="deleteClick()">Delete</button>
-            <button (click)="cancelClick()">Cancel</button>
+    <div class="content not-hover">
+        <div class="buttons-container">
+            <button mat-stroked-button color="primary" (click)="saveClick()">Save</button>
+            <button mat-stroked-button (click)="cancelClick()">Cancel</button>
         </div>
     </div>
-</ng-template>
+</ng-container>
