@@ -1,8 +1,19 @@
-<button (click)="getWeatherClick()">GET Weather</button>
-<div *ngFor="let item of weatherList">
-    <button (click)="postWeatherClick(item)">POST Weather</button>
-    {{item.date}}, {{item.temperatureC}}, {{item.summary}}
-    <ng-template [ngIf]="item.postResult">
-        <b>Post result => {{item.postResult}}</b>
-    </ng-template>
+<button (click)="getListClick()">GET List</button>
+<div *ngFor="let item of list" class="f-col m5">
+    <div class="list" (click)="selectItemClick(item)">
+        id:{{item.id}}, name:{{item.name}}
+    </div>
+</div>
+
+<div class="f-col m5" *ngIf="selectedItem">
+    <button (click)="getItemByParamClick(selectedItem)">Get Item by PARAM id:{{selectedItem.id}}</button>
+    <button (click)="getItemByRouteClick(selectedItem)">Get Item by ROUTE id:{{selectedItem.id}}</button>
+    <button (click)="getItemByRouteHandlersClick(selectedItem)">Get Item by ROUTE HANDLE name:{{selectedItem.name}}</button>
+    <button (click)="postItemClick(selectedItem)">POST Item id:{{selectedItem.id}}</button>
+    <button (click)="putItemClick(selectedItem)">PUT Item id:{{selectedItem.id}}</button>
+    <button (click)="deleteItemClick(selectedItem)">Delete Item id:{{selectedItem.id}}</button>
+</div>
+
+<div class="f-col m5" *ngIf="oneItem">
+    <b>Get result => {{oneItem.id}}, {{oneItem.name}}</b>
 </div>

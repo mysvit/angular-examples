@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http'
 import {map} from 'rxjs'
+import {Action, AppService} from './app.service'
+import {Example} from './app.model'
 
 @Component({
     selector: 'app-root',
@@ -9,36 +10,93 @@ import {map} from 'rxjs'
 })
 export class AppComponent {
 
-    apiUrl = 'https://localhost:5555';
-    public weatherList: Array<WeatherForecast> = new Array<WeatherForecast>();
+    list: Array<Example> = new Array<Example>()
+    selectedItem?: Example
+    oneItem?: Example
 
-    constructor(public http: HttpClient) {
+    constructor(public appService: AppService) {
     }
 
-    getWeatherClick() {
-        this.http.get<Array<WeatherForecast>>(this.apiUrl.concat('/WeatherForecast'))
-            .pipe(
-                map(data => this.weatherList = data)
-            )
-            .subscribe()
+    getListClick() {
+        this.getList().subscribe()
     }
 
-    postWeatherClick(item: WeatherForecast) {
+    selectItemClick(item: Example) {
+        this.selectedItem = item
+    }
 
-        this.http.post<string>(this.apiUrl.concat('/WeatherForecast'), item)
+    getItemByParamClick(item: Example) {
+        this.getItemByParam(item.id).subscribe()
+    }
+
+    getItemByRouteClick(item: Example) {
+        this.getItemByRoute(item.id).subscribe()
+    }
+
+    getItemByRouteHandlersClick(item: Example) {
+        this.getItemByRouteHandlers(item.name).subscribe()
+    }
+
+    postItemClick(item: Example) {
+        this.postItem(item).subscribe()
+    }
+
+    putItemClick(item: Example) {
+        this.putItem(item).subscribe()
+    }
+
+    deleteItemClick(item: Example) {
+        this.deleteItem(item.id.toString()).subscribe()
+    }
+
+
+    private getList() {
+        return this.appService.getList()
             .pipe(
-                map(data => item.postResult = data)
+                map(data => this.list = data)
             )
-            .subscribe()
+    }
+
+    private getItemByParam(id: number) {
+        return this.appService.getItemByParam(id)
+            .pipe(
+                map(data => this.oneItem = data)
+            )
+    }
+
+    private getItemByRoute(id: number) {
+        return this.appService.getItemByRoute(id)
+            .pipe(
+                map(data => this.oneItem = data)
+            )
+    }
+
+    private getItemByRouteHandlers(name: string) {
+        return this.appService.getItemByRouteHandlers(name)
+            .pipe(
+                map(data => this.oneItem = data)
+            )
+    }
+
+    private postItem(item: Example) {
+        return this.appService.postItem(item)
+            .pipe(
+                map(data => this.oneItem = data)
+            )
+    }
+
+    private putItem(item: Example) {
+        return this.appService.putItem(Action.text, item)
+            .pipe(
+                map(data => this.oneItem = data)
+            )
+    }
+
+    private deleteItem(id: string) {
+        return this.appService.deleteItem(id)
+            .pipe(
+                map(data => this.oneItem = data)
+            )
     }
 
 }
-
-export interface WeatherForecast {
-    date: Date;
-    temperatureC: bigint;
-    temperatureF: bigint;
-    summary: string;
-    postResult: string;
-}
-
