@@ -1,27 +1,56 @@
 :host {
+  min-height: 0;
+  min-width: 0;
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.list {
+button {
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  min-height: min-content;
+}
+
+.top {
+  flex-basis: 40%;
   display: flex;
   flex-direction: row;
-
-  &:hover {
-    background-color: chartreuse;
-  }
+  overflow: auto;
 }
 
 .f-row {
   display: flex;
   flex-direction: row;
+
+  &:hover {
+    background-color: aqua;
+  }
 }
 
 .f-col {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
+.console {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-color: black;
+  color: lime;
+
+  .red {
+    color: red !important;
+  }
+}
+
 .m5 {
   margin: 5px;
+}
+
+.p5 {
+  padding: 5px;
 }

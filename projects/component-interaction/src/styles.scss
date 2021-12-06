@@ -1,8 +1,8 @@
 //@use 'sass:map';
 //@use '@angular/material' as mat;
-@use 'scss/material-fonts';
-@use 'scss/material-icons';
-@use 'scss/grid';
+@use '../../material/scss/material-fonts';
+@use '../../material/scss/material-icons';
+@use '../../material/scss/grid';
 
 html {
   box-sizing: border-box;

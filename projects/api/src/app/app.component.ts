@@ -1,24 +1,36 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {map} from 'rxjs'
 import {Action, AppService} from './app.service'
 import {Example} from './app.model'
+import {HttpLogService} from './http/http-log.service'
+import {MessageType} from './http/http.model'
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 
+    MessageType = MessageType
     list: Array<Example> = new Array<Example>()
-    selectedItem?: Example
+    selectedItem: Example = <Example>{id: 0, name: 'SomeName'}
     oneItem?: Example
+    resultList: Array<string> = []
 
-    constructor(public appService: AppService) {
+    constructor(public appService: AppService, public httpLogService: HttpLogService) {
+    }
+
+    ngOnDestroy() {
     }
 
     getListClick() {
-        this.getList().subscribe()
+        this.httpLogService.add('_')
+        return this.appService.getList()
+            .subscribe(data => {
+                this.list = data
+                this.httpLogService.add('Result: '.concat(JSON.stringify(data)))
+            })
     }
 
     selectItemClick(item: Example) {
@@ -26,77 +38,50 @@ export class AppComponent {
     }
 
     getItemByParamClick(item: Example) {
-        this.getItemByParam(item.id).subscribe()
+        this.httpLogService.add('_')
+        return this.appService.getItemByParam(item.id)
+            .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
     }
 
     getItemByRouteClick(item: Example) {
-        this.getItemByRoute(item.id).subscribe()
+        this.httpLogService.add('_')
+        return this.appService.getItemByRoute(item.id)
+            .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
     }
 
     getItemByRouteHandlersClick(item: Example) {
-        this.getItemByRouteHandlers(item.name).subscribe()
+        this.httpLogService.add('_')
+        this.appService.getItemByRouteHandlers(item.name)
+            .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
     }
 
     postItemClick(item: Example) {
-        this.postItem(item).subscribe()
+        this.httpLogService.add('_')
+        this.appService.postItem(item)
+            .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
+    }
+
+    postErrorClick() {
+        this.httpLogService.add('_')
+        this.appService.postErrorExample()
+            .subscribe(data => this.httpLogService.add('subscribe return default data: '.concat(JSON.stringify(data))))
     }
 
     putItemClick(item: Example) {
-        this.putItem(item).subscribe()
+        this.httpLogService.add('_')
+        this.appService.putItem(Action.text, item)
+            .pipe(
+                map(data => this.oneItem = data)
+            )
+            .subscribe()
     }
 
     deleteItemClick(item: Example) {
-        this.deleteItem(item.id.toString()).subscribe()
-    }
-
-
-    private getList() {
-        return this.appService.getList()
-            .pipe(
-                map(data => this.list = data)
-            )
-    }
-
-    private getItemByParam(id: number) {
-        return this.appService.getItemByParam(id)
+        this.httpLogService.add('_')
+        this.appService.deleteItem(item.id.toString())
             .pipe(
                 map(data => this.oneItem = data)
-            )
-    }
-
-    private getItemByRoute(id: number) {
-        return this.appService.getItemByRoute(id)
-            .pipe(
-                map(data => this.oneItem = data)
-            )
-    }
-
-    private getItemByRouteHandlers(name: string) {
-        return this.appService.getItemByRouteHandlers(name)
-            .pipe(
-                map(data => this.oneItem = data)
-            )
-    }
-
-    private postItem(item: Example) {
-        return this.appService.postItem(item)
-            .pipe(
-                map(data => this.oneItem = data)
-            )
-    }
-
-    private putItem(item: Example) {
-        return this.appService.putItem(Action.text, item)
-            .pipe(
-                map(data => this.oneItem = data)
-            )
-    }
-
-    private deleteItem(id: string) {
-        return this.appService.deleteItem(id)
-            .pipe(
-                map(data => this.oneItem = data)
-            )
+            ).subscribe()
     }
 
 }

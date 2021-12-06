@@ -14,6 +14,7 @@ export class DialogParentComponent {
 
     isCopyObj: boolean = false
     interactions: Array<InteractionDlg> = _.cloneDeep(interactionList)
+    apiList = ['aaaaaaaa', 'dfdfdfdfdfd']
 
     constructor(public dialog: MatDialog) {
     }
