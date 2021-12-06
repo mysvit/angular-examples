@@ -1,5 +1,4 @@
 import {Component, OnDestroy} from '@angular/core';
-import {map} from 'rxjs'
 import {Action, AppService} from './app.service'
 import {Example} from './app.model'
 import {HttpLogService} from './http/http-log.service'
@@ -15,7 +14,6 @@ export class AppComponent implements OnDestroy {
     MessageType = MessageType
     list: Array<Example> = new Array<Example>()
     selectedItem: Example = <Example>{id: 0, name: 'SomeName'}
-    oneItem?: Example
     resultList: Array<string> = []
 
     constructor(public appService: AppService, public httpLogService: HttpLogService) {
@@ -70,18 +68,13 @@ export class AppComponent implements OnDestroy {
     putItemClick(item: Example) {
         this.httpLogService.add('_')
         this.appService.putItem(Action.text, item)
-            .pipe(
-                map(data => this.oneItem = data)
-            )
-            .subscribe()
+            .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
     }
 
     deleteItemClick(item: Example) {
         this.httpLogService.add('_')
         this.appService.deleteItem(item.id.toString())
-            .pipe(
-                map(data => this.oneItem = data)
-            ).subscribe()
+            .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
     }
 
 }

@@ -2,25 +2,25 @@
     <div class="f-col">
         <button mat-stroked-button (click)="getListClick()">GET Items without PARAM</button>
         <button mat-stroked-button (click)="getItemByParamClick(selectedItem)">
-            Get Item by PARAM (?id={{selectedItem.id}})
+            Get Item by PARAM (?id=:id)
         </button>
         <button mat-stroked-button (click)="getItemByRouteClick(selectedItem)">
-            Get Item by ROUTE (/{{selectedItem?.id}})
+            Get Item by ROUTE (/:id)
         </button>
         <button mat-stroked-button (click)="getItemByRouteHandlersClick(selectedItem)">
-            Get Item by ROUTE HANDLE (/name/{{selectedItem?.name}})
+            Get Item by ROUTE HANDLE (/name/:name)
         </button>
         <button mat-stroked-button (click)="postItemClick(selectedItem)">
-            POST Item object
+            POST Item object in body
         </button>
         <button mat-stroked-button (click)="postErrorClick()">
             POST Simulation error
         </button>
         <button mat-stroked-button (click)="putItemClick(selectedItem)">
-            PUT Item id:{{selectedItem?.id}}
+            PUT Item (/:id/:option)
         </button>
         <button mat-stroked-button (click)="deleteItemClick(selectedItem)">
-            Delete Item id:{{selectedItem?.id}}
+            Delete Item (/:id)
         </button>
     </div>
 
