@@ -1,2 +1,11 @@
-<button (click)="start()">StopwatchValue</button>
-{{stopwatchValue}}
+<div>
+    <button (click)="distinctUntilClick()">distinctUntil & debounce:1s</button>
+    <span>clickValue:{{clickValue}}</span>
+    <span>distinctUntilValue:{{distinctUntilValue}}</span>
+</div>
+
+<div>
+    <button (click)="takeUntilStartClick()">takeUntil start</button>
+    <button (click)="takeUntilStopClick()">takeUntil click</button>
+    <span>{{takeUntilValue}}</span>
+</div>

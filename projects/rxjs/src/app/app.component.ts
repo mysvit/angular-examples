@@ -1,28 +1,67 @@
-import {Component} from '@angular/core';
-import {Subject} from 'rxjs'
+import {Component, OnDestroy} from '@angular/core';
+import {debounceTime, distinctUntilChanged, interval, Subject, takeUntil} from 'rxjs'
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-
-    stopwatchValue = 0;
-    stopwatchValue$: Subject<number> = new Subject<number>();
+export class AppComponent implements OnDestroy {
 
     constructor() {
-        this.stopwatchValue$.subscribe(num =>
-            this.stopwatchValue += num
-        );
-    }
-
-    start() {
-        this.stopwatchValue$.next(1);
+        this.distinctUntilSubscribe()
     }
 
     ngOnDestroy() {
-        this.stopwatchValue$.unsubscribe();
+        this.distinctUntilUnSubscribe()
     }
+
+
+    inputUpdate$: Subject<number> = new Subject<number>();
+    distinctUntilValue = 0;
+    clickValue = 0;
+
+    distinctUntilSubscribe() {
+        this.inputUpdate$.asObservable()
+            .pipe(
+                debounceTime(1000),
+                distinctUntilChanged()
+            )
+            .subscribe(() => {
+                this.distinctUntilValue++
+            })
+    }
+
+    distinctUntilClick() {
+        this.clickValue++
+        this.inputUpdate$.next(Math.random())
+    }
+
+    distinctUntilUnSubscribe() {
+        this.inputUpdate$.unsubscribe()
+    }
+
+    // *******************************************************************************************
+
+    takeUntilValue: number = 0
+    public stopTakeUntil$: Subject<boolean> = new Subject<boolean>();
+
+    takeUntilStartClick() {
+        this.takeUntilValue = 0
+        this.stopTakeUntil$.next(true)
+        const source = interval(500)
+        source.pipe(
+            takeUntil(this.stopTakeUntil$)
+        ).subscribe(() => {
+            this.takeUntilValue++
+            console.log(this.takeUntilValue)
+        })
+    }
+
+    takeUntilStopClick() {
+        this.stopTakeUntil$.next(true)
+    }
+
+    // *******************************************************************************************
 
 }
