@@ -1,0 +1,33 @@
+<h3>appHighlight work with: @HostBinding, @HostListener, @Input</h3>
+
+<div appHighlight defaultColor="red">
+    Highlight directive set defaultColor="red" background
+</div>
+
+<div appHighlight="green">
+    Highlight directive set appHighlight="green" background
+</div>
+
+
+<h3>ngNonBindable</h3>
+<div ngNonBindable>ngNonBindable this stop directives: {{ 1 + 1 }}</div>
+
+
+<h3>ngShow work with: ViewContainerRef, TemplateRef</h3>
+<div>
+    ngShow same as ngIf
+    <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+    <button (click)="condition = !condition"
+            [ngClass]="{ 'a': condition, 'b': !condition }">
+        Toggle condition to {{condition ? 'false' : 'true'}}
+    </button>
+</div>
+
+<p *appShow="condition" class="unless a">
+    (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appShow="!condition" class="unless b">
+    (B) Although the condition is true,
+    this paragraph is displayed because appUnless is set to false.
+</p>

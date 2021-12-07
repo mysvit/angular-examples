@@ -2,10 +2,11 @@
   "name": "angular-examples",
   "version": "0.0.0",
   "scripts": {
-    "API  - 4201": "ng serve --project=api --port=4201",
-    "RxJS - 4202": "ng serve --project=rxjs --port=4202",
-    "Lifecycle hooks        - 4203": "ng serve --project=lifecycle-hooks --port=4203",
-    "Component interaction  - 4204": "ng serve --project=component-interaction --port=4204",
+    "API                      - 4201": "ng serve --project=api --port=4201",
+    "Component interaction  - 4202": "ng serve --project=component-interaction --port=4202",
+    "Directive              - 4203": "ng serve --project=directive --port=4203",
+    "Lifecycle hooks     - 4204": "ng serve --project=lifecycle-hooks --port=4204",
+    "RxJS                     - 4205": "ng serve --project=rxjs --port=4205",
     "Test Jasmine": "ng test --project=test"
   },
   "private": true,
