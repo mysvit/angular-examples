@@ -1,0 +1,25 @@
+<div class="item">
+    <label>Radio buttons grouping by NAME form change event. VALUE=[{{radioValue}}]</label>
+    <form (change)="radioChanged()">
+        <input id="name" type="radio" name="rGroup" value="name" [(ngModel)]="radioValue">
+        <label for="name">Name</label>
+        <input id="age" type="radio" name="rGroup" value="age" [(ngModel)]="radioValue">
+        <label for="age">Age</label>
+    </form>
+</div>
+
+<div class="item">
+    <label>Radio buttons grouping by NAME2 input change event. VALUE=[{{radioValue2}}]</label><br>
+    <input id="name2" type="radio" name="rGroup2" value="nameVal2" [(ngModel)]="radioValue2" (change)="radioChanged()">
+    <label for="name2">Name</label>
+    <input id="age2" type="radio" name="rGroup2" value="ageVal2" [(ngModel)]="radioValue2" (change)="radioChanged()">
+    <label for="age2">Age</label>
+</div>
+
+<div class="item">
+    <label>Radio buttons different NAME without FOR . VALUE=[{{radioValue3}}]</label><br>
+    <input type="radio" name="name">
+    <label>Name</label>
+    <input id="age3" type="radio" name="age">
+    <label for="age3">Age</label>
+</div>

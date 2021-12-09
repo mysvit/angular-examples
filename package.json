@@ -2,11 +2,12 @@
   "name": "angular-examples",
   "version": "0.0.0",
   "scripts": {
-    "API                      - 4201": "ng serve --project=api --port=4201",
-    "Component interaction  - 4202": "ng serve --project=component-interaction --port=4202",
-    "Directive              - 4203": "ng serve --project=directive --port=4203",
-    "Lifecycle hooks     - 4204": "ng serve --project=lifecycle-hooks --port=4204",
-    "RxJS                     - 4205": "ng serve --project=rxjs --port=4205",
+    "API                                        - 4001":  "ng serve --project=api --port=4201",
+    "Component interaction          - 4002":              "ng serve --project=component-interaction --port=4202",
+    "Directive                                - 4003":    "ng serve --project=directive --port=4203",
+    "Function equilibristics            - 4004":          "ng serve --project=function-equilibristics --port=4004",
+    "Lifecycle hooks                      - 4005":        "ng serve --project=lifecycle-hooks --port=4005",
+    "RxJS                                      - 4006":   "ng serve --project=rxjs --port=4006",
     "Test Jasmine": "ng test --project=test"
   },
   "private": true,
@@ -24,7 +25,8 @@
     "lodash": "^4.17.21",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "moment": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.0.3",

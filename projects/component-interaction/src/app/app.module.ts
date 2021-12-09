@@ -15,7 +15,8 @@ import {MatDialogModule} from '@angular/material/dialog'
 import {MatButtonModule} from '@angular/material/button';
 import {DialogParentComponent} from './dialog-interaction/dialog-parent/dialog-parent.component';
 import {DialogDialogComponent} from './dialog-interaction/dialog-dialog/dialog-dialog.component'
-import {MatInputModule} from '@angular/material/input'
+import {MatInputModule} from '@angular/material/input';
+import {InputInteractionComponent} from './input-interaction/input-interaction.component'
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import {MatInputModule} from '@angular/material/input'
         VcParentComponent,
         VcChildComponent,
         DialogParentComponent,
-        DialogDialogComponent
+        DialogDialogComponent,
+        InputInteractionComponent
     ],
     imports: [
         BrowserModule,

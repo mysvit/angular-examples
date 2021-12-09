@@ -34,8 +34,9 @@
 </div>
 
 <b>Console</b>
-<div class="console">
+<div class="console" ngModel="">
     <ng-container *ngFor="let msg of httpLogService.messages">
         <div [ngClass]="{'red':msg.msgType === MessageType.Error}">{{msg.msgText}}</div>
     </ng-container>
 </div>
+

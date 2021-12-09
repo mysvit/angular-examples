@@ -1,0 +1,10 @@
+:host {
+  margin: 20px;
+  display: flex;
+}
+
+.item {
+  flex: 1;
+  border: 5px solid black;
+  margin: 5px;
+}

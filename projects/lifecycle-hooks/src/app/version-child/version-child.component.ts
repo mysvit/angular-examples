@@ -6,6 +6,7 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
     styleUrls: ['./version-child.component.scss']
 })
 export class VersionChildComponent implements OnChanges {
+
     constructor() {
     }
 

@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
     major = 1;
     minor = 13;
 
@@ -17,4 +18,5 @@ export class AppComponent {
         this.major++;
         this.minor = 0;
     }
+
 }
