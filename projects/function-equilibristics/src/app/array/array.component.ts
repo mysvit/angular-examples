@@ -126,6 +126,26 @@ export class ArrayComponent implements OnInit {
         }
     }
 
+    sumNumberJSValue: number = 0
+    sumNumberLodashValue: number = 0
+
+    sumNumber() {
+        this.sumNumberJS()
+        this.sumNumberLodash()
+    }
+
+    sumNumberJS() {
+        this.sumNumberJSValue = this.listJS.reduce((a, b) => {
+                return a + b.num;
+            },
+            // default value 0
+            0)
+    }
+
+    sumNumberLodash() {
+        this.sumNumberLodashValue = _.sumBy(this.listLodash, 'num')
+    }
+
 }
 
 

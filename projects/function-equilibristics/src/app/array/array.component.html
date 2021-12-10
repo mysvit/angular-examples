@@ -1,5 +1,6 @@
 <ol>
-    <li value="1">
+    <li>
+        <span>Sort by:</span>
         <select name="Type" id="Type-select" [(ngModel)]="selectedSortType" (change)="sortTypeChanged()">
             <option value="{{SortType.sString}}">String</option>
             <option value="{{SortType.sNumber}}">Number</option>
@@ -12,6 +13,10 @@
             <label for="sortDESC">DESC</label>
         </div>
     </li>
+    <li>
+        <span>Sum by:</span>
+        <button (click)="sumNumber()">column Num</button>
+    </li>
 </ol>
 
 <div class="container">
@@ -22,6 +27,7 @@
             <span>{{item.num}}</span>
             <span>{{item.dat}}</span>
         </div>
+        Sum of num: {{sumNumberJSValue}}
     </div>
     <div class="item">
         Lodash
@@ -30,5 +36,6 @@
             <span>{{item.num}}</span>
             <span>{{item.dat}}</span>
         </div>
+        Sum of num: {{sumNumberLodashValue}}
     </div>
 </div>
