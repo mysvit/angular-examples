@@ -1,11 +1,10 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 
 @Component({
-    selector: 'app-version-child',
-    templateUrl: './version-child.component.html',
-    styleUrls: ['./version-child.component.scss']
+    selector: 'app-on-changes',
+    templateUrl: './on-changes.component.html',
 })
-export class VersionChildComponent implements OnChanges {
+export class OnChangesComponent implements OnChanges {
 
     constructor() {
     }
