@@ -73,4 +73,64 @@ export class CodeGameComponent implements OnInit {
     }
 
 
+    shadowCasting() {
+        const N: number = 7;
+        const rl = [
+            '#     #',
+            ' #   #',
+            '  # #',
+            '   #',
+            '  # #',
+            ' #   #',
+            '#     #',
+        ]
+        let arr: Array<string> = []
+        let arrShadow: Array<string> = []
+
+        // fill array
+        for (let i = 0; i < N; i++) {
+            arr.push(rl[i])
+            arrShadow.push(' '.repeat(arr[i].length))
+        }
+        arrShadow.push('')
+        arrShadow.push('')
+
+        // drawing shadow in shadow's array
+        for (let i = 0; i < N; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j].charCodeAt(0) > 32) {
+                    arrShadow[i + 1] = insertShadow(arrShadow[i + 1], j + 1, '-')
+                    arrShadow[i + 2] = insertShadow(arrShadow[i + 2], j + 2, '`')
+                }
+            }
+        }
+
+        // apply image on shadow
+        for (let i = 0; i < N; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j].charCodeAt(0) > 32) {
+                    arrShadow[i] = replaceAt(arrShadow[i], j, arr[i][j])
+                }
+            }
+        }
+
+        function insertShadow(str: string, shadowIndex: number, shadowChar: string) {
+            if (shadowIndex >= str.length) {
+                str = str.concat(' '.repeat(shadowIndex - str.length))
+            }
+            return str.substr(0, shadowIndex) + shadowChar + str.substr(shadowIndex + 1);
+        }
+
+        function replaceAt(str: string, index: number, replacement: string) {
+            return str.substr(0, index) + replacement + str.substr(index + replacement.length);
+        }
+
+        // output
+        for (let i = 0; i < N + 2; i++) {
+            console.log(arrShadow[i].trimEnd())
+        }
+
+    }
+
+
 }
