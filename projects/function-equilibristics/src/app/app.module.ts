@@ -3,14 +3,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {ArrayComponent} from './array/array.component';
 import {FormsModule} from '@angular/forms';
-import {TestComponent} from './test/test.component';
+import {HackerRankComponent} from './hacker-rank/hacker-rank.component';
 import { CodeGameComponent } from './code-game/code-game.component'
 
 @NgModule({
     declarations: [
         AppComponent,
         ArrayComponent,
-        TestComponent,
+        HackerRankComponent,
         CodeGameComponent
     ],
     imports: [

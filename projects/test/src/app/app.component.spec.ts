@@ -16,7 +16,7 @@
 //     }
 //
 //     const getByTestId = (testId: string, compiled) => {
-//         return compiled.querySelector(`[data-test-id="${testId}"]`);
+//         return compiled.querySelector(`[data-hacker-rank-id="${testId}"]`);
 //     };
 //
 //     const peopleList = [

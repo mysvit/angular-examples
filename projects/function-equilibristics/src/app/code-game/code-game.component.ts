@@ -72,7 +72,6 @@ export class CodeGameComponent implements OnInit {
 
     }
 
-
     shadowCasting() {
         const N: number = 7;
         const rl = [
@@ -132,5 +131,131 @@ export class CodeGameComponent implements OnInit {
 
     }
 
+    foldingANoteTest() {
+        this.foldingANote([['OA', 'LM']], 'LMAO')
+        this.foldingANote([['uDuu', 'u!eu', 'uudu', 'uuuu']], 'Duuuuuuuuuuuude!')
+    }
+
+    foldingANote(arr: string[][], expected: string) {
+
+        let currLevel = 0
+
+        while (arr[0].length > 1) {
+            rightToLeftTo(true)
+            console.info(arr)
+            bottomToTop(true)
+            console.info(arr)
+            rightToLeftTo(false)
+            console.info(arr)
+            bottomToTop(false)
+            console.info(arr)
+        }
+        console.log('expected:', expected, ', result:', arr.reverse().join(''))
+
+        // right to left = true
+        // left to right = false
+        function rightToLeftTo(rl: boolean) {
+            if (arr[0].length === 1) {
+                return
+            }
+            for (let foldLevel = currLevel; foldLevel >= 0; foldLevel--) {
+                currLevel++
+                arr[currLevel] = []
+                const s2 = arr[foldLevel][0].length / 2
+                for (let i = 0; i < arr[foldLevel].length; i++) {
+                    arr[currLevel].push(arr[foldLevel][i]
+                        .split('').splice((rl ? -1 * s2 : 0), s2).reverse().join(''))
+                    arr[foldLevel][i] = arr[foldLevel][i]
+                        .split('').splice((rl ? 0 : s2), s2).join('')
+                }
+            }
+        }
+
+        // bottom to top = true
+        // top to bottom = false
+        function bottomToTop(bt: boolean) {
+            if (arr[0].length === 1) {
+                return
+            }
+            // top to bottom
+            for (let foldLevel = currLevel; foldLevel >= 0; foldLevel--) {
+                currLevel++
+                arr[currLevel] = []
+                let a2 = arr[foldLevel].length / 2
+                if (bt) {
+                    arr[currLevel] = arr[foldLevel].splice(-1 * a2).reverse()
+                } else {
+                    arr[currLevel] = arr[foldLevel].splice(0, a2).reverse()
+                }
+            }
+        }
+
+    }
+
+    changeMoney() {
+        console.log(100)
+        console.log('2:',change(100)?.two, change(100)?.two == 0)
+        console.log('5:',change(100)?.five, change(100)?.five == 0)
+        console.log('10:',change(100)?.ten, change(100)?.ten == 10)
+        console.log(43)
+        console.log('2:',change(43)?.two, change(43)?.two == 4)
+        console.log('5:',change(43)?.five, change(43)?.five == 1)
+        console.log('10:',change(43)?.ten, change(43)?.ten == 3)
+        console.log(11)
+        console.log('2:',change(11)?.two, change(11)?.two == 3)
+        console.log('5:',change(11)?.five, change(11)?.five == 1)
+        console.log('10:',change(11)?.ten, change(11)?.ten == 0)
+        console.log(15)
+        console.log('2:', change(15)?.two, change(15)?.two == 0)
+        console.log('5:', change(15)?.five, change(15)?.five == 1)
+        console.log('10:', change(15)?.ten, change(15)?.ten == 1)
+
+        function change(cash: number) {
+            let two = 0;
+            let five = 0;
+            let ten = Math.floor(cash / 10);
+            if (cash == 1) {
+                return null
+            }
+            // ten
+            if (cash % 10 == 0 || (cash % 10 > 0 && (cash % 10 % 5 === 0 || cash % 10 % 2 === 0))) {
+                cash = cash - ten * 10
+            } else {
+                ten = ten - 1
+                if ((cash % ten * 10) % 5 === 0 || (cash % ten * 10) % 2 === 0) {
+                    cash = cash - ten * 10
+                } else {
+                    ten = 0
+                }
+            }
+            // five
+            if (cash !== 0) {
+                five = Math.floor(cash / 5);
+                if (cash % 5 == 0 || (cash % 5 > 0 && cash % 5 % 2 === 0)) {
+                    cash = cash - five * 5
+                    two = Math.floor(cash / 2)
+                } else {
+                    five = five - 1
+                }
+            }
+            // two
+            if (cash !== 0) {
+                if ((cash - five * 5) % 2 === 0) {
+                    cash = cash - five * 5
+                } else {
+                    five = 0
+                }
+                two = Math.floor(cash / 2)
+            }
+            return {
+                two: two,
+                five: five,
+                ten: ten
+            }
+        }
+    }
+
 
 }
+
+
