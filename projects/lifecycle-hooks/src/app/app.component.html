@@ -1,4 +1,14 @@
-<h2>Track OnChanges</h2>
-<button (click)="newMinorClick()">New minor version</button>
-<button (click)="newMajorClick()">New major version</button>
-<app-on-changes [major]="major" [minor]="minor"></app-on-changes>
+<h1>
+    https://indepth.dev/posts/1053/everything-you-need-to-know-about-change-detection-in-angular
+</h1>
+
+<div class="select-group">
+    <mat-checkbox [(ngModel)]="isAfterContent">After Content</mat-checkbox>
+</div>
+<ng-container *ngIf="isAfterContent">
+    <app-after-content></app-after-content>
+</ng-container>
+<!--<h2>Track OnChanges</h2>-->
+<!--<button (click)="newMinorClick()">New minor version</button>-->
+<!--<button (click)="newMajorClick()">New major version</button>-->
+<!--<app-on-changes [major]="major" [minor]="minor"></app-on-changes>-->

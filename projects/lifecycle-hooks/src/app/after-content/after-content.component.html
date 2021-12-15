@@ -1,0 +1,17 @@
+<div>
+    <app-projected>
+<!--        <app-injected *ngIf="isInject"></app-injected>-->
+    </app-projected>
+    <mat-checkbox [(ngModel)]="isInject">Remove injected component</mat-checkbox>
+    <h3>Not injected</h3>
+    <!--    <app-injected #notInjected></app-injected>-->
+    <input type="text" [(ngModel)]="rootStr">
+    <input type="text" (change)="changeEvent($event)">
+</div>
+<h3>Logger</h3>
+<button (click)="clearLogClick()">Clear Log</button>
+<div class="logger">
+    <span *ngFor="let log of this.logger.messages; trackBy: TrackByStr">
+        {{log}}
+    </span>
+</div>

@@ -7,16 +7,17 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
 
-    major = 1;
-    minor = 13;
+    // major = 1;
+    // minor = 13;
+    isAfterContent: boolean = true
 
-    newMinorClick() {
-        this.minor++;
-    }
-
-    newMajorClick() {
-        this.major++;
-        this.minor = 0;
-    }
+    // newMinorClick() {
+    //     this.minor++;
+    // }
+    //
+    // newMajorClick() {
+    //     this.major++;
+    //     this.minor = 0;
+    // }
 
 }
