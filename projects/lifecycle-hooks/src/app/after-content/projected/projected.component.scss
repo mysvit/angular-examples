@@ -1,4 +1,18 @@
-.comment {
-  font-weight: bold;
-  color: blue;
+@use '../../../styles';
+
+$color: green;
+
+:host {
+    @extend .container;
+    border: 3px solid $color;
+    background-color: lightgreen;
+    grid-template-rows: min-content 1fr 40%;
+}
+
+.middle-container {
+    border: 3px solid $color;
+}
+
+.log-container {
+    border: 3px solid $color;
 }

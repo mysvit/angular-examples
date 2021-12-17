@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {LoggerService} from '../logger.service'
+import {LogFormatter} from '../logger.service'
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-after-content',
@@ -7,34 +8,49 @@ import {LoggerService} from '../logger.service'
     styleUrls: ['./after-content.component.scss']
 })
 export class AfterContentComponent {
-    isInject: boolean = true
-    // @ViewChild('notInjected') injectedComponent!: InjectedComponent;
-    rootStr: string = ''
 
-    constructor(public logger: LoggerService) {
+    appText: string = '';
+    logs: string[] = [];
+    checker: FormGroup;
+
+    constructor(fb: FormBuilder) {
+        this.checker = fb.group({
+            inject: true,
+            project: true
+        });
+        this.checker.valueChanges.subscribe(() => this.checkChanged())
     }
 
-    clearLogClick() {
-        this.logger.clear()
-        // setTimeout(() => {
-        //     this.injectedComponent.cText += '-'
-        // }, 2000)
+    checkChanged() {
+        // this.appText = this.checker.value.inject ? this.appText : ''
+    }
+
+    ngOnChanges() {
+        this.logs.push(LogFormatter.log('OnChanges'))
+    }
+
+    ngOnInit() {
+        this.logs.push(LogFormatter.log('OnInit'))
+    }
+
+    ngDoCheck() {
+        this.logs.push(LogFormatter.log('DoCheck'))
+    }
+
+    ngAfterContentInit() {
+        this.logs.push(LogFormatter.log('AfterContentInit'))
     }
 
     ngAfterContentChecked() {
-        console.log('AfterContentChecked => AfterContentComponent')
-        // this.logger.log('AfterContentChecked => AfterContentComponent')
+        this.logs.push(LogFormatter.log('AfterContentChecked'))
+    }
+
+    ngAfterViewInit() {
+        this.logs.push(LogFormatter.log('AfterViewInit'))
     }
 
     ngAfterViewChecked() {
-        console.log('ngAfterViewChecked => AfterContentComponent')
+        this.logs.push(LogFormatter.log('AfterViewChecked'))
     }
 
-    changeEvent(event: Event) {
-        console.log('changeEvent', event)
-    }
-
-    TrackByStr(index:number, str: string) {
-        return str;
-    }
 }

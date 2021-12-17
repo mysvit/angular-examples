@@ -4,10 +4,14 @@ import {AppComponent} from './app.component';
 import {OnChangesComponent} from './on-changes/on-changes.component';
 import {AfterContentComponent} from './after-content/after-content.component';
 import {MatCheckboxModule} from '@angular/material/checkbox'
-import {FormsModule} from '@angular/forms';
-import { ProjectedComponent } from './after-content/projected/projected.component';
-import { InjectedComponent } from './after-content/injected/injected.component';
-import { AfterViewComponent } from './after-view/after-view.component'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProjectedComponent} from './after-content/projected/projected.component';
+import {InjectedComponent} from './after-content/injected/injected.component';
+import {AfterViewComponent} from './after-view/after-view.component'
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatInputModule} from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
     declarations: [
@@ -20,8 +24,13 @@ import { AfterViewComponent } from './after-view/after-view.component'
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
         MatCheckboxModule,
-        FormsModule
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

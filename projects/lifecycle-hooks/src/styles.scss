@@ -2,7 +2,28 @@
 @use '../../material/scss/material-icons';
 @use '../../material/scss/grid';
 
-html {
-  box-sizing: border-box;
-  height: 100%;
+html, body {
+    box-sizing: border-box;
+    height: 100vh;
+    margin: 0;
+    display: grid;
 }
+
+.container {
+    margin: 5px;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: min-content 1fr 20%;
+}
+
+.middle-container {
+    min-height: 0;
+    display: grid;
+}
+
+.log-container {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 1.3em);
+    overflow: auto;
+}
+

@@ -1,23 +1,46 @@
-import {Component} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {LogFormatter} from "./logger.service";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnChanges {
 
-    // major = 1;
-    // minor = 13;
-    isAfterContent: boolean = true
+    logs: string[] = [];
+    appText?: string;
 
-    // newMinorClick() {
-    //     this.minor++;
-    // }
-    //
-    // newMajorClick() {
-    //     this.major++;
-    //     this.minor = 0;
-    // }
+    ngOnChanges(changes: SimpleChanges) {
+        this.logs.push(LogFormatter.log('OnChanges'))
+    }
+
+    ngOnInit() {
+        this.logs.push(LogFormatter.log('OnInit'))
+    }
+
+    ngDoCheck() {
+        this.logs.push(LogFormatter.log('DoCheck'))
+    }
+
+    ngAfterContentInit() {
+        this.logs.push(LogFormatter.log('AfterContentInit'))
+    }
+
+    ngAfterContentChecked() {
+        this.logs.push(LogFormatter.log('AfterContentChecked'))
+    }
+
+    ngAfterViewInit() {
+        this.logs.push(LogFormatter.log('AfterViewInit'))
+    }
+
+    ngAfterViewChecked() {
+        this.logs.push(LogFormatter.log('AfterViewChecked'))
+    }
+
+    ngOnDestroy() {
+        this.logs.push(LogFormatter.log('OnDestroy'))
+    }
 
 }

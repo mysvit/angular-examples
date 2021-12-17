@@ -1,17 +1,19 @@
 <div>
-    <app-projected>
-<!--        <app-injected *ngIf="isInject"></app-injected>-->
-    </app-projected>
-    <mat-checkbox [(ngModel)]="isInject">Remove injected component</mat-checkbox>
-    <h3>Not injected</h3>
-    <!--    <app-injected #notInjected></app-injected>-->
-    <input type="text" [(ngModel)]="rootStr">
-    <input type="text" (change)="changeEvent($event)">
+    After Content Component: <input [(ngModel)]="appText">
 </div>
-<h3>Logger</h3>
-<button (click)="clearLogClick()">Clear Log</button>
-<div class="logger">
-    <span *ngFor="let log of this.logger.messages; trackBy: TrackByStr">
+
+<div class="middle-container">
+    <section [style.display]="'grid'" [formGroup]="checker">
+        <mat-checkbox formControlName="project">Remove projected component [green]</mat-checkbox>
+        <mat-checkbox formControlName="inject">Remove injected component [yellow]</mat-checkbox>
+    </section>
+    <app-projected *ngIf="checker.value.project">
+        <app-injected *ngIf="checker.value.inject"></app-injected>
+    </app-projected>
+</div>
+
+<div class="log-container">
+    <div *ngFor="let log of logs">
         {{log}}
-    </span>
+    </div>
 </div>

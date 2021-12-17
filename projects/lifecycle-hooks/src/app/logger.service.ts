@@ -13,7 +13,17 @@ export class LoggerService {
     }
 
     log(text: string) {
-        this.messages.push(moment().format('hh:mm:ss').concat(' ').concat(text));
+        this.messages.push(LogFormatter.log(text))
+    }
+
+}
+
+export class LogFormatter {
+
+    static log(text: string) {
+        const res = moment().format('hh:mm:ss:SSSS').concat(' ').concat(text)
+        console.log(res)
+        return res
     }
 
 }

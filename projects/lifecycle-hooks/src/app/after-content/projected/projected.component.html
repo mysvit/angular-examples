@@ -1,10 +1,17 @@
-<div>------------- projected content begins -------------</div>
+<div>
+    Projected Component : <input [(ngModel)]="prevText">
+</div>
 
-<!--<ng-content #id1></ng-content>-->
-<app-injected></app-injected>
+<div class="middle-container">
+    <div>------------- projected content begins -------------</div>
 
-<div>-------------  projected content ends -------------</div>
+    <ng-content></ng-content>
 
-<p *ngIf="comment" class="comment">
-    {{comment}}
-</p>
+    <div>-------------  projected content ends -------------</div>
+</div>
+
+<div class="log-container">
+    <div *ngFor="let log of logs">
+        {{log}}
+    </div>
+</div>

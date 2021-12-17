@@ -1,4 +1,17 @@
-.select-group {
-  display: flex;
-  flex-direction: column;
+@use '../styles';
+
+$color: blue;
+
+:host {
+    @extend .container;
+    border: 3px solid $color;
+    background-color: lightblue;
+}
+
+.middle-container {
+    border: 3px solid $color;
+}
+
+.log-container {
+    border: 3px solid $color;
 }

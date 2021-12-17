@@ -1,4 +1,19 @@
-.logger {
-  display: grid;
-  grid-template-columns: 1fr;
+@use '../../styles';
+
+$color: red;
+
+:host {
+    @extend .container;
+    border: 3px solid $color;
+    background-color: lightpink;
+    grid-template-rows: min-content 1fr 30%;
+}
+
+.middle-container {
+    border: 3px solid $color;
+    grid-template-rows: min-content 1fr;
+}
+
+.log-container {
+    border: 3px solid $color;
 }

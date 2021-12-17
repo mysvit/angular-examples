@@ -1,14 +1,26 @@
-<h1>
-    https://indepth.dev/posts/1053/everything-you-need-to-know-about-change-detection-in-angular
-</h1>
-
-<div class="select-group">
-    <mat-checkbox [(ngModel)]="isAfterContent">After Content</mat-checkbox>
-</div>
-<ng-container *ngIf="isAfterContent">
-    <app-after-content></app-after-content>
-</ng-container>
+<!--<div class="select-group">-->
+<!--    <mat-checkbox [(ngModel)]="isAfterContent">After Content</mat-checkbox>-->
+<!--</div>-->
+<!--<ng-container *ngIf="isAfterContent">-->
+<!--    <app-after-content></app-after-content>-->
+<!--</ng-container>-->
 <!--<h2>Track OnChanges</h2>-->
 <!--<button (click)="newMinorClick()">New minor version</button>-->
 <!--<button (click)="newMajorClick()">New major version</button>-->
 <!--<app-on-changes [major]="major" [minor]="minor"></app-on-changes>-->
+<div>
+    <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something changed in
+    current,
+    parent or child's components and we should used them just for specific situation.
+    <p>
+        <input [(ngModel)]="appText">
+    </p>
+</div>
+<div class="middle-container">
+    <app-after-content></app-after-content>
+</div>
+<div class="log-container">
+    <div *ngFor="let log of logs">
+        {{log}}
+    </div>
+</div>
