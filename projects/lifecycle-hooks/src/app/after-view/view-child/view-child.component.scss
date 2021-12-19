@@ -1,12 +1,12 @@
-@use '../../styles';
+@use '../../../styles';
 
-$color: darkviolet;
+$color: gold;
 
 :host {
     @extend .container;
     border: 3px solid $color;
-    background-color: violet;
-    grid-template-rows: min-content 1fr 60%;
+    background-color: darkgoldenrod;
+    grid-template-rows: min-content 1fr;
 }
 
 .middle-container {

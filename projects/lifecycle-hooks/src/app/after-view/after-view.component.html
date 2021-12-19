@@ -1,1 +1,16 @@
-<p>after-view works!</p>
+<div>
+    After View Component: <input [(ngModel)]="prevText">
+</div>
+
+<div class="middle-container">
+    <section [style.display]="'grid'" [formGroup]="checker">
+        <mat-checkbox formControlName="child">View child component [green]</mat-checkbox>
+    </section>
+    <app-view-child *ngIf="checker.value.child"></app-view-child>
+</div>
+
+<div class="log-container">
+    <div *ngFor="let log of logs">
+        {{log}}
+    </div>
+</div>

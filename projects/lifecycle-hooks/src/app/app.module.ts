@@ -12,6 +12,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
+import { ViewChildComponent } from './after-view/view-child/view-child.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import {MatCardModule} from "@angular/material/card";
         AfterContentComponent,
         ProjectedComponent,
         InjectedComponent,
-        AfterViewComponent
+        AfterViewComponent,
+        ViewChildComponent
     ],
     imports: [
         BrowserModule,

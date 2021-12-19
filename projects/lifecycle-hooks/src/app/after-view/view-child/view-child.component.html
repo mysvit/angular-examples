@@ -1,0 +1,9 @@
+<div>
+    <label for="changed-text"><b>Injected Text:</b></label>
+    <input type="text" id="changed-text" [(ngModel)]="childText">
+</div>
+<div class="log-container">
+    <div *ngFor="let log of logs">
+        {{log}}
+    </div>
+</div>
