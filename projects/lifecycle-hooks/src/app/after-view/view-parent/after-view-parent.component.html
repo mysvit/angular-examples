@@ -1,5 +1,5 @@
 <div>
-    After View Component: <input [(ngModel)]="prevText">
+    After View Parent: <input [(ngModel)]="parentText">
 </div>
 
 <div class="middle-container">
@@ -9,8 +9,4 @@
     <app-view-child *ngIf="checker.value.child"></app-view-child>
 </div>
 
-<div class="log-container">
-    <div *ngFor="let log of logs">
-        {{log}}
-    </div>
-</div>
+<app-log class="log-container" [logs]="logs"></app-log>

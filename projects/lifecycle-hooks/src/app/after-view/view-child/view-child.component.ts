@@ -1,75 +1,18 @@
-import {Component, SimpleChanges} from '@angular/core';
-import {LogFormatter, LoggerService} from "../../logger.service";
+import {Component} from '@angular/core';
+import {LoggerService} from "../../logger.service";
+import {AppBase} from "../../app.base";
 
 @Component({
     selector: 'app-view-child',
     templateUrl: './view-child.component.html',
     styleUrls: ['./view-child.component.scss']
 })
-export class ViewChildComponent {
+export class ViewChildComponent extends AppBase {
 
-    childText: string = 'child'
-    logs: string[] = []
+    childText: string = 'child override parent'
 
-    constructor(private logger: LoggerService) {
+    constructor(logger: LoggerService) {
+        super(logger)
     }
-
-    ngOnChanges(changes: SimpleChanges) {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        console.log(changes)
-        this.logs.push(LogFormatter.log('OnChanges'))
-    }
-
-    ngOnInit() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('OnInit'))
-    }
-
-    ngDoCheck() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('DoCheck'))
-    }
-
-    ngAfterContentInit() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterContentInit'))
-    }
-
-    ngAfterContentChecked() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterContentChecked'))
-    }
-
-    ngAfterViewInit() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterViewInit'))
-    }
-
-    ngAfterViewChecked() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterViewChecked'))
-    }
-
-    ngOnDestroy() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('OnDestroy'))
-    }
-
 
 }

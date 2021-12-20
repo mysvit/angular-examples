@@ -1,8 +1,4 @@
 <h3>Version [major]: {{major}}. [minor]: {{minor}}</h3>
 <h4>Change log: <button (click)="this.logs = []">Clear Log</button></h4>
 
-<div class="log-container">
-    <div *ngFor="let log of logs">
-        {{log}}
-    </div>
-</div>
+<app-log class="log-container" [logs]="logs"></app-log>

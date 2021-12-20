@@ -1,6 +1,7 @@
 <div>
     <label for="changed-text"><b>Child Text:</b></label>
     <input type="text" id="changed-text" [(ngModel)]="childText">
+    <button (click)="callChangeClick()">Trigger changes after 2s</button>
 </div>
 
 <app-log class="log-container" [logs]="logs"></app-log>

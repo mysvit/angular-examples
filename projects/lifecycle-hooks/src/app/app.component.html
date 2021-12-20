@@ -45,6 +45,7 @@
         </ng-container>
     </div>
 </div>
+
 <div class="middle-container">
     <ng-container [ngSwitch]="selectedComponent">
         <app-after-view *ngSwitchCase="LifeComponents.AfterView"></app-after-view>
@@ -52,8 +53,5 @@
         <app-on-changes-parent *ngSwitchCase="LifeComponents.OnChanges"></app-on-changes-parent>
     </ng-container>
 </div>
-<div class="log-container">
-    <div *ngFor="let log of logs">
-        {{log}}
-    </div>
-</div>
+
+<app-log class="log-container" [logs]="logs"></app-log>

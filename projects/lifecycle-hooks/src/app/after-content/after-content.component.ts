@@ -1,19 +1,20 @@
 import {Component} from '@angular/core';
-import {LogFormatter, LoggerService} from '../logger.service'
+import {LoggerService} from '../logger.service'
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {AppBase} from "../app.base";
 
 @Component({
     selector: 'app-after-content',
     templateUrl: './after-content.component.html',
     styleUrls: ['./after-content.component.scss']
 })
-export class AfterContentComponent {
+export class AfterContentComponent extends AppBase {
 
     appText: string = '';
-    logs: string[] = [];
     checker: FormGroup;
 
-    constructor(fb: FormBuilder, private logger:LoggerService) {
+    constructor(fb: FormBuilder, logger: LoggerService) {
+        super(logger)
         this.checker = fb.group({
             inject: true,
             project: true
@@ -23,55 +24,6 @@ export class AfterContentComponent {
 
     checkChanged() {
         // this.appText = this.checker.value.inject ? this.appText : ''
-    }
-
-    ngOnChanges() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('OnChanges'))
-    }
-
-    ngOnInit() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('OnInit'))
-    }
-
-    ngDoCheck() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('DoCheck'))
-    }
-
-    ngAfterContentInit() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterContentInit'))
-    }
-
-    ngAfterContentChecked() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterContentChecked'))
-    }
-
-    ngAfterViewInit() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterViewInit'))
-    }
-
-    ngAfterViewChecked() {
-        if (!this.logger.showAllEvents) {
-            return
-        }
-        this.logs.push(LogFormatter.log('AfterViewChecked'))
     }
 
 }

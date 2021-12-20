@@ -1,0 +1,13 @@
+<div>
+    Projected Parent : <input [(ngModel)]="parentText">
+</div>
+
+<div class="middle-container">
+    <div>------------- projected content begins -------------</div>
+
+    <ng-content></ng-content>
+
+    <div>------------- projected content ends -------------</div>
+</div>
+
+<app-log class="log-container" [logs]="logs"></app-log>
