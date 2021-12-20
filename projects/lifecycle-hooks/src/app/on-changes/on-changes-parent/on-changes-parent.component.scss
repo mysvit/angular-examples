@@ -1,0 +1,15 @@
+@use '../../../styles';
+
+$color: darkcyan;
+
+:host {
+    @extend .container;
+    border: 3px solid $color;
+    background-color: aquamarine;
+    grid-template-rows: min-content 1fr;
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

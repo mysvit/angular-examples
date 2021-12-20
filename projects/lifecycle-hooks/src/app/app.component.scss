@@ -8,6 +8,17 @@ $color: blue;
     background-color: lightblue;
 }
 
+.top-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+
+    .check-box {
+        display: grid;
+        grid-template-rows: 30px 70px;
+        margin: 5px;
+    }
+}
+
 .middle-container {
     border: 3px solid $color;
 }

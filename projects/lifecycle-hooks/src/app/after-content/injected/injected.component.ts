@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LogFormatter} from '../../logger.service'
+import {LogFormatter, LoggerService} from '../../logger.service'
 
 @Component({
     selector: 'app-injected', templateUrl: './injected.component.html', styleUrls: ['./injected.component.scss']
@@ -9,34 +9,55 @@ export class InjectedComponent {
     injectedText: string = 'Injected Text'
     logs: string[] = [];
 
-    constructor() {
+    constructor(private logger: LoggerService) {
     }
 
     ngOnChanges() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('OnChanges'))
     }
 
     ngOnInit() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('OnInit'))
     }
 
     ngDoCheck() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('DoCheck'))
     }
 
     ngAfterContentInit() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterContentInit'))
     }
 
     ngAfterContentChecked() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterContentChecked'))
     }
 
     ngAfterViewInit() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterViewInit'))
     }
 
     ngAfterViewChecked() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterViewChecked'))
     }
 
@@ -47,20 +68,4 @@ export class InjectedComponent {
         }, 1000)
     }
 
-    //
-    // ngAfterContentChecked() {
-    //     console.log('AfterContentChecked => InjectedComponent')
-    //     // this.logger.log('AfterContentChecked => InjectedComponent')
-    //     // this.logger.log('ngAfterContentChecked triggered')
-    //     // contentChild is updated after the content has been checked
-    //     // if (this.prevText === this.injectedComponent.cText) {
-    //     //     this.logIt('AfterContentChecked (no change)')
-    //     // } else {
-    //     //     this.prevText = this.injectedComponent.cText
-    //     //     setTimeout(() => {
-    //     //         this.logIt('AfterContentChecked')
-    //     //     }, 0)
-    //     //     this.doSomething()
-    //     // }
-    // }
 }

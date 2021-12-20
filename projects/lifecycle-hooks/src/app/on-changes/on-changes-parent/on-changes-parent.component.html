@@ -1,0 +1,15 @@
+<div class="btn-container">
+    <div>
+        <h3>change [major,minor] by @Input parameter</h3>
+        <p>ngOnChanges just only called for/if there is an @Input variable set by parent</p>
+        <button (click)="majorClick()">major++</button>
+        <button (click)="minorClick()">minor++</button>
+    </div>
+    <div>
+        <h3>change [major,minor] by @ViewChild</h3>
+        <p>if/when you modify property from @ViewChild, ngOnChanges doesn't triggered</p>
+        <button (click)="majorChildClick()">major++</button>
+        <button (click)="minorChildClick()">minor++</button>
+    </div>
+</div>
+<app-on-changes-child [major]="major" [minor]="minor"></app-on-changes-child>

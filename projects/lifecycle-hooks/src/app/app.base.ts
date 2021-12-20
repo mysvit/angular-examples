@@ -1,31 +1,15 @@
-import {Component} from '@angular/core';
-import {LogFormatter, LoggerService} from '../logger.service'
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {LogFormatter, LoggerService} from "./logger.service";
+import {Injectable, SimpleChanges} from "@angular/core";
 
-@Component({
-    selector: 'app-after-content',
-    templateUrl: './after-content.component.html',
-    styleUrls: ['./after-content.component.scss']
-})
-export class AfterContentComponent {
+@Injectable()
+export abstract class AppBase {
 
-    appText: string = '';
     logs: string[] = [];
-    checker: FormGroup;
 
-    constructor(fb: FormBuilder, private logger:LoggerService) {
-        this.checker = fb.group({
-            inject: true,
-            project: true
-        });
-        this.checker.valueChanges.subscribe(() => this.checkChanged())
+    protected constructor(public logger: LoggerService) {
     }
 
-    checkChanged() {
-        // this.appText = this.checker.value.inject ? this.appText : ''
-    }
-
-    ngOnChanges() {
+    ngOnChanges(changes: SimpleChanges) {
         if (!this.logger.showAllEvents) {
             return
         }
@@ -72,6 +56,13 @@ export class AfterContentComponent {
             return
         }
         this.logs.push(LogFormatter.log('AfterViewChecked'))
+    }
+
+    ngOnDestroy() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
+        this.logs.push(LogFormatter.log('OnDestroy'))
     }
 
 }

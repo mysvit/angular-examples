@@ -6,10 +6,11 @@ import * as moment from 'moment'
 })
 export class LoggerService {
 
-    messages: Array<string> = [];
+    messages: Array<string> = []
+    showAllEvents: boolean = true
 
     clear() {
-        this.messages = [];
+        this.messages = []
     }
 
     log(text: string) {
@@ -21,9 +22,9 @@ export class LoggerService {
 export class LogFormatter {
 
     static log(text: string) {
-        const res = moment().format('hh:mm:ss:SSSS').concat(' ').concat(text)
-        console.log(res)
-        return res
+        const time = moment().format('hh:mm:ss:SSSS').concat(' ')
+        console.log(time, text)
+        return time.concat(text)
     }
 
 }

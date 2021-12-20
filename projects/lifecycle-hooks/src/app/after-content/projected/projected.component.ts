@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, ContentChild} from '@angular/core';
-import {LogFormatter} from '../../logger.service'
+import {LogFormatter, LoggerService} from '../../logger.service'
 import {InjectedComponent} from '../injected/injected.component'
 
 @Component({
@@ -14,18 +14,27 @@ export class ProjectedComponent {
 
     @ContentChild(InjectedComponent) injectedComponent!: InjectedComponent;
 
-    constructor(private changeDetector: ChangeDetectorRef) {
+    constructor(private logger:LoggerService) {
     }
 
     ngOnChanges() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('OnChanges'))
     }
 
     ngOnInit() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('OnInit'))
     }
 
     ngDoCheck() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('DoCheck'))
     }
 
@@ -53,10 +62,16 @@ export class ProjectedComponent {
     }
 
     ngAfterViewInit() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterViewInit'))
     }
 
     ngAfterViewChecked() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterViewChecked'))
     }
 

@@ -1,46 +1,31 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {LogFormatter} from "./logger.service";
+import {Component} from '@angular/core';
+import {LogFormatter, LoggerService} from "./logger.service";
+import {AppBase} from "./app.base";
+
+export enum LifeComponents {
+    AfterView,
+    AfterContent,
+    OnChanges,
+    OnCheck,
+}
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnChanges {
+export class AppComponent extends AppBase {
 
-    logs: string[] = [];
-    appText?: string;
+    LifeComponents = LifeComponents
+    components = [
+        {value: LifeComponents.AfterView, viewValue: 'ngAfterView Init & Checked'},
+        {value: LifeComponents.AfterContent, viewValue: 'ngAfterContent Init & Checked'},
+        {value: LifeComponents.OnChanges, viewValue: 'ngOnChanges'}
+    ]
+    selectedComponent?: string;
 
-    ngOnChanges(changes: SimpleChanges) {
-        this.logs.push(LogFormatter.log('OnChanges'))
-    }
-
-    ngOnInit() {
-        this.logs.push(LogFormatter.log('OnInit'))
-    }
-
-    ngDoCheck() {
-        this.logs.push(LogFormatter.log('DoCheck'))
-    }
-
-    ngAfterContentInit() {
-        this.logs.push(LogFormatter.log('AfterContentInit'))
-    }
-
-    ngAfterContentChecked() {
-        this.logs.push(LogFormatter.log('AfterContentChecked'))
-    }
-
-    ngAfterViewInit() {
-        this.logs.push(LogFormatter.log('AfterViewInit'))
-    }
-
-    ngAfterViewChecked() {
-        this.logs.push(LogFormatter.log('AfterViewChecked'))
-    }
-
-    ngOnDestroy() {
-        this.logs.push(LogFormatter.log('OnDestroy'))
+    constructor(logger: LoggerService) {
+        super(logger)
     }
 
 }

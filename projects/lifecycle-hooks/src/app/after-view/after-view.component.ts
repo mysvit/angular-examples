@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {LogFormatter} from "../logger.service";
+import {LogFormatter, LoggerService} from "../logger.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ViewChildComponent} from "./view-child/view-child.component";
 
@@ -16,7 +16,7 @@ export class AfterViewComponent {
 
     @ViewChild(ViewChildComponent) viewChild!: ViewChildComponent;
 
-    constructor(fb: FormBuilder) {
+    constructor(fb: FormBuilder, private logger: LoggerService) {
         this.checker = fb.group({
             child: true
         });
@@ -24,22 +24,37 @@ export class AfterViewComponent {
     }
 
     ngOnChanges() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('OnChanges'))
     }
 
     ngOnInit() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('OnInit'))
     }
 
     ngDoCheck() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('DoCheck'))
     }
 
     ngAfterContentInit() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterContentInit'))
     }
 
     ngAfterContentChecked() {
+        if (!this.logger.showAllEvents) {
+            return
+        }
         this.logs.push(LogFormatter.log('AfterContentChecked'))
     }
 

@@ -1,24 +1,56 @@
-<!--<div class="select-group">-->
-<!--    <mat-checkbox [(ngModel)]="isAfterContent">After Content</mat-checkbox>-->
-<!--</div>-->
-<!--<ng-container *ngIf="isAfterContent">-->
-<!--    <app-after-content></app-after-content>-->
-<!--</ng-container>-->
-<!--<h2>Track OnChanges</h2>-->
-<!--<button (click)="newMinorClick()">New minor version</button>-->
-<!--<button (click)="newMajorClick()">New major version</button>-->
-<!--<app-on-changes [major]="major" [minor]="minor"></app-on-changes>-->
-<div>
-    <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something changed in
-    current,
-    parent or child's components and we should used them just for specific situation.
-    <p>
-        <input [(ngModel)]="appText">
-    </p>
+<div class="top-container">
+    <div class="check-box">
+        <mat-checkbox [(ngModel)]="logger.showAllEvents">Show all events</mat-checkbox>
+        <mat-form-field appearance="outline">
+            <mat-label>Select Component</mat-label>
+            <mat-select [(value)]="selectedComponent">
+                <mat-option></mat-option>
+                <mat-option [value]="option.value" *ngFor="let option of components">{{ option.viewValue }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <ng-container [ngSwitch]="selectedComponent">
+            <ng-container *ngSwitchCase="LifeComponents.AfterView">
+                <p>
+                    <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something
+                    changed in current, parent or child's components and we should used them just for specific
+                    situation.
+                </p>
+                <p>
+                    <b>[AfterViewChecked]</b> can be used in parent to check changes in child component
+                </p>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="LifeComponents.AfterContent">
+                <p>
+                    <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something
+                    changed in current, parent or child's components and we should used them just for specific
+                    situation.
+                </p>
+                <p>
+                    <b>[AfterContentChecked]</b> can be used in parent to check changes in projected component by
+                    @ContentChild
+                </p>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="LifeComponents.OnChanges">
+                <p>
+                    <b>[ngOnChanges]</b> just only called for/if there is an @Input variable set by parent
+                </p>
+                <p>
+                    <b>[ngOnChanges]</b> can be used in child component to tracks @Input changes
+                </p>
+            </ng-container>
+        </ng-container>
+    </div>
 </div>
 <div class="middle-container">
-<!--    <app-after-content></app-after-content>-->
-    <app-after-view></app-after-view>
+    <ng-container [ngSwitch]="selectedComponent">
+        <app-after-view *ngSwitchCase="LifeComponents.AfterView"></app-after-view>
+        <app-after-content *ngSwitchCase="LifeComponents.AfterContent"></app-after-content>
+        <app-on-changes-parent *ngSwitchCase="LifeComponents.OnChanges"></app-on-changes-parent>
+    </ng-container>
 </div>
 <div class="log-container">
     <div *ngFor="let log of logs">
