@@ -11,7 +11,7 @@ $color: gold;
 
 .middle-container {
     border: 3px solid $color;
-    grid-template-rows: min-content 1fr;
+    grid-template-columns: 100px 1fr;
 }
 
 .log-container {

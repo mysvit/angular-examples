@@ -21,6 +21,13 @@ $color: blue;
 
 .middle-container {
     border: 3px solid $color;
+
+    div {
+        min-height: 0;
+        margin: 5px;
+        display: grid;
+        grid-template-rows: 30px 1fr;
+    }
 }
 
 .log-container {

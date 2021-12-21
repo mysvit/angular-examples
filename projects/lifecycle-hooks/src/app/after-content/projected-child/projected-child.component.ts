@@ -15,10 +15,4 @@ export class ProjectedChildComponent extends AppBase {
         super(logger)
     }
 
-    callChangeClick() {
-        setTimeout(() => {
-            this.childText += '*'
-        }, 1000)
-    }
-
 }

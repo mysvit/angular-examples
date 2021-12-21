@@ -23,7 +23,8 @@ html, body {
 
 .log-container {
     display: grid;
-    grid-template-rows: repeat(auto-fill, 1.3em);
+    grid-template-rows: min-content repeat(auto-fill, 1.3em);
+    align-content: flex-start;
     overflow: auto;
 }
 

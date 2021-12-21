@@ -6,11 +6,21 @@ $color: green;
     @extend .container;
     border: 3px solid $color;
     background-color: lightgreen;
-    grid-template-rows: min-content 1fr 40%;
+    grid-template-rows: min-content 1fr 50%;
+}
+
+.top-container {
+    display: grid;
+    padding: 10px;
 }
 
 .middle-container {
     border: 3px solid $color;
+    grid-template-rows: min-content 1fr min-content;
+
+    div {
+        align-self: end;
+    }
 }
 
 .log-container {

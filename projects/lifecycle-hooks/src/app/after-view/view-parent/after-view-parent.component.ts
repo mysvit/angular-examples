@@ -12,6 +12,8 @@ import {AppBase} from "../../app.base";
 export class AfterViewParentComponent extends AppBase {
 
     parentText: string = ''
+    isShowWithoutTick: boolean = false;
+    parentTextNoTick: string = ''
     checker: FormGroup
 
     @ViewChild(ViewChildComponent) viewChild!: ViewChildComponent;
@@ -21,36 +23,47 @@ export class AfterViewParentComponent extends AppBase {
         this.checker = fb.group({
             child: true
         });
-        this.checker.valueChanges.subscribe(() => this.changeText())
+        this.checker.valueChanges.subscribe(() => this.changeTextWithTick())
+    }
+
+    override ngOnInit() {
+        if (!this.viewChild) {
+            this.logs.splice(0, 0, LogFormatter.log('ngOnInit: VIEW CHILD NOT initialized'))
+        }
     }
 
     override ngAfterViewInit() {
         if (this.viewChild) {
-            this.changeText()
-            this.logs.push(LogFormatter.log('AfterViewInit: VIEW CHILD initialized'))
+            this.changeTextWithTick()
+            this.logs.splice(0, 0, LogFormatter.log('AfterViewInit: VIEW CHILD initialized'))
         } else {
-            this.logs.push(LogFormatter.log('AfterViewInit: VIEW CHILD NOT initialized'))
+            this.logs.splice(0, 0, LogFormatter.log('AfterViewInit: VIEW CHILD NOT initialized'))
         }
     }
 
     override ngAfterViewChecked() {
         if (this.viewChild) {
             if (this.parentText === this.viewChild.childText) {
-                this.logs.push(LogFormatter.log('AfterViewChecked: Not Changed'))
+                this.logs.splice(0, 0, LogFormatter.log('AfterViewChecked: Not Changed'))
             } else {
-                this.changeText()
-                this.logs.push(LogFormatter.log('AfterViewChecked: Changed childText in VIEW CHILD component'))
+                this.changeTextWithTick()
+                this.changeTextWithoutTick()
+                this.logs.splice(0, 0, LogFormatter.log('AfterViewChecked: Changed childText in VIEW CHILD component'))
             }
         } else {
-            this.logs.push(LogFormatter.log('AfterViewChecked: No VIEW CHILD'))
+            this.logs.splice(0, 0, LogFormatter.log('AfterViewChecked: No VIEW CHILD'))
         }
     }
 
     // Wait a tick because the component's view has already been checked
-    private changeText() {
+    private changeTextWithTick() {
         setTimeout(() => {
             this.parentText = this.viewChild ? this.viewChild.childText : 'parent can be changed'
         }, 0)
+    }
+
+    private changeTextWithoutTick() {
+        this.parentTextNoTick = this.viewChild.childText
     }
 
 }

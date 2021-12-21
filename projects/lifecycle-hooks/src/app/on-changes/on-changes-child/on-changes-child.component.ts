@@ -21,7 +21,7 @@ export class OnChangesChildComponent extends AppBase {
             const changedProp = changes[propName];
             const cur = JSON.stringify(changedProp.currentValue);
             const prev = JSON.stringify(changedProp.previousValue);
-            this.logs.push(LogFormatter.log(`ngOnChanges - ${propName}: currentValue = ${cur}, previousValue = ${prev}`))
+            this.logs.splice(0, 0,LogFormatter.log(`ngOnChanges - ${propName}: currentValue = ${cur}, previousValue = ${prev}`))
         }
     }
 

@@ -23,6 +23,7 @@ export class AppComponent extends AppBase {
         {value: LifeComponents.OnChanges, viewValue: 'ngOnChanges'}
     ]
     selectedComponent?: string;
+    isShowProjected: boolean = true;
 
     constructor(logger: LoggerService) {
         super(logger)

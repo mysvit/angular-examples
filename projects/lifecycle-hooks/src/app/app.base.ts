@@ -13,56 +13,56 @@ export abstract class AppBase {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('OnChanges'))
+        this.logs.splice(0, 0, LogFormatter.log('OnChanges'))
     }
 
     ngOnInit() {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('OnInit'))
+        this.logs.splice(0, 0, LogFormatter.log('OnInit'))
     }
 
     ngDoCheck() {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('DoCheck'))
+        this.logs.splice(0, 0, LogFormatter.log('DoCheck'))
     }
 
     ngAfterContentInit() {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('AfterContentInit'))
+        this.logs.splice(0, 0, LogFormatter.log('AfterContentInit'))
     }
 
     ngAfterContentChecked() {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('AfterContentChecked'))
+        this.logs.splice(0, 0, LogFormatter.log('AfterContentChecked'))
     }
 
     ngAfterViewInit() {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('AfterViewInit'))
+        this.logs.splice(0, 0, LogFormatter.log('AfterViewInit'))
     }
 
     ngAfterViewChecked() {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('AfterViewChecked'))
+        this.logs.splice(0, 0, LogFormatter.log('AfterViewChecked'))
     }
 
     ngOnDestroy() {
         if (!this.logger.showAllEvents) {
             return
         }
-        this.logs.push(LogFormatter.log('OnDestroy'))
+        this.logs.splice(0, 0, LogFormatter.log('OnDestroy'))
     }
 
 }

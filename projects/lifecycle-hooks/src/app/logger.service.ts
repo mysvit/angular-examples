@@ -7,7 +7,7 @@ import * as moment from 'moment'
 export class LoggerService {
 
     messages: Array<string> = []
-    showAllEvents: boolean = true
+    showAllEvents: boolean = false
 
     clear() {
         this.messages = []

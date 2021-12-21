@@ -49,7 +49,16 @@
 <div class="middle-container">
     <ng-container [ngSwitch]="selectedComponent">
         <app-after-view *ngSwitchCase="LifeComponents.AfterView"></app-after-view>
-        <app-after-content *ngSwitchCase="LifeComponents.AfterContent"></app-after-content>
+
+        <ng-container *ngSwitchCase="LifeComponents.AfterContent">
+            <div>
+                <mat-checkbox [(ngModel)]="isShowProjected">Show projected component [yellow]</mat-checkbox>
+                <app-projected-parent>
+                    <app-projected-child *ngIf="isShowProjected"></app-projected-child>
+                </app-projected-parent>
+            </div>
+        </ng-container>
+
         <app-on-changes-parent *ngSwitchCase="LifeComponents.OnChanges"></app-on-changes-parent>
     </ng-container>
 </div>

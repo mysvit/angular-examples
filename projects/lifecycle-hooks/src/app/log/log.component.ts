@@ -8,4 +8,7 @@ export class LogComponent {
 
     @Input() logs!: string[]
 
+    clearLogs() {
+        this.logs.splice(0, this.logs.length)
+    }
 }

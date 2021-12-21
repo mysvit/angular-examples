@@ -6,7 +6,15 @@ $color: darkviolet;
     @extend .container;
     border: 3px solid $color;
     background-color: violet;
-    grid-template-rows: min-content 1fr 60%;
+    grid-template-rows: min-content 1fr 50%;
+}
+
+.top-container {
+    display: grid;
+
+    p {
+        display: grid;
+    }
 }
 
 .middle-container {

@@ -1,10 +1,21 @@
-<div>
-    After View Parent: <input [(ngModel)]="parentText">
+<div class="top-container">
+    <p>
+        <b>Changes in Child component can be applied to parent's view template just with tick (setTimeout):</b>
+        <input [(ngModel)]="parentText">
+    </p>
+    <p>
+        <b>Changes from Child which applied to parent's class could be applied without tick and after showed in
+            template:</b>
+        <mat-checkbox [(ngModel)]="isShowWithoutTick">Show changes applied without tick. See dev console:</mat-checkbox>
+        <ng-container *ngIf="isShowWithoutTick">
+            <b [style.font-size]="'2em'">{{parentTextNoTick}}</b>
+        </ng-container>
+    </p>
 </div>
 
 <div class="middle-container">
     <section [style.display]="'grid'" [formGroup]="checker">
-        <mat-checkbox formControlName="child">View child component [color GOLD]</mat-checkbox>
+        <mat-checkbox formControlName="child">Show ViewChild component</mat-checkbox>
     </section>
     <app-view-child *ngIf="checker.value.child"></app-view-child>
 </div>
