@@ -1,6 +1,5 @@
 @use '../../material/scss/material-fonts';
 @use '../../material/scss/material-icons';
-@use '../../material/scss/grid';
 
 html, body {
     box-sizing: border-box;
@@ -8,23 +7,3 @@ html, body {
     margin: 0;
     display: grid;
 }
-
-.container {
-    margin: 5px;
-    min-height: 0;
-    display: grid;
-    grid-template-rows: min-content 1fr 15%;
-}
-
-.middle-container {
-    min-height: 0;
-    display: grid;
-}
-
-.log-container {
-    display: grid;
-    grid-template-rows: min-content repeat(auto-fill, 1.3em);
-    align-content: flex-start;
-    overflow: auto;
-}
-

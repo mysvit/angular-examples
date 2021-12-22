@@ -1,20 +1,26 @@
-@use '../../../styles';
-
-$color: yellow;
-
-:host {
-    @extend .container;
-    border: 3px solid $color;
-    background-color: lightyellow;
-    grid-template-rows: min-content 1fr;
-}
-
-.middle-container {
-    border: 3px solid $color;
-    grid-template-rows: 30px;
-    grid-template-columns: 100px 1fr;
-}
-
-.log-container {
-    border: 3px solid $color;
-}
+@use '../../../scss/child' with (
+    $border-color: yellow,
+    $background-color: lightyellow
+);
+//
+//
+//@use '../../../styles';
+//
+//$color: yellow;
+//
+//:host {
+//    @extend .container;
+//    border: 3px solid $color;
+//    background-color: lightyellow;
+//    grid-template-rows: min-content 1fr;
+//}
+//
+//.middle-container {
+//    border: 3px solid $color;
+//    grid-template-rows: 30px;
+//    grid-template-columns: 100px 1fr;
+//}
+//
+//.log-container {
+//    border: 3px solid $color;
+//}

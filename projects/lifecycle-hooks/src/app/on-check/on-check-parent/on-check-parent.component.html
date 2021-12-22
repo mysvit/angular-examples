@@ -1,0 +1,11 @@
+<div class="top-container">
+    <b>Changes from Parent go to Child withOUT tick:</b>
+    <input [(ngModel)]="parentText">
+    <mat-checkbox [(ngModel)]="isShowChild">Show ViewChild component</mat-checkbox>
+</div>
+
+<div class="middle-container">
+    <app-on-check-child *ngIf="isShowChild"></app-on-check-child>
+</div>
+
+<app-log class="log-container" [logs]="logs"></app-log>

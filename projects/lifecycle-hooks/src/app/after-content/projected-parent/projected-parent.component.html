@@ -1,12 +1,13 @@
 <div class="top-container">
     <b>Changes in Child component can be applied to parent's view template WITHOUT tick (setTimeout):</b>
     <input [(ngModel)]="parentText">
+    <mat-checkbox [(ngModel)]="isShowProjected">Show projected component [yellow]</mat-checkbox>
 </div>
 
 <div class="middle-container">
     <div>------------- projected content begins -------------</div>
 
-    <ng-content></ng-content>
+    <ng-content *ngIf="isShowProjected"></ng-content>
 
     <div>------------- projected content ends -------------</div>
 </div>

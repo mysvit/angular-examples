@@ -12,6 +12,8 @@ export class ProjectedParentComponent extends AppBase {
 
     parentText?: string;
     isShowWithoutTick: boolean = false;
+    isShowProjected: boolean = true;
+
 
     @ContentChild(ProjectedChildComponent) projectedChild!: ProjectedChildComponent;
 
@@ -21,30 +23,30 @@ export class ProjectedParentComponent extends AppBase {
 
     override ngOnInit() {
         if (!this.projectedChild) {
-            this.logs.splice(0, 0, LogFormatter.log('ngOnInit: PROJECTED CHILD NOT initialized'))
+            this.logs.push(LogFormatter.log('ngOnInit: PROJECTED CHILD NOT initialized'))
         }
     }
 
     override ngAfterContentInit() {
         if (this.projectedChild) {
-            this.logs.splice(0, 0, LogFormatter.log('AfterContentInit: PROJECTED CHILD initialized'))
+            this.logs.push(LogFormatter.log('AfterContentInit: PROJECTED CHILD initialized'))
         } else {
             this.parentText = ''
-            this.logs.splice(0, 0, LogFormatter.log('AfterContentInit: PROJECTED CHILD NOT initialized'))
+            this.logs.push(LogFormatter.log('AfterContentInit: PROJECTED CHILD NOT initialized'))
         }
     }
 
     override ngAfterContentChecked() {
         if (!this.projectedChild) {
             this.parentText = ''
-            this.logs.splice(0, 0, LogFormatter.log('AfterContentChecked: No PROJECTED CHILD'))
+            this.logs.push(LogFormatter.log('AfterContentChecked: No PROJECTED CHILD'))
             return
         }
         if (this.parentText === this.projectedChild.childText) {
-            this.logs.splice(0, 0, LogFormatter.log('AfterContentChecked: Not Changed'))
+            this.logs.push(LogFormatter.log('AfterContentChecked: Not Changed'))
         } else {
             this.parentText = this.projectedChild.childText
-            this.logs.splice(0, 0, LogFormatter.log('AfterContentChecked: Changed childText in PROJECTED CHILD'))
+            this.logs.push(LogFormatter.log('AfterContentChecked: Changed childText in PROJECTED CHILD'))
         }
     }
 

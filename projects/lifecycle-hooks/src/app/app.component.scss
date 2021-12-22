@@ -1,15 +1,16 @@
-@use '../styles';
-
-$color: blue;
+@use '../scss/parent' with (
+    $border-color:blue,
+    $background-color: lightblue
+);
 
 :host {
-    @extend .container;
-    border: 3px solid $color;
-    background-color: lightblue;
+    @extend :host;
+    grid-template-rows: min-content 1fr 15%;
 }
 
 .top-container {
-    display: grid;
+    @extend .top-container;
+    grid-template-rows: 30px 80px;
     grid-template-columns: 300px 1fr;
 
     .check-box {
@@ -19,17 +20,14 @@ $color: blue;
     }
 }
 
-.middle-container {
-    border: 3px solid $color;
+.log-container {
 
     div {
-        min-height: 0;
-        margin: 5px;
-        display: grid;
-        grid-template-rows: 30px 1fr;
+        background-color: red !important;
     }
-}
 
-.log-container {
-    border: 3px solid $color;
+    ::shadow .scroll-container {
+        background-color: pink;
+    }
+
 }

@@ -12,35 +12,43 @@
     <div>
         <ng-container [ngSwitch]="selectedComponent">
             <ng-container *ngSwitchCase="LifeComponents.AfterView">
-                <p>
+                <div>
                     <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something
-                    changed in current, parent or child's components and we should used them just for specific
-                    situation.
-                </p>
-                <p>
+                    changed in parent or child's components and we should used them just for specific situation.
+                </div>
+                <div>
                     <b>[AfterViewChecked]</b> can be used in parent to check changes in child component
-                </p>
+                </div>
             </ng-container>
 
             <ng-container *ngSwitchCase="LifeComponents.AfterContent">
-                <p>
+                <div>
                     <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something
                     changed in current, parent or child's components and we should used them just for specific
                     situation.
-                </p>
-                <p>
+                </div>
+                <div>
                     <b>[AfterContentChecked]</b> can be used in parent to check changes in projected component by
                     @ContentChild
-                </p>
+                </div>
             </ng-container>
 
             <ng-container *ngSwitchCase="LifeComponents.OnChanges">
-                <p>
+                <div>
                     <b>[ngOnChanges]</b> just only called for/if there is an @Input variable set by parent
-                </p>
-                <p>
+                </div>
+                <div>
                     <b>[ngOnChanges]</b> can be used in child component to tracks @Input changes
-                </p>
+                </div>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="LifeComponents.OnCheck">
+                <div>
+                    <b>[ngOnCheck]</b>Changes in Child component can be applied to Parent without tick
+                </div>
+                <div>
+                    <b>[ngOnCheck]</b>Changes in Parent component can be applied to Child without tick
+                </div>
             </ng-container>
         </ng-container>
     </div>
@@ -48,18 +56,17 @@
 
 <div class="middle-container">
     <ng-container [ngSwitch]="selectedComponent">
+
         <app-after-view *ngSwitchCase="LifeComponents.AfterView"></app-after-view>
 
-        <ng-container *ngSwitchCase="LifeComponents.AfterContent">
-            <div>
-                <mat-checkbox [(ngModel)]="isShowProjected">Show projected component [yellow]</mat-checkbox>
-                <app-projected-parent>
-                    <app-projected-child *ngIf="isShowProjected"></app-projected-child>
-                </app-projected-parent>
-            </div>
-        </ng-container>
+        <app-projected-parent *ngSwitchCase="LifeComponents.AfterContent">
+            <app-projected-child></app-projected-child>
+        </app-projected-parent>
 
         <app-on-changes-parent *ngSwitchCase="LifeComponents.OnChanges"></app-on-changes-parent>
+
+        <app-on-check-parent *ngSwitchCase="LifeComponents.OnCheck"></app-on-check-parent>
+
     </ng-container>
 </div>
 

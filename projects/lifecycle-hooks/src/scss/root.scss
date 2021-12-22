@@ -1,0 +1,11 @@
+.container {
+    margin: 5px;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: min-content 1fr 15%;
+}
+
+.middle-container {
+    min-height: 0;
+    display: grid;
+}

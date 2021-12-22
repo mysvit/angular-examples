@@ -1,0 +1,27 @@
+@use './root';
+
+$border-color: darkviolet !default;
+$background-color: violet !default;
+
+:host {
+    @extend .container;
+    border: 1px solid $border-color;
+    background-color: $background-color;
+    grid-template-rows: min-content 1fr 50%;
+}
+
+.top-container {
+    display: grid;
+    grid-template-rows: repeat(3, 30px);
+    border: 1px solid $border-color;
+    padding: 5px;
+}
+
+.middle-container {
+    border: 1px solid $border-color;
+    grid-template-rows: 1fr;
+}
+
+.log-container {
+    border: 1px solid $border-color;
+}

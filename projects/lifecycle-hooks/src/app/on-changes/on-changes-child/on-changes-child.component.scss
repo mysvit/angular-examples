@@ -1,14 +1,4 @@
-@use '../../../styles';
-
-$color: darkorange;
-
-:host {
-    @extend .container;
-    border: 3px solid $color;
-    background-color: orange;
-    grid-template-rows: min-content 1fr;
-}
-
-.log-container {
-    border: 3px solid $color;
-}
+@use '../../../scss/child' with (
+    $border-color: darkorange,
+    $background-color: #FED8B1
+);

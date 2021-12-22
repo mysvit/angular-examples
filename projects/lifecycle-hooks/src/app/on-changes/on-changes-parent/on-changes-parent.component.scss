@@ -1,15 +1,15 @@
-@use '../../../styles';
-
-$color: darkcyan;
+@use '../../../scss/parent' with (
+    $border-color:darkcyan,
+    $background-color: aquamarine
+);
 
 :host {
-    @extend .container;
-    border: 3px solid $color;
-    background-color: aquamarine;
+    @extend :host;
     grid-template-rows: min-content 1fr;
 }
 
 .btn-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 5px;
 }

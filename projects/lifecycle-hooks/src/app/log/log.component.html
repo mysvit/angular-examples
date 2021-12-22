@@ -1,4 +1,10 @@
-<div>Change log: <button (click)="clearLogs()">Clear Log</button></div>
-<div *ngFor="let log of logs">
-    {{log}}
+<div>
+    Change log:
+    <button (click)="clearLogs()">Clear Log</button>
+</div>
+
+<div #scroll class="scroll-container">
+    <div *ngFor="let log of logs">
+        {{log}}
+    </div>
 </div>

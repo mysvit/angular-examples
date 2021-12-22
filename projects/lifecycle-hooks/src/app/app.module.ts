@@ -15,6 +15,8 @@ import {ViewChildComponent} from './after-view/view-child/view-child.component';
 import {MatSelectModule} from "@angular/material/select";
 import {OnChangesChildComponent} from './on-changes/on-changes-child/on-changes-child.component';
 import {LogComponent} from './log/log.component';
+import {OnCheckParentComponent} from './on-check/on-check-parent/on-check-parent.component';
+import {OnCheckChildComponent} from './on-check/on-check-child/on-check-child.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,9 @@ import {LogComponent} from './log/log.component';
         AfterViewParentComponent,
         ViewChildComponent,
         OnChangesChildComponent,
-        LogComponent
+        LogComponent,
+        OnCheckParentComponent,
+        OnCheckChildComponent
     ],
     imports: [
         BrowserModule,

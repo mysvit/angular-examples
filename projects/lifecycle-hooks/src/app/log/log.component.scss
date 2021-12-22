@@ -1,0 +1,12 @@
+:host {
+    min-height: 0;
+    display: grid;
+    grid-template-rows: 1.3em 1fr;
+}
+
+.scroll-container {
+    display: grid;
+    grid-auto-rows: 20px;
+    align-content: flex-start;
+    overflow: auto;
+}

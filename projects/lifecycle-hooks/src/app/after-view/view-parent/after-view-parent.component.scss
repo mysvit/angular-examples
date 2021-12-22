@@ -1,27 +1,13 @@
-@use '../../../styles';
-
-$color: darkviolet;
-
-:host {
-    @extend .container;
-    border: 3px solid $color;
-    background-color: violet;
-    grid-template-rows: min-content 1fr 50%;
-}
+@use '../../../scss/parent' with (
+    $border-color:darkviolet,
+    $background-color: violet
+);
 
 .top-container {
-    display: grid;
+    @extend .top-container;
+    grid-template-rows: repeat(3, 30px);
 
-    p {
-        display: grid;
+    b {
+        align-self: center;
     }
-}
-
-.middle-container {
-    border: 3px solid $color;
-    grid-template-rows: min-content 1fr;
-}
-
-.log-container {
-    border: 3px solid $color;
 }

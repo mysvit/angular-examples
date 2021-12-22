@@ -1,0 +1,23 @@
+@use './root';
+
+$border-color: darkgoldenrod !default;
+$background-color: gold !default;
+
+:host {
+    @extend .container;
+    border: 1px solid $border-color;
+    background-color: $background-color;
+    grid-template-rows: min-content 1fr;
+}
+
+.middle-container {
+    border: 1px solid $border-color;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 30px;
+    align-self: center;
+    padding: 5px;
+}
+
+.log-container {
+    border: 1px solid $border-color;
+}
