@@ -71,6 +71,13 @@ export class AppComponent implements OnDestroy {
             .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
     }
 
+    patchItemClick(item: Example) {
+        this.httpLogService.add('_')
+        this.appService.patchItem(item)
+            .subscribe(data => this.httpLogService.add('Result: '.concat(JSON.stringify(data))))
+    }
+
+
     deleteItemClick(item: Example) {
         this.httpLogService.add('_')
         this.appService.deleteItem(item.id.toString())

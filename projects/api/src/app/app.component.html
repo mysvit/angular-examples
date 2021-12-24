@@ -17,7 +17,10 @@
             POST Simulation error
         </button>
         <button mat-stroked-button (click)="putItemClick(selectedItem)">
-            PUT Item (/:id/:option)
+            PUT Item (/:id/:option) plus ITEM object in body
+        </button>
+        <button mat-stroked-button (click)="patchItemClick(selectedItem)">
+            PATCH Item (/:id) plus ITEM object in body
         </button>
         <button mat-stroked-button (click)="deleteItemClick(selectedItem)">
             Delete Item (/:id)
@@ -25,6 +28,7 @@
     </div>
 
     <div class="f-col">
+        <h3>Selected item id:{{selectedItem.id}} - {{selectedItem.name}}</h3>
         <ng-container *ngFor="let item of list">
             <div class="f-row p5" (click)="selectItemClick(item)">
                 <b>id:</b>{{item.id}}, <b>name:</b>{{item.name}}

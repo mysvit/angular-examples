@@ -50,6 +50,10 @@ export class AppService {
             .concat(item.id.toString()).concat('/').concat(action), item)
     }
 
+    patchItem(item: Example) {
+        return this.http.patch(environment.apiBase.concat('/simple/patch-item/').concat(item.id.toString()), item)
+    }
+
     deleteItem(id: string): Observable<Example> {
         return this.http.delete<Example>(environment.apiBase.concat('/simple/delete-item/').concat(id))
     }
