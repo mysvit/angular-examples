@@ -1,0 +1,5 @@
+<button (click)="changeVal1Click()">change Value 1 ++</button>
+<button (click)="changeVal2Click()">change Value 2 ++</button>
+<p>Value 1 = {{value1}}</p>
+<p>Value 2 = {{value2}}</p>
+<app-track-changes class="component-container" [value1]="value1" [value2]="value2"></app-track-changes>
