@@ -1,0 +1,17 @@
+:host {
+    height: 100%;
+    width: 100%;
+    background-color: #FED8B1;
+    display: flex;
+    flex-direction: column;
+}
+
+.f-body {
+    flex: 1;
+    background-color: aquamarine;
+}
+
+.f-bottom {
+    background-color: darkcyan;
+    height: 100px;
+}
