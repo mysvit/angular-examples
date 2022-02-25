@@ -1,7 +1,115 @@
-<div class="f-body">
+<div class="f f-row">
 
-</div>
+    <div class="f f-col cb-blue-1">
 
-<div class="f-bottom">
+        <div class="f f-col f-scroll h-350 mm-20 br-white-0 custom">
+
+            <div class="f f-col">
+                <div class="f f-row h-30 mm-10">
+                    <div class="w-150 c-white-0 br-blue-0">
+                        Label
+                    </div>
+                    <div class="f f-col">
+                        <input type="text">
+                    </div>
+                </div>
+
+                <div class="f f-row h-30 mm-10">
+                    <div class="w-150 c-white-0 br-blue-0">
+                        Label 2
+                    </div>
+                    <div class="f f-col">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="f f-col f-jcc f-tac pp-15 c-white-0">
+                    <p class="mm-0"><b>f-col</b> - flext direction: column</p>
+                    <p class="mm-0"><b>f-jcc</b> - justify-content: center</p>
+                    <p class="mm-0"><b>f-tac</b> - text-align: center</p>
+                    <p class="mm-0"><b>h-350</b> - min-height + max-height 350px</p>
+
+                </div>
+            </div>
+
+            <div class="f f-row f-jce h-30 mm-5 pp-5 cb-white-0 br-black-0">
+                <button>Ok</button>
+                <button>Cancel</button>
+            </div>
+
+        </div>
+
+
+        <div class="f f-row f-scroll mm-20 cb-green-0">
+            <div class="f-col f-scroll box-640x480 mm-30 pp-15 cb-black-0 c-green-1">
+                <h3>FLEX, CONTEXT</h3>
+                <p>
+                    f - flex object<br>
+                    f-row, f-col - flex-direction: row or column<br>
+                    f-jcc - justify-content: center<br>
+                    f-tac - text-align: center<br>
+                    f-scroll - owerflow: auto<br>
+                </p>
+                <h3>SIZE</h3>
+                <p>
+                    h-[size]:(h-20) fix height - min-height: 20px, max-height:20px in flex or other containers<br>
+                    w-[size]:(w-20) fix width - min-width: 20px, max-width: 20px in flex or other container;<br>
+                    box-[size]: (box-20) size width: 20px, height: 20px<br>
+                    (box-640x480) - size width: 640px, height: 480px<br>
+                </p>
+                <h3>PADDING, MARGIN</h3>
+                <p>
+                    mm-[size] - (mm-30) margin: 30px<br>
+                    mmt-10: marging-top: 10px
+                    mmb-10: marging-bottom: 10px
+                    mmr-10: margin-right: 10px
+                    mml-10: margin-left: 10px
+                    mmx-10: marging-right & left 10px
+                    mmy-10: marging-top & bottom 10px
+                    (same style for paddin and border)
+                    pp-[size] - paddin: 30px<br>
+                </p>
+                <h3>BORDER</h3>
+                <p>
+                    br[direction]-[color]-[number]
+                    br-red-0 : border: 1px solid red
+                    brt-red-1 : border-top: 1px solid #FF4523
+                </p>
+                <h3>COLORS</h3>
+                <p>
+                    c-[color]-[number] - color: lime<br>
+                    cb-[color]-[number] - backgroubd-color: #FF6358<br>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="f f-col f-jcs w-350 cb-gold-0">
+
+        <div class="h-50 pp-10 c-white-0 cb-blue-0">
+            jc-space - justify-content: space-between;
+        </div>
+
+        <div class="f f-scroll">
+            <div class="f f-col f-mc mm-15 pp-10 br-blue-0">
+                <h4>f-scroll - scroll context</h4>
+                <h4>f-mc - min-height: min-content;</h4>
+                <h4>mm-15 - margin: 15px</h4>
+                <h4>pp-10 - padding: 10px</h4>
+                <h4>br-blue-0 - background-color: blue</h4>
+                <h3>Test</h3>
+                <h3>Test</h3>
+                <h3>Test</h3>
+                <h3>Test</h3>
+                <h3>Test</h3>
+
+            </div>
+        </div>
+
+        <div class="h-50 cb-red-0">
+
+        </div>
+
+    </div>
 
 </div>

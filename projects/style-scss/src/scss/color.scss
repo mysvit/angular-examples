@@ -1,0 +1,17 @@
+@import "variable";
+
+// Color and Background
+// c-red-0: color: red;
+// cb-red-0: background-color: red;
+
+@each $color-name, $color-numbers in $colors {
+    @each $color-number, $color-hex in $color-numbers {
+
+        @each $prop, $abbrev in (color: c, background-color: cb) {
+            .#{$abbrev}-#{$color-name}#{$color-number} {
+                #{$prop}: #{$color-hex};
+            }
+        }
+
+    }
+}

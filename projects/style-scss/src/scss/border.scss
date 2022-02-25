@@ -1,0 +1,27 @@
+@import "variable";
+
+// Border
+// br-red-0 : border: 1px solid red
+// brt-red-0 : border-top: 1px solid red
+
+@each $color-name, $color-numbers in $colors {
+    @each $color-number, $color-hex in $color-numbers {
+
+        @each $prop, $abbrev in (border: br) {
+            .#{$abbrev}-#{$color-name}#{$color-number}  { #{$prop}: #{$border-width} #{$border-style} #{$color-hex}; }
+            .#{$abbrev}t-#{$color-name}#{$color-number} { #{$prop}-top:    #{$border-width} #{$border-style} #{$color-hex}; }
+            .#{$abbrev}r-#{$color-name}#{$color-number} { #{$prop}-right:  #{$border-width} #{$border-style} #{$color-hex}; }
+            .#{$abbrev}b-#{$color-name}#{$color-number} { #{$prop}-bottom: #{$border-width} #{$border-style} #{$color-hex}; }
+            .#{$abbrev}l-#{$color-name}#{$color-number} { #{$prop}-left:   #{$border-width} #{$border-style} #{$color-hex}; }
+            .#{$abbrev}x-#{$color-name}#{$color-number} {
+                #{$prop}-right:  #{$border-width} #{$border-style} #{$color-hex};
+                #{$prop}-left:   #{$border-width} #{$border-style} #{$color-hex};
+            }
+            .#{$abbrev}y-#{$color-name}#{$color-number} {
+                #{$prop}-top:    #{$border-width} #{$border-style} #{$color-hex};
+                #{$prop}-bottom: #{$border-width} #{$border-style} #{$color-hex};
+            }
+        }
+
+    }
+}

@@ -1,0 +1,31 @@
+@import "variable";
+
+// Width, Height, Box
+// fh-20: fix height 20px in flex or other container;
+// fw-20: fix width 20px in flex or other container;
+// fw-20: box size 20px;
+// box-20: size width: 20px, height: 20px
+// box-20x30: size width: 20px, height: 30px
+
+@each $size, $directions in $sizes {
+    $height: map-get($directions, h);
+    $width: map-get($directions, w);
+
+    .h-#{$size} {
+        min-height: $height !important;
+        max-height: $height !important;
+    }
+
+    .w-#{$size} {
+        min-width: $width !important;
+        max-width: $width !important;
+    }
+
+    .box-#{$size} {
+        min-height: $height;
+        max-height: $height;
+        min-width: $width;
+        max-width: $width;
+    }
+
+}

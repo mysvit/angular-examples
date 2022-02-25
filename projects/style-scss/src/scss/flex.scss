@@ -1,0 +1,81 @@
+//Flex
+
+.f {
+    min-height: 0;
+    min-width: 0;
+    flex: auto;
+}
+
+.f-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.f-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.f-scroll {
+    overflow: auto;
+}
+
+.f-ng {
+    flex-grow: 0;
+}
+
+.f-ns {
+    flex-shrink: 0;
+}
+
+.f-mc {
+    min-height: min-content;
+}
+
+.f-jcs {
+    justify-content: flex-start;
+}
+
+.f-jcc {
+    justify-content: center;
+}
+
+.f-jcsb {
+    justify-content: space-between;
+}
+
+.f-jce {
+    justify-content: flex-end;
+}
+
+.f-ais {
+    align-items: flex-start;
+}
+
+.f-aic {
+    align-items: center;
+}
+
+.f-aist {
+    align-items: stretch;
+}
+
+.f-aie {
+    align-items: flex-end;
+}
+
+.f-tal {
+    text-align: left;
+}
+
+.f-tac {
+    text-align: center;
+}
+
+.f-taj {
+    text-align: justify;
+}
+
+.f-tar {
+    text-align: right;
+}

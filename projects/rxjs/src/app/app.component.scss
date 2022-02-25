@@ -1,18 +1,19 @@
 :host {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 div {
-  flex-basis: 30px;
-  display: flex;
-  align-items: center;
+    flex-basis: 30px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
 }
 
 button {
-  width: 200px;
+    width: 200px;
 }
 
 span {
-  margin-left: 20px;
+    margin-left: 20px;
 }

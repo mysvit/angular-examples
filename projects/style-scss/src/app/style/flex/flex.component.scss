@@ -1,17 +1,30 @@
+@import "../../../scss/scss";
+
 :host {
-    height: 100%;
-    width: 100%;
-    background-color: #FED8B1;
-    display: flex;
-    flex-direction: column;
+    @extend .f;
+    @extend .f-col;
+    @extend .br-black-0;
+    @extend .mm-30;
 }
 
-.f-body {
-    flex: 1;
-    background-color: aquamarine;
+.custom {
+    background-color: map-get(map-get($colors, green-), 0);
 }
 
-.f-bottom {
-    background-color: darkcyan;
-    height: 100px;
-}
+//:host {
+//    height: 100%;
+//    width: 100%;
+//    background-color: #FED8B1;
+//    display: flex;
+//    flex-direction: column;
+//}
+//
+//.f-body {
+//    flex: 1;
+//    background-color: aquamarine;
+//}
+//
+//.f-bottom {
+//    background-color: darkcyan;
+//    height: 100px;
+//}

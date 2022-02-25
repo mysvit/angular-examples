@@ -1,5 +1,5 @@
-import {Component, OnDestroy} from '@angular/core';
-import {debounceTime, distinctUntilChanged, interval, Subject, takeUntil} from 'rxjs'
+import { Component, OnDestroy } from '@angular/core';
+import { debounceTime, distinctUntilChanged, interval, Subject, takeUntil } from 'rxjs'
 
 @Component({
     selector: 'app-root',
