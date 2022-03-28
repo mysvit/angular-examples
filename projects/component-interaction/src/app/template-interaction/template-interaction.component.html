@@ -1,0 +1,11 @@
+<div *ngFor="let item of list">
+    {{item.name}}
+    <ng-container *ngTemplateOutlet="templ; context:{ $implicit: {item:item, getValueFromMethod: getMethod(item.isChecked)} }">
+    </ng-container>
+</div>
+
+<ng-template #templ let-item>
+    <button (click)="item.item.click()">CLICK</button>
+    {{item.getValueFromMethod}}
+    <button (click)="eventMethod(item)"></button>
+</ng-template>

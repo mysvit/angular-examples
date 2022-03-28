@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { debounceTime, distinctUntilChanged, interval, Subject, takeUntil } from 'rxjs'
+import { concat, debounceTime, distinctUntilChanged, filter, forkJoin, interval, map, of, Subject, switchMap, takeUntil } from 'rxjs'
 
 @Component({
     selector: 'app-root',
@@ -60,6 +60,21 @@ export class AppComponent implements OnDestroy {
 
     takeUntilStopClick() {
         this.stopTakeUntil$.next(true)
+    }
+
+    // *******************************************************************************************
+
+    forkJoinClick() {
+        forkJoin([
+            of(1),
+            of(undefined)
+        ])
+            .pipe(
+                map((res) => {
+                    console.log(res.filter(f => f))
+                }),
+            )
+            .subscribe();
     }
 
     // *******************************************************************************************

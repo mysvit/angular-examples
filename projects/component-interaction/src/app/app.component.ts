@@ -10,5 +10,6 @@ export class AppComponent {
     isIOInteraction: boolean = false
     isServiceInteraction: boolean = false
     isVCInteraction: boolean = false
-    isInputInteraction: boolean = true
+    isInputInteraction: boolean = false
+    isTemplateInteraction: boolean = true
 }
