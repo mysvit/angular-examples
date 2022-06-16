@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms'
+import {UntypedFormControl, Validators} from '@angular/forms'
 
 @Component({
     selector: 'app-input',
@@ -8,10 +8,10 @@ import {FormControl, Validators} from '@angular/forms'
 })
 export class InputComponent implements OnInit {
 
-    emailFormControl = new FormControl('', [Validators.required, Validators.email])
-    wwwFormControl = new FormControl('', [Validators.pattern(/([w+3])([.])(\w+)([.])(\w+)/)])
-    postalCode = new FormControl()
-    phoneNumber = new FormControl()
+    emailFormControl = new UntypedFormControl('', [Validators.required, Validators.email])
+    wwwFormControl = new UntypedFormControl('', [Validators.pattern(/([w+3])([.])(\w+)([.])(\w+)/)])
+    postalCode = new UntypedFormControl()
+    phoneNumber = new UntypedFormControl()
 
     // matcher = new MyErrorStateMatcher()
 

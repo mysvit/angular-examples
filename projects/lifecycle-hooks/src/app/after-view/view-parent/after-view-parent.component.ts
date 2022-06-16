@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {LogFormatter, LoggerService} from "../../logger.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {ViewChildComponent} from "../view-child/view-child.component";
 import {AppBase} from "../../app.base";
 
@@ -14,11 +14,11 @@ export class AfterViewParentComponent extends AppBase {
     parentText: string = ''
     isShowWithoutTick: boolean = false;
     parentTextNoTick: string = ''
-    checker: FormGroup
+    checker: UntypedFormGroup
 
     @ViewChild(ViewChildComponent) viewChild!: ViewChildComponent;
 
-    constructor(fb: FormBuilder, logger: LoggerService) {
+    constructor(fb: UntypedFormBuilder, logger: LoggerService) {
         super(logger)
         this.checker = fb.group({
             child: true
