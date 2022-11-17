@@ -5,6 +5,7 @@
     <mat-checkbox [(ngModel)]="isVCInteraction">Interaction by @ViewChild decorator</mat-checkbox>
     <mat-checkbox [(ngModel)]="isInputInteraction">Input & form interaction</mat-checkbox>
     <mat-checkbox [(ngModel)]="isTemplateInteraction">Input & form interaction</mat-checkbox>
+    <mat-checkbox [(ngModel)]="isCreateComponentInteraction">Input & form interaction</mat-checkbox>
 </div>
 
 <app-dialog-parent *ngIf="isDialogInteraction"></app-dialog-parent>
@@ -13,3 +14,4 @@
 <app-vc-parent *ngIf="isVCInteraction"></app-vc-parent>
 <app-input-interaction *ngIf="isInputInteraction"></app-input-interaction>
 <app-template-interaction *ngIf="isTemplateInteraction"></app-template-interaction>
+<app-create-component-parent *ngIf="isCreateComponentInteraction"></app-create-component-parent>

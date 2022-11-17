@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {LoadingState} from './directives/if-loaded.directive'
+import { Component } from '@angular/core'
+import { LoadingState } from './directives/if-loaded.directive'
 
 @Component({
     selector: 'app-root',
@@ -8,8 +8,11 @@ import {LoadingState} from './directives/if-loaded.directive'
 })
 export class AppComponent {
 
-    state: LoadingState = {type: 'loading'};
+    state: LoadingState = {type: 'loading'}
     color: string = 'yellow'
-    condition = false;
+    condition = false
 
+    loadedClick() {
+        this.state = <LoadingState>{type: 'loaded'}
+    }
 }

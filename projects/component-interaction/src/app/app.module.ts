@@ -1,23 +1,25 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent} from './app.component';
-import {ServiceParentComponent} from './service-interaction/service-parent/service-parent.component';
-import {ServiceChildComponent} from './service-interaction/service-child/service-child.component';
-import {FormsModule} from '@angular/forms';
-import {IoParentComponent} from './io-interaction/io-parent/io-parent.component';
-import {IoChildComponent} from './io-interaction/io-child/io-child.component';
-import {VcParentComponent} from './vc-interaction/vc-parent/vc-parent.component';
-import {VcChildComponent} from './vc-interaction/vc-child/vc-child.component'
-import {MatCheckboxModule} from '@angular/material/checkbox'
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog'
-import {MatButtonModule} from '@angular/material/button';
-import {DialogParentComponent} from './dialog-interaction/dialog-parent/dialog-parent.component';
-import {DialogDialogComponent} from './dialog-interaction/dialog-dialog/dialog-dialog.component'
-import {MatInputModule} from '@angular/material/input';
-import {InputInteractionComponent} from './input-interaction/input-interaction.component';
+import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AppComponent } from './app.component'
+import { CreateComponentChildComponent } from './create-component-interaction/create-component-child/create-component-child.component'
+import { CreateComponentParentComponent } from './create-component-interaction/create-component-parent/create-component-parent.component'
+import { DialogDialogComponent } from './dialog-interaction/dialog-dialog/dialog-dialog.component'
+import { DialogParentComponent } from './dialog-interaction/dialog-parent/dialog-parent.component'
+import { InputInteractionComponent } from './input-interaction/input-interaction.component'
+import { IoChildComponent } from './io-interaction/io-child/io-child.component'
+import { IoParentComponent } from './io-interaction/io-parent/io-parent.component'
+import { ServiceChildComponent } from './service-interaction/service-child/service-child.component'
+import { ServiceParentComponent } from './service-interaction/service-parent/service-parent.component'
 import { TemplateInteractionComponent } from './template-interaction/template-interaction.component'
+import { VcChildComponent } from './vc-interaction/vc-child/vc-child.component'
+import { VcParentComponent } from './vc-interaction/vc-parent/vc-parent.component'
 
 @NgModule({
     declarations: [
@@ -31,7 +33,9 @@ import { TemplateInteractionComponent } from './template-interaction/template-in
         DialogParentComponent,
         DialogDialogComponent,
         InputInteractionComponent,
-        TemplateInteractionComponent
+        TemplateInteractionComponent,
+        CreateComponentParentComponent,
+        CreateComponentChildComponent
     ],
     imports: [
         BrowserModule,
