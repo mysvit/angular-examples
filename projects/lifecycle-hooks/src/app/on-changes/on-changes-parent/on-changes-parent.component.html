@@ -1,13 +1,13 @@
 <div class="btn-container">
     <div>
-        <h3>change [major,minor] by @Input parameter</h3>
-        <p>ngOnChanges just only called for/if there is an @Input variable set by parent</p>
+        <h3>change [major,minor] by &#64;Input parameter</h3>
+        <p>ngOnChanges just only called for/if there is an &#64;Input variable set by parent</p>
         <button (click)="majorClick()">major++</button>
         <button (click)="minorClick()">minor++</button>
     </div>
     <div>
-        <h3>change [major,minor] by @ViewChild</h3>
-        <p>if/when you modify property from @ViewChild, ngOnChanges doesn't triggered</p>
+        <h3>change [major,minor] by &#64;ViewChild</h3>
+        <p>if/when you modify property from &#64;ViewChild, ngOnChanges doesn't triggered</p>
         <button (click)="majorChildClick()">major++</button>
         <button (click)="minorChildClick()">minor++</button>
     </div>
