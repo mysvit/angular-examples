@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {InteractionDlg, interactionList, ModificationType} from '../../interaction.model'
 import * as _ from 'lodash'
-import {MatDialog} from '@angular/material/dialog'
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog'
 import {DialogData} from '../dialog.model'
 import {DialogDialogComponent} from '../dialog-dialog/dialog-dialog.component'
 

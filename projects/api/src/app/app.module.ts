@@ -6,7 +6,7 @@ import {HttpLogService} from './http/http-log.service'
 import {HttpErrorHandler} from './http/http-error-handler.service'
 import {httpInterceptorProviders} from './http-interceptors'
 import {AuthService} from './http/auth.service'
-import {MatButtonModule} from '@angular/material/button'
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button'
 
 @NgModule({
     declarations: [

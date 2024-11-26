@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {InteractionIO, interactionList} from '../../interaction.model'
 import * as _ from 'lodash'
-import {MatDialog} from '@angular/material/dialog'
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog'
 
 @Component({
     selector: 'app-io-parent',
