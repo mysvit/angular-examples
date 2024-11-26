@@ -5,6 +5,7 @@ import * as _ from 'lodash'
 @Component({
     selector: 'app-io-child',
     templateUrl: './io-child.component.html',
+    standalone: false
 })
 export class IoChildComponent implements OnInit {
 

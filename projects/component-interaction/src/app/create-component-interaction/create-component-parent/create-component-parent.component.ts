@@ -4,7 +4,8 @@ import { CreateComponentChildComponent } from '../create-component-child/create-
 @Component({
     selector: 'app-create-component-parent',
     templateUrl: './create-component-parent.component.html',
-    styleUrls: ['./create-component-parent.component.scss']
+    styleUrls: ['./create-component-parent.component.scss'],
+    standalone: false
 })
 export class CreateComponentParentComponent implements OnInit {
 

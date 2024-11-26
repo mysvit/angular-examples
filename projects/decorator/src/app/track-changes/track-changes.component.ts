@@ -4,7 +4,8 @@ import {ChangesStrategy, TrackChanges} from "../custom/сhanges-decorator";
 @Component({
     selector: 'app-track-changes',
     templateUrl: './track-changes.component.html',
-    styleUrls: ['./track-changes.component.scss']
+    styleUrls: ['./track-changes.component.scss'],
+    standalone: false
 })
 export class TrackChangesComponent {
 

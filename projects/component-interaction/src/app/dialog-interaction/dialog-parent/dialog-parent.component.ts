@@ -8,7 +8,8 @@ import {DialogDialogComponent} from '../dialog-dialog/dialog-dialog.component'
 @Component({
     selector: 'app-dialog-parent',
     templateUrl: './dialog-parent.component.html',
-    styleUrls: ['./dialog-parent.component.scss']
+    styleUrls: ['./dialog-parent.component.scss'],
+    standalone: false
 })
 export class DialogParentComponent {
 

@@ -7,7 +7,8 @@ import {AppBase} from "../../app.base";
 @Component({
     selector: 'app-after-view',
     templateUrl: './after-view-parent.component.html',
-    styleUrls: ['./after-view-parent.component.scss']
+    styleUrls: ['./after-view-parent.component.scss'],
+    standalone: false
 })
 export class AfterViewParentComponent extends AppBase {
 

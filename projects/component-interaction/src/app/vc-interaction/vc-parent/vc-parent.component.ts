@@ -7,7 +7,8 @@ import {interval, take, takeWhile} from 'rxjs'
 @Component({
     selector: 'app-vc-parent',
     templateUrl: './vc-parent.component.html',
-    styleUrls: ['./vc-parent.component.scss']
+    styleUrls: ['./vc-parent.component.scss'],
+    standalone: false
 })
 export class VcParentComponent {
 

@@ -5,7 +5,8 @@ import {AppBase} from "../../app.base";
 @Component({
     selector: 'app-view-child',
     templateUrl: './view-child.component.html',
-    styleUrls: ['./view-child.component.scss']
+    styleUrls: ['./view-child.component.scss'],
+    standalone: false
 })
 export class ViewChildComponent extends AppBase {
 

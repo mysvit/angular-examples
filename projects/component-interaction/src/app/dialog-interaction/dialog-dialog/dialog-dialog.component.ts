@@ -6,7 +6,8 @@ import {ModificationType} from '../../interaction.model'
 @Component({
     selector: 'app-dialog-dialog',
     templateUrl: './dialog-dialog.component.html',
-    styleUrls: ['./dialog-dialog.component.scss']
+    styleUrls: ['./dialog-dialog.component.scss'],
+    standalone: false
 })
 export class DialogDialogComponent {
 

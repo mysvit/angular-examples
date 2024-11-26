@@ -3,7 +3,8 @@ import { Component, HostListener, OnInit } from '@angular/core'
 @Component({
     selector: 'app-simulate-click',
     templateUrl: './simulate-click.component.html',
-    styleUrls: ['./simulate-click.component.scss']
+    styleUrls: ['./simulate-click.component.scss'],
+    standalone: false
 })
 export class SimulateClickComponent implements OnInit {
 

@@ -6,7 +6,8 @@ import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog'
 @Component({
     selector: 'app-io-parent',
     templateUrl: './io-parent.component.html',
-    styleUrls: ['./io-parent.component.scss']
+    styleUrls: ['./io-parent.component.scss'],
+    standalone: false
 })
 export class IoParentComponent implements OnInit {
 

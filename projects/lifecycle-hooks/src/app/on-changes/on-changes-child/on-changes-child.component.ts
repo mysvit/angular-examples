@@ -5,7 +5,8 @@ import {AppBase} from "../../app.base";
 @Component({
     selector: 'app-on-changes-child',
     templateUrl: './on-changes-child.component.html',
-    styleUrls: ['./on-changes-child.component.scss']
+    styleUrls: ['./on-changes-child.component.scss'],
+    standalone: false
 })
 export class OnChangesChildComponent extends AppBase {
 

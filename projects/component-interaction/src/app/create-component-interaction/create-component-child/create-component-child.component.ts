@@ -3,7 +3,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 @Component({
     selector: 'app-create-component-child',
     templateUrl: './create-component-child.component.html',
-    styleUrls: ['./create-component-child.component.scss']
+    styleUrls: ['./create-component-child.component.scss'],
+    standalone: false
 })
 export class CreateComponentChildComponent implements OnInit {
 

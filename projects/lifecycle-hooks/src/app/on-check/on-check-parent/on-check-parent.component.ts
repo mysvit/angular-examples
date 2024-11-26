@@ -6,7 +6,8 @@ import {OnCheckChildComponent} from "../on-check-child/on-check-child.component"
 @Component({
     selector: 'app-on-check-parent',
     templateUrl: './on-check-parent.component.html',
-    styleUrls: ['./on-check-parent.component.scss']
+    styleUrls: ['./on-check-parent.component.scss'],
+    standalone: false
 })
 export class OnCheckParentComponent extends AppBase {
 

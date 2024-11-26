@@ -3,7 +3,8 @@ import {Component, OnInit} from '@angular/core';
 @Component({
     selector: 'app-input-interaction',
     templateUrl: './input-interaction.component.html',
-    styleUrls: ['./input-interaction.component.scss']
+    styleUrls: ['./input-interaction.component.scss'],
+    standalone: false
 })
 export class InputInteractionComponent implements OnInit {
 

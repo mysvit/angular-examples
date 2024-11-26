@@ -1,6 +1,9 @@
 import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core'
 
-@Directive({selector: '[appShow]'})
+@Directive({
+    selector: '[appShow]',
+    standalone: false
+})
 export class ShowDirective {
 
     private hasView = false

@@ -4,6 +4,7 @@ import {InteractionVC} from '../../interaction.model'
 @Component({
     selector: 'app-vc-child',
     templateUrl: './vc-child.component.html',
+    standalone: false
 })
 export class VcChildComponent {
 

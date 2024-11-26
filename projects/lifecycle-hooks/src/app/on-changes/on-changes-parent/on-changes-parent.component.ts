@@ -6,7 +6,8 @@ import {LoggerService} from "../../logger.service";
 @Component({
     selector: 'app-on-changes-parent',
     templateUrl: './on-changes-parent.component.html',
-    styleUrls: ['./on-changes-parent.component.scss']
+    styleUrls: ['./on-changes-parent.component.scss'],
+    standalone: false
 })
 export class OnChangesParentComponent extends AppBase {
 

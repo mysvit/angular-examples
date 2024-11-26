@@ -5,7 +5,8 @@ import {AppBase} from "../../app.base";
 @Component({
     selector: 'app-projected-child',
     templateUrl: './projected-child.component.html',
-    styleUrls: ['./projected-child.component.scss']
+    styleUrls: ['./projected-child.component.scss'],
+    standalone: false
 })
 export class ProjectedChildComponent extends AppBase {
 

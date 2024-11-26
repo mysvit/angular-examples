@@ -5,7 +5,8 @@ import {LoggerService} from "../../logger.service";
 @Component({
     selector: 'app-on-check-child',
     templateUrl: './on-check-child.component.html',
-    styleUrls: ['./on-check-child.component.scss']
+    styleUrls: ['./on-check-child.component.scss'],
+    standalone: false
 })
 export class OnCheckChildComponent extends AppBase {
 

@@ -6,7 +6,8 @@ import {InteractionSRV, ModificationType} from '../../interaction.model'
     selector: 'app-service-parent',
     templateUrl: './service-parent.component.html',
     styleUrls: ['./service-parent.component.scss'],
-    providers: [ServiceInteractionService]
+    providers: [ServiceInteractionService],
+    standalone: false
 })
 export class ServiceParentComponent {
 

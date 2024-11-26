@@ -6,7 +6,8 @@ export type Loading = { type: 'loading' }
 export type LoadingState = Loaded | Loading
 
 @Directive({
-    selector: '[ifLoaded]'
+    selector: '[ifLoaded]',
+    standalone: false
 })
 export class IfLoadedDirective {
 

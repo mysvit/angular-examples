@@ -3,7 +3,8 @@ import {AfterViewChecked, Component, ElementRef, Input, ViewChild} from '@angula
 @Component({
     selector: 'app-log',
     templateUrl: './log.component.html',
-    styleUrls: ['./log.component.scss']
+    styleUrls: ['./log.component.scss'],
+    standalone: false
 })
 export class LogComponent implements AfterViewChecked {
 
