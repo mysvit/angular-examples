@@ -1,4 +1,4 @@
-<ng-template [ngIf]="item?.isAdd || item?.isEdit">
+<ng-template [ngIf]="item.isAdd || item.isEdit">
     <div class="content">
         <div class="btn edit"></div>
         <div class="small edit">
@@ -16,7 +16,7 @@
     </div>
 </ng-template>
 
-<ng-template [ngIf]="item?.isDelete">
+<ng-template [ngIf]="item.isDelete">
     <div class="content not-hover">
         <div>
             Do you want to delete selected row Id:<b>{{item.id}}</b>?

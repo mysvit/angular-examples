@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {InteractionDlg, interactionList, ModificationType} from '../../interaction.model'
 import * as _ from 'lodash'
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog'
 import {DialogData} from '../dialog.model'
 import {DialogDialogComponent} from '../dialog-dialog/dialog-dialog.component'
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-dialog-parent',

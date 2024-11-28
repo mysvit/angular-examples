@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {InputComponent} from './input/input.component';
-import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input'
 import {ReactiveFormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
     declarations: [
@@ -14,8 +14,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatInputModule
     ],
     providers: [],
     bootstrap: [AppComponent]
