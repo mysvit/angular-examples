@@ -1,5 +1,5 @@
 /* "Barrel" of Http Interceptors */
-import {HTTP_INTERCEPTORS} from '@angular/common/http'
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import {LoggingInterceptor} from './logging-interceptor'
 import {AuthInterceptor} from './auth-interceptor'
 

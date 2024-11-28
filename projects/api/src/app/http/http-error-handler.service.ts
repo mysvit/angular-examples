@@ -1,6 +1,6 @@
 /** Type of the handleError function returned by HttpErrorHandler.createHandleError */
 import {Observable, of} from 'rxjs'
-import {HttpErrorResponse} from '@angular/common/http'
+import { HttpErrorResponse } from '@angular/common/http'
 import {Injectable} from '@angular/core'
 import {HttpLogService} from './http-log.service'
 import {MessageType} from './http.model'
