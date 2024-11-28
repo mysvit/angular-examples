@@ -13,11 +13,11 @@ export class IfLoadedDirective {
 
     @Input('ifLoaded')
     set state(state: LoadingState) {
-        console.log(state.type)
+        console.log('state', state.type)
     }
 
     static ngTemplateGuard_state(dir: IfLoadedDirective, expr: LoadingState): expr is Loaded {
-        console.log(dir, expr)
+        console.log('ngTemplateGuard_state', dir, expr)
         return true
     }
 
