@@ -21,15 +21,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/api"
-            },
+            "outputPath": "dist/api",
             "index": "projects/api/src/index.html",
-            "polyfills": [
-              "projects/api/src/polyfills.ts"
-            ],
+            "main": "projects/api/src/main.ts",
+            "polyfills": "projects/api/src/polyfills.ts",
             "tsConfig": "projects/api/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -45,8 +42,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/api/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/api/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -71,7 +67,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -83,10 +81,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "api:build:production"
+              "browserTarget": "api:build:production"
             },
             "development": {
-              "buildTarget": "api:build:development"
+              "browserTarget": "api:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -94,7 +92,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "api:build"
+            "browserTarget": "api:build"
           }
         },
         "test": {
@@ -132,15 +130,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/rxjs"
-            },
+            "outputPath": "dist/rxjs",
             "index": "projects/rxjs/src/index.html",
-            "polyfills": [
-              "projects/rxjs/src/polyfills.ts"
-            ],
+            "main": "projects/rxjs/src/main.ts",
+            "polyfills": "projects/rxjs/src/polyfills.ts",
             "tsConfig": "projects/rxjs/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -150,8 +145,7 @@
             "styles": [
               "projects/rxjs/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/rxjs/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -176,7 +170,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -188,10 +184,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "rxjs:build:production"
+              "browserTarget": "rxjs:build:production"
             },
             "development": {
-              "buildTarget": "rxjs:build:development"
+              "browserTarget": "rxjs:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -199,7 +195,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "rxjs:build"
+            "browserTarget": "rxjs:build"
           }
         },
         "test": {
@@ -237,15 +233,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/test"
-            },
+            "outputPath": "dist/test",
             "index": "projects/test/src/index.html",
-            "polyfills": [
-              "projects/test/src/polyfills.ts"
-            ],
+            "main": "projects/test/src/main.ts",
+            "polyfills": "projects/test/src/polyfills.ts",
             "tsConfig": "projects/test/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -255,8 +248,7 @@
             "styles": [
               "projects/test/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/test/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -281,7 +273,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -293,10 +287,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test:build:production"
+              "browserTarget": "test:build:production"
             },
             "development": {
-              "buildTarget": "test:build:development"
+              "browserTarget": "test:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -304,7 +298,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "test:build"
+            "browserTarget": "test:build"
           }
         },
         "test": {
@@ -342,15 +336,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/lifecycle-hooks"
-            },
+            "outputPath": "dist/lifecycle-hooks",
             "index": "projects/lifecycle-hooks/src/index.html",
-            "polyfills": [
-              "projects/lifecycle-hooks/src/polyfills.ts"
-            ],
+            "main": "projects/lifecycle-hooks/src/main.ts",
+            "polyfills": "projects/lifecycle-hooks/src/polyfills.ts",
             "tsConfig": "projects/lifecycle-hooks/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -366,8 +357,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/lifecycle-hooks/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/lifecycle-hooks/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -392,7 +382,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -404,10 +396,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "lifecycle-hooks:build:production"
+              "browserTarget": "lifecycle-hooks:build:production"
             },
             "development": {
-              "buildTarget": "lifecycle-hooks:build:development"
+              "browserTarget": "lifecycle-hooks:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -415,7 +407,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "lifecycle-hooks:build"
+            "browserTarget": "lifecycle-hooks:build"
           }
         },
         "test": {
@@ -453,15 +445,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/component-interaction"
-            },
+            "outputPath": "dist/component-interaction",
             "index": "projects/component-interaction/src/index.html",
-            "polyfills": [
-              "projects/component-interaction/src/polyfills.ts"
-            ],
+            "main": "projects/component-interaction/src/main.ts",
+            "polyfills": "projects/component-interaction/src/polyfills.ts",
             "tsConfig": "projects/component-interaction/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -478,8 +467,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/component-interaction/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/component-interaction/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -504,7 +492,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -516,10 +506,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "component-interaction:build:production"
+              "browserTarget": "component-interaction:build:production"
             },
             "development": {
-              "buildTarget": "component-interaction:build:development"
+              "browserTarget": "component-interaction:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -527,7 +517,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "component-interaction:build"
+            "browserTarget": "component-interaction:build"
           }
         },
         "test": {
@@ -565,15 +555,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/directive"
-            },
+            "outputPath": "dist/directive",
             "index": "projects/directive/src/index.html",
-            "polyfills": [
-              "projects/directive/src/polyfills.ts"
-            ],
+            "main": "projects/directive/src/main.ts",
+            "polyfills": "projects/directive/src/polyfills.ts",
             "tsConfig": "projects/directive/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -583,8 +570,7 @@
             "styles": [
               "projects/directive/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/directive/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -609,7 +595,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -621,10 +609,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "directive:build:production"
+              "browserTarget": "directive:build:production"
             },
             "development": {
-              "buildTarget": "directive:build:development"
+              "browserTarget": "directive:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -632,7 +620,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "directive:build"
+            "browserTarget": "directive:build"
           }
         },
         "test": {
@@ -670,15 +658,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/function-equilibristics"
-            },
+            "outputPath": "dist/function-equilibristics",
             "index": "projects/function-equilibristics/src/index.html",
-            "polyfills": [
-              "projects/function-equilibristics/src/polyfills.ts"
-            ],
+            "main": "projects/function-equilibristics/src/main.ts",
+            "polyfills": "projects/function-equilibristics/src/polyfills.ts",
             "tsConfig": "projects/function-equilibristics/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -688,8 +673,7 @@
             "styles": [
               "projects/function-equilibristics/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/function-equilibristics/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -714,7 +698,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -726,10 +712,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "function-equilibristics:build:production"
+              "browserTarget": "function-equilibristics:build:production"
             },
             "development": {
-              "buildTarget": "function-equilibristics:build:development"
+              "browserTarget": "function-equilibristics:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -737,7 +723,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "function-equilibristics:build"
+            "browserTarget": "function-equilibristics:build"
           }
         },
         "test": {
@@ -775,15 +761,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/angular-material"
-            },
+            "outputPath": "dist/angular-material",
             "index": "projects/angular-material/src/index.html",
-            "polyfills": [
-              "projects/angular-material/src/polyfills.ts"
-            ],
+            "main": "projects/angular-material/src/main.ts",
+            "polyfills": "projects/angular-material/src/polyfills.ts",
             "tsConfig": "projects/angular-material/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -800,8 +783,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/angular-material/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/angular-material/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -826,7 +808,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -838,10 +822,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-material:build:production"
+              "browserTarget": "angular-material:build:production"
             },
             "development": {
-              "buildTarget": "angular-material:build:development"
+              "browserTarget": "angular-material:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -849,7 +833,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-material:build"
+            "browserTarget": "angular-material:build"
           }
         },
         "test": {
@@ -887,15 +871,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/decorator"
-            },
+            "outputPath": "dist/decorator",
             "index": "projects/decorator/src/index.html",
-            "polyfills": [
-              "projects/decorator/src/polyfills.ts"
-            ],
+            "main": "projects/decorator/src/main.ts",
+            "polyfills": "projects/decorator/src/polyfills.ts",
             "tsConfig": "projects/decorator/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -905,8 +886,7 @@
             "styles": [
               "projects/decorator/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/decorator/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -931,7 +911,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -943,10 +925,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "decorator:build:production"
+              "browserTarget": "decorator:build:production"
             },
             "development": {
-              "buildTarget": "decorator:build:development"
+              "browserTarget": "decorator:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -954,7 +936,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "decorator:build"
+            "browserTarget": "decorator:build"
           }
         },
         "test": {
@@ -992,15 +974,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist/style-scss"
-            },
+            "outputPath": "dist/style-scss",
             "index": "projects/style-scss/src/index.html",
-            "polyfills": [
-              "projects/style-scss/src/polyfills.ts"
-            ],
+            "main": "projects/style-scss/src/main.ts",
+            "polyfills": "projects/style-scss/src/polyfills.ts",
             "tsConfig": "projects/style-scss/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -1010,8 +989,7 @@
             "styles": [
               "projects/style-scss/src/styles.scss"
             ],
-            "scripts": [],
-            "browser": "projects/style-scss/src/main.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -1036,7 +1014,9 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -1048,10 +1028,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "style-scss:build:production"
+              "browserTarget": "style-scss:build:production"
             },
             "development": {
-              "buildTarget": "style-scss:build:development"
+              "browserTarget": "style-scss:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -1059,7 +1039,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "style-scss:build"
+            "browserTarget": "style-scss:build"
           }
         },
         "test": {
