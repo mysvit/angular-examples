@@ -25,7 +25,7 @@ export class TemplateInteractionComponent implements OnInit {
     }
 
     get eventClick() {
-        return () => this.eventMethod('s');
+        return () => this.eventMethod('s')
     }
 
     eventMethod(event: any) {
