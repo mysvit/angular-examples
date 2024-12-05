@@ -1,5 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
-import { concat, debounceTime, distinctUntilChanged, filter, forkJoin, interval, map, of, Subject, switchMap, takeUntil } from 'rxjs'
+import {Component, OnDestroy} from '@angular/core';
+import {debounceTime, distinctUntilChanged, forkJoin, interval, map, of, Subject, takeUntil} from 'rxjs'
 
 @Component({
     selector: 'app-root',
@@ -72,10 +72,11 @@ export class AppComponent implements OnDestroy {
         ])
             .pipe(
                 map((res) => {
+                    console.log('res', res)
                     console.log(res.filter(f => f))
                 }),
             )
-            .subscribe();
+            .subscribe()
     }
 
     // *******************************************************************************************

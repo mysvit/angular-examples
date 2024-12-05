@@ -12,6 +12,9 @@ import {OnChangesChildComponent} from './on-changes/on-changes-child/on-changes-
 import {LogComponent} from './log/log.component';
 import {OnCheckParentComponent} from './on-check/on-check-parent/on-check-parent.component';
 import {OnCheckChildComponent} from './on-check/on-check-child/on-check-child.component';
+import {MatCheckbox} from "@angular/material/checkbox";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatOption, MatSelect} from "@angular/material/select";
 
 @NgModule({
     declarations: [
@@ -31,6 +34,11 @@ import {OnCheckChildComponent} from './on-check/on-check-child/on-check-child.co
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
+        MatCheckbox,
+        MatSelect,
+        MatOption,
+        MatLabel,
+        MatFormField
     ],
     providers: [],
     bootstrap: [AppComponent]
