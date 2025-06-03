@@ -1,19 +1,21 @@
-<h3>appHighlight work with: &#64;HostBinding, &#64;HostListener, &#64;Input</h3>
+<h3>Attribute Directive &#64;Renderer2, &#64;ElementRef, &#64;Input Signal</h3>
 
-<div appHighlight defaultColor="red">
+<h3 myClass="my-class">
+    add class to element directive
+</h3>
+
+<h3>Attribute Directive &#64;HostBinding, &#64;HostListener, &#64;Input Signal</h3>
+
+<div myHighlightColor="green" defaultColor="grey">
     Highlight directive set defaultColor="red" background
 </div>
 
-<div appHighlight="green">
+<div myHighlightColor="green">
     Highlight directive set appHighlight="green" background
 </div>
 
 
-<h3>ngNonBindable</h3>
-<div ngNonBindable>ngNonBindable this stop directives: {{ 1 + 1 }}</div>
-
-
-<h3>ngShow work with: ViewContainerRef, TemplateRef</h3>
+<h3>Structural Directives &#64;ViewContainerRef, &#64;TemplateRef</h3>
 <div>
     ngShow same as ngIf
     <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
@@ -23,19 +25,13 @@
     </button>
 </div>
 
-<div *appShow="condition" class="unless a">
+<div *myShow="condition" class="unless a">
     <p >
         (A) This paragraph is displayed because the condition is false.
     </p>
 </div>
 
-<p *appShow="!condition" class="unless b">
+<p *myShow="!condition" class="unless b">
     (B) Although the condition is true,
     this paragraph is displayed because appUnless is set to false.
 </p>
-
-<h1>Loading</h1>
-<button (click)="loadedClick()">Loaded</button>
-<div [ifLoaded]="state">
-    Loading
-</div>

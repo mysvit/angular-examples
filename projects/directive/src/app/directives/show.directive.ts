@@ -1,8 +1,7 @@
-import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core'
+import {Directive, effect, input, TemplateRef, ViewContainerRef} from '@angular/core'
 
 @Directive({
-    selector: '[appShow]',
-    standalone: false
+    selector: '[myShow]'
 })
 export class ShowDirective {
 
@@ -10,17 +9,23 @@ export class ShowDirective {
 
     constructor(
         private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef) {
+        private viewContainer: ViewContainerRef
+    ) {
+        effect(() => {
+            if (this.myShow() && !this.hasView) {
+                this.viewContainer.createEmbeddedView(this.templateRef)
+                this.hasView = true
+                return
+            }
+            if (!this.myShow() && this.hasView) {
+                this.viewContainer.clear()
+                this.hasView = false
+                return
+            }
+        })
     }
 
-    @Input() set appShow(condition: boolean) {
-        if (!condition && !this.hasView) {
-            this.viewContainer.createEmbeddedView(this.templateRef)
-            this.hasView = true
-        } else if (condition && this.hasView) {
-            this.viewContainer.clear()
-            this.hasView = false
-        }
-    }
+    // input the same as directive name
+    readonly myShow = input.required<boolean>()
 
 }

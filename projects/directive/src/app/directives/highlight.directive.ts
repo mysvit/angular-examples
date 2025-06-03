@@ -1,27 +1,30 @@
-import {Directive, HostBinding, HostListener, Input} from '@angular/core';
+import {Directive, effect, HostBinding, HostListener, input} from '@angular/core';
 
 @Directive({
-    selector: '[appHighlight]',
-    standalone: false
+    selector: '[myHighlightColor]'
 })
 export class HighlightDirective {
 
-    constructor() {
-    }
-
-    @Input() defaultColor = ''
-
-    @Input('appHighlight') highlightColor = ''
+    readonly defaultColor = input<string>('')
+    readonly myHighlightColor = input<string>('')
 
     @HostBinding('style.backgroundColor')
-    private color = 'auto';
+    private backgroundColor = 'auto'
 
     @HostListener('mouseenter') onMouseEnter() {
-        this.color = this.highlightColor || this.defaultColor || 'red'
+        this.backgroundColor = this.myHighlightColor() || this.defaultColor() || 'red'
+        console.log(`mouseenter highlightColor ${this.myHighlightColor()} defaultColor ${this.defaultColor()}`)
     }
 
     @HostListener('mouseleave') onMouseLeave() {
-        this.color = ''
+        this.backgroundColor = this.defaultColor()
+    }
+
+    constructor() {
+        effect(() => {
+            this.backgroundColor = this.defaultColor()
+            console.log(`effect defaultColor ${this.defaultColor()}`)
+        })
     }
 
 }
