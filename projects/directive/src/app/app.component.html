@@ -27,11 +27,17 @@
 
 <div *myShow="condition" class="unless a">
     <p >
+        CALL from HTML tag
         (A) This paragraph is displayed because the condition is false.
     </p>
 </div>
 
 <p *myShow="!condition" class="unless b">
-    (B) Although the condition is true,
-    this paragraph is displayed because appUnless is set to false.
+    CALL from HTML tag
 </p>
+
+<ng-template [myShow]="condition">
+    <h1>
+        CALL from NG-TEMPLATE
+    </h1>
+</ng-template>
