@@ -1,0 +1,13 @@
+<h2>Custom pipe with param</h2>
+<h3> {{ valueU }} => {{ valueU | customPipe : PipeType.toUpper }}</h3>
+<h3> {{ valueL }} => {{ valueL | customPipe : PipeType.toLower }}</h3>
+<hr>
+
+<h2>Async pipes</h2>
+<h3><code>Observable|async</code> [ {{ valueN }} * 2 ] => {{ valueN | customAsyncPipe: 2 | async }}</h3>
+<h3><code>Not Pure (Signal or ChangeDetectorRef)</code> [ {{ valueN }} * 2 ] => {{ valueN | customAsyncPipeNotPure: 2 }}</h3>
+<hr>
+
+<h2>Extended Angular DatePipe</h2>
+<h3>Angular => {{ '2025-06-20' | customExtendPipe }}</h3>
+<h3>Custom => {{ '2025-06-20' | customExtendPipe:true }}</h3>

@@ -11,6 +11,7 @@
         "4007 : Lifecycle hooks": "ng serve --project=lifecycle-hooks --port=4007",
         "4008 : RxJS": "ng serve --project=rxjs --port=4008",
         "4009 : Style-SCSS": "ng serve --project=style-scss --port=4009",
+        "4010 : Pipes": "ng serve --project=pipes --port=4010",
         "Test Jasmine": "ng test --project=test"
     },
     "private": true,

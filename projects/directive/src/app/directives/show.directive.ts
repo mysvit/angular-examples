@@ -5,6 +5,9 @@ import {Directive, effect, input, TemplateRef, ViewContainerRef} from '@angular/
 })
 export class ShowDirective {
 
+    // input the same as directive name
+    readonly myShow = input.required<boolean>()
+
     private hasView = false
 
     constructor(
@@ -24,8 +27,5 @@ export class ShowDirective {
             }
         })
     }
-
-    // input the same as directive name
-    readonly myShow = input.required<boolean>()
 
 }
