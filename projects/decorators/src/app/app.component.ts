@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
-import {TrackChanges} from "./custom/сhanges-decorator";
+import {TrackChangesComponent} from "./track-changes/track-changes.component";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+    imports: [
+        TrackChangesComponent
+    ],
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 
