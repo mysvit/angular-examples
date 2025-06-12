@@ -889,9 +889,6 @@
                 "outputPath": "dist/decorators",
                 "index": "projects/decorators/src/index.html",
                 "browser": "projects/decorators/src/main.ts",
-                "polyfills": [
-                    "zone.js"
-                ],
                 "tsConfig": "projects/decorators/tsconfig.app.json",
                 "inlineStyleLanguage": "scss",
                 "assets": [
@@ -917,12 +914,6 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/decorators/src/environments/environment.ts",
-                  "with": "projects/decorators/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"

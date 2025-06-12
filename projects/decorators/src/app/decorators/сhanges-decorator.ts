@@ -1,4 +1,4 @@
-import {SimpleChanges} from "@angular/core";
+import { SimpleChanges } from "@angular/core"
 
 export function TrackChanges<Type>(key: string,
                                    methodName: string,
@@ -8,7 +8,11 @@ export function TrackChanges<Type>(key: string,
     // targetClass - contain entire class from where called decorator
     // functionName - to which function applied decorator Ex: ngOnChanges
     // descriptor - descriptor of function  to which applied decorator Ex: {}.value: ngOnChanges(changes)
-    return function (targetClass, functionName: string, descriptor): Function {
+    return function (
+        targetClass: any,
+        functionName: string,
+        descriptor: PropertyDescriptor
+    ) {
         const source = descriptor.value
         descriptor.value = function (changes: SimpleChanges): Function {
             if (changes && changes[key] && changes[key].currentValue !== undefined) {
