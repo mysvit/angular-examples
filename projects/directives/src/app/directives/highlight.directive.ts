@@ -1,19 +1,19 @@
 import {Directive, effect, HostBinding, HostListener, input} from '@angular/core';
 
 @Directive({
-    selector: '[myHighlightColor]'
+    selector: '[appHighlightHost]'
 })
-export class HighlightDirective {
+export class HighlightHostDirective {
 
     readonly defaultColor = input<string>('')
-    readonly myHighlightColor = input<string>('')
+    readonly appHighlightHost = input<string>('')
 
     @HostBinding('style.backgroundColor')
     private backgroundColor = 'auto'
 
     @HostListener('mouseenter') onMouseEnter() {
-        this.backgroundColor = this.myHighlightColor() || this.defaultColor() || 'red'
-        console.log(`mouseenter highlightColor ${this.myHighlightColor()} defaultColor ${this.defaultColor()}`)
+        this.backgroundColor = this.appHighlightHost() || this.defaultColor() || 'red'
+        console.log(`mouseenter highlightColor ${this.appHighlightHost()} defaultColor ${this.defaultColor()}`)
     }
 
     @HostListener('mouseleave') onMouseLeave() {

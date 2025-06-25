@@ -6,12 +6,20 @@
 
 <h3>Attribute Directive &#64;HostBinding, &#64;HostListener, &#64;Input Signal</h3>
 
-<div myHighlightColor="green" defaultColor="grey">
+<div appHighlightHost="green" defaultColor="grey">
     Highlight directive set defaultColor="red" background
 </div>
 
-<div myHighlightColor="green">
+<div appHighlightHost="green">
     Highlight directive set appHighlight="green" background
+</div>
+
+<div appHighlightRef>
+    Highlight directive with ElementRef default RED
+</div>
+
+<div appHighlightRef="blue">
+    Highlight directive with ElementRef set t BLUE
 </div>
 
 
