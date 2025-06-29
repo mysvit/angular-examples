@@ -9,7 +9,7 @@ import { CounterChildNotComponent } from './child-not.component'
 import { HostNotDirective } from './host-not.directive'
 
 @Component({
-    selector: 'app-counter-parent-incl',
+    selector: 'app-counter-parent',
     imports: [CommonModule, CounterChildInclComponent, HostInclDirective, CounterLabelComponent, CounterChildNotComponent, HostNotDirective],
     template: `
         <div class="parent-box">
@@ -31,16 +31,16 @@ import { HostNotDirective } from './host-not.directive'
                                         appHostIncl>
                     <div #log></div>
                 </app-counter-child-incl>
-                <app-counter-child-incl label="(Child) CounterService NOT declared in providers <br> + Directive with declared service (Host)">
+                <app-counter-child-not label="(Child) CounterService NOT declared in providers <br> + Directive with declared service (Host)">
                     <div appHostIncl></div>
-                </app-counter-child-incl>
-                <app-counter-child-incl label="(Child) CounterService declared in providers <br> + Directive with declared service (Host)"
+                </app-counter-child-not>
+                <app-counter-child-incl label="(Child) CounterService declared in providers <br> + Directive with NOT declared service (Host)"
                                         appHostNot="NOT">
                     <div #log></div>
                 </app-counter-child-incl>
-                <app-counter-child-incl label="(Child) CounterService NOT declared in providers <br> + Directive with declared service (Host)">
+                <app-counter-child-not label="(Child) CounterService NOT declared in providers <br> + Directive with NOT declared service (Host)">
                     <div appHostNot="NOT"></div>
-                </app-counter-child-incl>
+                </app-counter-child-not>
             </div>
         </div>
     `,
@@ -51,7 +51,7 @@ import { HostNotDirective } from './host-not.directive'
         {provide: CounterService, useFactory: () => new CounterService(ServiceLocation.parent)}
     ]
 })
-export class CounterParentInclComponent {
+export class CounterParentComponent {
 
     normalCounter = inject(CounterService)
 

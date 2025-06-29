@@ -20,7 +20,7 @@ import {RouterLink, RouterOutlet} from '@angular/router'
         </a>
 
         <a [routerLink]="['/counter']">
-            Counter
+            Providers &#64;Self vs &#64;Host
         </a>
 
         <a [routerLink]="['/grid']">

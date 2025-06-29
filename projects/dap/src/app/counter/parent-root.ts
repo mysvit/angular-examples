@@ -1,14 +1,12 @@
 import { Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { CounterParentInclComponent } from "./parent-incl.component";
-import { CounterParentNotComponent } from './parent-not.component'
+import { CounterParentComponent } from './parent.component'
 
 @Component({
     selector: 'app-counter-parent-root',
-    imports: [CommonModule, CounterParentInclComponent, CounterParentNotComponent],
+    imports: [CommonModule, CounterParentComponent],
     template: `
-        <app-counter-parent-incl></app-counter-parent-incl>
-        <app-counter-parent-not></app-counter-parent-not>
+        <app-counter-parent></app-counter-parent>
     `
 })
 export class CounterParentRootComponent {
