@@ -1,11 +1,12 @@
-import { Component, input } from '@angular/core'
+import { Component, input, signal } from '@angular/core'
 
 @Component({
-    selector: 'app-counter-label',
+    selector: 'app-label',
     template: `
+        <b>{{ msg() }}</b>
         @if (errorLabel()) {
             <p [style.color]="'red'">{{ errorLabel() }}</p>
-        } @else {
+        } @else if (instanceId()) {
             <p [class]="'location-' +location()">
                 Injected Service ID:<b>{{ instanceId() }}</b>
                 Location:<b>{{ location() }}</b>
@@ -31,14 +32,12 @@ import { Component, input } from '@angular/core'
         }
     `]
 })
-export class CounterLabelComponent {
+export class LabelComponent {
 
-    instanceId = input<string>()
-    location = input<string>()
-    count = input<number>()
-    errorLabel = input<any>()
-
-    constructor() {
-    }
+    readonly instanceId = input<string>()
+    readonly location = input<string>()
+    readonly count = input<number>()
+    readonly errorLabel = input<any>()
+    readonly msg = input<string>()
 
 }

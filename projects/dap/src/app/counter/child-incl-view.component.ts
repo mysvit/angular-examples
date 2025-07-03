@@ -3,21 +3,18 @@ import { COUNTER_CHILD_FACTORY, CounterService } from './counter.service'
 import { CounterChildBaseComponent } from './child-base.component'
 import { LabelComponent } from './label.component'
 import { DynamicContentDirective } from './dynamic.directive'
-import { DynamicService } from './dynamic.service'
 
 @Component({
-    selector: 'app-counter-child-incl',
+    selector: 'app-counter-child-incl-view',
     imports: [
         LabelComponent,
         DynamicContentDirective
     ],
     templateUrl: './child-base.component.html',
     styleUrls: ['./child-base.component.scss'],
-    providers: [
-        DynamicService,
-        // {provide: CounterService, useFactory: () => new CounterService(ServiceLocation.child)}
+    viewProviders: [
         {provide: CounterService, useFactory: COUNTER_CHILD_FACTORY}
     ]
 })
-export class CounterChildInclComponent extends CounterChildBaseComponent {
+export class CounterChildInclViewComponent extends CounterChildBaseComponent {
 }

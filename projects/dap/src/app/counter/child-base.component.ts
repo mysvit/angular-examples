@@ -1,10 +1,14 @@
-import { Directive, inject, input } from '@angular/core'
+import { AfterContentInit, Directive, inject, input, viewChild } from '@angular/core'
 import { CounterService } from './counter.service'
+import { DynamicContentDirective } from './dynamic.directive'
+import { DynamicService } from './dynamic.service'
 
 @Directive()
-export class CounterChildBaseComponent {
+export class CounterChildBaseComponent implements AfterContentInit {
 
     label = input('')
+    readonly dynamicContent = viewChild(DynamicContentDirective)
+    readonly dynamicService: DynamicService = inject(DynamicService)
 
     normalCounter?: CounterService | null
     selfCounter?: CounterService | null
@@ -49,6 +53,10 @@ export class CounterChildBaseComponent {
 
         // Optional() skips error for all decorator which gives error and return NULL
         this.optionalCounter = inject(CounterService, {host: true, optional: true})
+    }
+
+    ngAfterContentInit() {
+        this.dynamicService.viewContainerRef = this.dynamicContent()?.viewContainerRef
     }
 
     incrementCounters(): void {

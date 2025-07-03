@@ -3,45 +3,41 @@
     <button (click)="incrementCounters()">Increment All Counters</button>
 
     <ng-content></ng-content>
+    <ng-container appDynamicContent></ng-container>
 
-    <p><b>Normal</b></p>
-    <app-counter-label [instanceId]="normalCounter?.getInstanceId()"
+    <app-label msg="Normal"
+                       [instanceId]="normalCounter?.getInstanceId()"
                        [location]="normalCounter?.getLocation()"
                        [count]="normalCounter?.getCount()"
                        [errorLabel]="normalError">
-    </app-counter-label>
-    <hr>
+    </app-label>
 
-    <p><b>&#64;Self()</b></p>
-    <app-counter-label [instanceId]="selfCounter?.getInstanceId()"
+    <app-label msg="&#64;Self()"
+                       [instanceId]="selfCounter?.getInstanceId()"
                        [location]="selfCounter?.getLocation()"
                        [count]="selfCounter?.getCount()"
                        [errorLabel]="selfError">
-    </app-counter-label>
-    <hr>
+    </app-label>
 
-    <p><b>&#64;SkipSelf()</b></p>
-    <app-counter-label [instanceId]="skipSelfCounter?.getInstanceId()"
+    <app-label msg="&#64;SkipSelf()"
+                       [instanceId]="skipSelfCounter?.getInstanceId()"
                        [location]="skipSelfCounter?.getLocation()"
                        [count]="skipSelfCounter?.getCount()"
                        [errorLabel]="skipSelfError">
-    </app-counter-label>
-    <hr>
+    </app-label>
 
-    <p><b>&#64;Host()</b></p>
-    <app-counter-label [instanceId]="hostCounter?.getInstanceId()"
+    <app-label msg="&#64;Host()"
+                       [instanceId]="hostCounter?.getInstanceId()"
                        [location]="hostCounter?.getLocation()"
                        [count]="hostCounter?.getCount()"
                        [errorLabel]="hostError">
-    </app-counter-label>
+    </app-label>
 
-    <hr>
-
-    <p><b>&#64;Host() &#64;Optional()</b></p>
-    <app-counter-label [instanceId]="optionalCounter?.getInstanceId()"
+    <app-label msg="&#64;Host() &#64;Optional()"
+                       [instanceId]="optionalCounter?.getInstanceId()"
                        [location]="optionalCounter?.getLocation()"
                        [count]="optionalCounter?.getCount()"
                        [errorLabel]="this.optionalCounter ? '' : 'NULL'">
-    </app-counter-label>
+    </app-label>
 
 </div>

@@ -1,63 +1,74 @@
-import { contentChild, Directive, effect, ElementRef, inject, input, Renderer2, ViewContainerRef } from "@angular/core"
+import { AfterContentInit, afterNextRender, ComponentRef, contentChild, Directive, inject, input, viewChild, ViewContainerRef } from "@angular/core"
 import { CounterService } from "./counter.service"
-import { CounterLabelComponent } from './counter-label.component'
+import { LabelComponent } from './label.component'
+import { DynamicContentDirective } from './dynamic.directive'
+import { DynamicService } from './dynamic.service'
+import { GroupComponent } from './group.component'
 
 @Directive()
-export class HostBaseDirective {
+export class HostBaseDirective implements AfterContentInit {
 
     appHostNot = input<string>('')
     appHostIncl = input<string>('')
 
-    private renderer = inject(Renderer2)
-    private viewContainerRef = inject(ViewContainerRef)
-    private elementRef = inject<ElementRef<any>>(ElementRef)
-    private contChild = contentChild<ElementRef>('log')
+    readonly normalCounter = inject(CounterService, {optional: true})
+    readonly selfCounter = inject(CounterService, {self: true, optional: true})
+    readonly skipSelfCounter = inject(CounterService, {skipSelf: true, optional: true})
+    readonly hostCounter = inject(CounterService, {host: true, optional: true})
+
+    readonly hostContainerRef = inject(ViewContainerRef)
+    readonly projectedContent = contentChild(DynamicContentDirective)
+    readonly childContent = viewChild(DynamicContentDirective)
+    readonly dynamicService = inject(DynamicService, {self: true})
+
+    get isDirectiveHost(): boolean {
+        return !!this.dynamicService.viewContainerRef
+    }
+
+    get containerRef() {
+        return this.dynamicService.viewContainerRef
+    }
 
     constructor() {
-        const normalCounter = inject(CounterService, {optional: true})
-        const selfCounter = inject(CounterService, {self: true, optional: true})
-        const skipSelfCounter = inject(CounterService, {skipSelf: true, optional: true})
-        const hostCounter = inject(CounterService, {host: true, optional: true})
-
-        effect(() => {
-            const dirGrp = this.creatContainer()
-            this.addLog(dirGrp, `Directive GROUP LOG`)
-            this.addLog(dirGrp, this.contChild()?.nativeElement
-                ? 'Directive applied to (Child) used ContentChild'
-                : 'Directive applied inside (Child) as child element used ElementRef')
-            this.addLog(dirGrp, `CounterService ${this.appHostNot() || this.appHostIncl()} declared.`)
-            this.addLog(dirGrp, 'Normal', normalCounter?.getInstanceId(), normalCounter?.getLocation(), normalCounter?.getCount(), normalCounter ? '' : 'NULL')
-            this.addLog(dirGrp, 'Self', selfCounter?.getInstanceId(), selfCounter?.getLocation(), selfCounter?.getCount(), selfCounter ? '' : 'NULL')
-            this.addLog(dirGrp, 'SkipSelf', skipSelfCounter?.getInstanceId(), skipSelfCounter?.getLocation(), skipSelfCounter?.getCount(), skipSelfCounter ? '' : 'NULL')
-            this.addLog(dirGrp, 'Host', hostCounter?.getInstanceId(), hostCounter?.getLocation(), hostCounter?.getCount(), hostCounter ? '' : 'NULL')
+        afterNextRender({
+            write: () => {
+            }
         })
     }
 
-    private creatContainer() {
-        let logContent = this.contChild()?.nativeElement
-        if (!logContent) {
-            logContent = this.elementRef.nativeElement
-        }
-        const dirGrp = this.renderer.createElement('div')
-        this.renderer.addClass(dirGrp, 'directive-grp')
-        this.renderer.appendChild(logContent, dirGrp)
-        return dirGrp
+    ngAfterContentInit() {
+        console.log(`HostBaseDirective containerRef:`, this.containerRef)
+        console.log(`hostContainerRef`, this.projectedContent()?.viewContainerRef)
+        console.log('childContent', this.childContent()?.viewContainerRef)
+
+        const grp = this.containerRef?.createComponent(GroupComponent)
+        this.appendLog(grp, this.addLog(`Group Log `))
+
+        this.appendLog(grp, this.addLog('Directive applied to (Child) component'))
+        this.appendLog(grp, this.addLog(`If Service declared it override (child) providers`))
+        this.appendLog(grp, this.addLog('Normal', this.normalCounter?.getInstanceId(), this.normalCounter?.getLocation(), this.normalCounter?.getCount(),
+            this.normalCounter ? '' : 'NULL'))
+        this.appendLog(grp, this.addLog('Self', this.selfCounter?.getInstanceId(), this.selfCounter?.getLocation(), this.selfCounter?.getCount(),
+            this.selfCounter ? '' : 'NULL'))
+        this.appendLog(grp, this.addLog('SkipSelf', this.skipSelfCounter?.getInstanceId(), this.skipSelfCounter?.getLocation(), this.skipSelfCounter?.getCount(),
+            this.skipSelfCounter ? '' : 'NULL'))
+        this.appendLog(grp, this.addLog('Host', this.hostCounter?.getInstanceId(), this.hostCounter?.getLocation(), this.hostCounter?.getCount(),
+            this.hostCounter ? '' : 'NULL'))
     }
 
-    private addLog(container: any, msg: string, instanceId?: string, location?: string, count?: any, err?: string) {
-        const paragraph = this.renderer.createElement('p')
-        const textNode = this.renderer.createText(msg)
-        this.renderer.appendChild(paragraph, textNode)
-        this.renderer.appendChild(container, paragraph)
 
-        if (instanceId || err) {
-            const label = this.viewContainerRef.createComponent(CounterLabelComponent)
-            label.setInput('instanceId', instanceId)
-            label.setInput('location', location)
-            label.setInput('count', count)
-            label.setInput('errorLabel', err)
-            this.renderer.appendChild(container, label.location.nativeElement)
-        }
+    private addLog(msg: string, instanceId?: string, location?: string, count?: any, err?: string) {
+        const label = this.containerRef?.createComponent(LabelComponent)
+        label?.setInput('msg', msg)
+        label?.setInput('instanceId', instanceId)
+        label?.setInput('location', location)
+        label?.setInput('count', this.normalCounter?.getCount())
+        label?.setInput('errorLabel', err)
+        return label
+    }
+
+    private appendLog(grp?: ComponentRef<GroupComponent>, label?: ComponentRef<LabelComponent>) {
+        grp?.location.nativeElement.appendChild(label?.location.nativeElement)
     }
 
 }
