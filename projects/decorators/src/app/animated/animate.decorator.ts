@@ -39,7 +39,6 @@ export function AnimateStop<T extends { new(...args: any[]): {} }>(constructor: 
 
     // Augment ngOnInit
     constructor.prototype.ngOnInit = function (...args: any[]) {
-        console.log('AnimateStop')
         if (APP_INJECTOR) {
             const animate = APP_INJECTOR?.get(AnimateService)
             animate?.stopAnimation()

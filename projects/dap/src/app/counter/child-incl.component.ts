@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { COUNTER_CHILD_FACTORY, CounterService } from './counter.service'
 import { CounterChildBaseComponent } from './child-base.component'
 import { LabelComponent } from './label.component'
@@ -17,7 +17,8 @@ import { DynamicService } from './dynamic.service'
         DynamicService,
         // {provide: CounterService, useFactory: () => new CounterService(ServiceLocation.child)}
         {provide: CounterService, useFactory: COUNTER_CHILD_FACTORY}
-    ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CounterChildInclComponent extends CounterChildBaseComponent {
 }

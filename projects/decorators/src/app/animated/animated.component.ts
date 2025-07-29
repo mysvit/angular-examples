@@ -1,5 +1,5 @@
 import { Component }       from '@angular/core'
-import { AnimateStop }     from './animate.decorator'
+import { AnimateStop, StopAnimation } from './animate.decorator'
 import { LifecycleLogger } from '../decorators'
 
 @AnimateStop

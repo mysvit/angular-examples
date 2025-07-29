@@ -1,6 +1,6 @@
-import {Component, inject} from '@angular/core'
-import {SingletonService} from './singleton/singleton.service'
-import {RouterLink, RouterOutlet} from '@angular/router'
+import { Component, inject } from '@angular/core'
+import { SingletonService } from './singleton/singleton.service'
+import { RouterLink, RouterOutlet } from '@angular/router'
 
 @Component({
     selector: 'app-root',
@@ -35,10 +35,6 @@ import {RouterLink, RouterOutlet} from '@angular/router'
             Theme
         </a>
 
-        <a [routerLink]="['/panel']">
-            Panel
-        </a>
-
         <a [routerLink]="['/form']">
             Form
         </a>
@@ -47,7 +43,6 @@ import {RouterLink, RouterOutlet} from '@angular/router'
 })
 export class App {
 
-    singleton: SingletonService = inject(SingletonService)
-    // counter: CounterService = inject(CounterService)
+    singleton?: SingletonService = inject(SingletonService)
 
 }

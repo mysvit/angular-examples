@@ -8,7 +8,7 @@ import { HostBaseDirective } from './host-base.directive'
 @Directive({
     selector: '[appHostIncl]',
     providers: [
-        {provide: CounterService, useFactory: () => new CounterService(ServiceLocation.host)}
+        {provide: CounterService, useFactory: () => new CounterService(ServiceLocation.directive)}
     ]
 })
 export class HostInclDirective extends HostBaseDirective {

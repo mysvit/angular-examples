@@ -29,20 +29,13 @@ export class HostBaseDirective implements AfterContentInit {
         return this.dynamicService.viewContainerRef
     }
 
-    constructor() {
-        afterNextRender({
-            write: () => {
-            }
-        })
-    }
-
     ngAfterContentInit() {
         console.log(`HostBaseDirective containerRef:`, this.containerRef)
         console.log(`hostContainerRef`, this.projectedContent()?.viewContainerRef)
         console.log('childContent', this.childContent()?.viewContainerRef)
 
         const grp = this.containerRef?.createComponent(GroupComponent)
-        this.appendLog(grp, this.addLog(`Group Log `))
+        this.appendLog(grp, this.addLog(`Directive Group Log `))
 
         this.appendLog(grp, this.addLog('Directive applied to (Child) component'))
         this.appendLog(grp, this.addLog(`If Service declared it override (child) providers`))

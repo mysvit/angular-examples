@@ -17,3 +17,15 @@ button {
 button:hover {
     background-color: #138496;
 }
+
+.parent-box {
+    border: 2px solid #dc3545;
+    padding: 20px;
+    margin: 20px;
+    background-color: #ffe6e6;
+    border-radius: 8px;
+}
+
+label{
+    margin-left: 15px;
+}

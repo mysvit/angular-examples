@@ -7,6 +7,7 @@ import { HighlightService } from './highlight.service' // Import the service
     providers: [HighlightService]
 })
 export class HighlightContextDirective implements OnInit {
+
     // Inject the service that *this directive* is providing
     private highlightService = inject(HighlightService)
 
@@ -21,4 +22,5 @@ export class HighlightContextDirective implements OnInit {
             this.highlightService.setHighlightColor(this.contextColor)
         }
     }
+
 }

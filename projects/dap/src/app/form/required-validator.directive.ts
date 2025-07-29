@@ -1,10 +1,7 @@
 import { Directive, InjectionToken } from '@angular/core'
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms'
 
-// Define a unique InjectionToken to represent this directive's presence
-export const REQUIRED_VALIDATOR_TOKEN = new InjectionToken('REQUIRED_VALIDATOR_TOKEN')
-
-// 'REQUIRED_VALIDATOR_TOKEN';
+export const REQUIRED_VALIDATOR_TOKEN = new InjectionToken<RequiredValidatorDirective>('REQUIRED_VALIDATOR_TOKEN')
 
 @Directive({
     selector: '[appRequiredValidator]', // Applied to an element
@@ -17,6 +14,7 @@ export const REQUIRED_VALIDATOR_TOKEN = new InjectionToken('REQUIRED_VALIDATOR_T
     ]
 })
 export class RequiredValidatorDirective implements Validator {
+
     constructor() {
         console.log(`[RequiredValidatorDirective] Instance created on host.`)
     }

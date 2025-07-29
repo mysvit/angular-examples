@@ -51,6 +51,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
     `]
 })
 export class InputRootComponent implements OnInit {
+
     emailTd: string = 'test@example.com'
     myForm: FormGroup
 
@@ -65,4 +66,5 @@ export class InputRootComponent implements OnInit {
             console.log('Reactive Form Username:', val)
         })
     }
+
 }

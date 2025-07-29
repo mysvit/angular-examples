@@ -1,16 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import {Component, InjectionToken, Input} from '@angular/core'
+import {CommonModule} from '@angular/common'
 
 interface GridItem {
-    id: number;
-    name: string;
-    value: number;
-    category: string;
+    [key: string]: number | string;
 }
+
+export const gridToken = new InjectionToken<GridComponent>('GRID_TOKEN')
 
 @Component({
     selector: 'app-grid',
-    standalone: true,
     imports: [CommonModule],
     template: `
         <div class="grid-container">
@@ -23,21 +21,15 @@ interface GridItem {
                 </tr>
                 </thead>
                 <tbody>
-<!--                    @for (item of gridData; track item.id) {-->
-<!--                        <tr>-->
-<!--                            <td>{{ item.id }}</td>-->
-<!--                            <td>{{ item.name }}</td>-->
-<!--                            <td>{{ item.value | currency:'USD':'symbol':'1.2-2' }}</td>-->
-<!--                            <td>{{ item.category }}</td>-->
-<!--                        </tr>-->
-<!--                    }-->
-<!--                    @if (gridData.length === 0) {-->
-<!--                        <tr><td [attr.colspan]="defaultColumns.length + registeredColumns.length">No data available.</td></tr>-->
-<!--                    }-->
-                    <tr><td [attr.colspan]="registeredColumns.length">... Grid Content ...</td></tr>
+                    @for (item of gridData; track item['id']) {
+                        <tr>
+                            @for (col of registeredColumns; track col) {
+                                <td>{{ item[col] }}</td>
+                            }
+                        </tr>
+                    }
                 </tbody>
             </table>
-            <ng-content></ng-content>
         </div>
     `,
     styles: [`
@@ -50,12 +42,17 @@ interface GridItem {
         }
 
         table {
-            width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            width: 700px
+        }
+
+        tr {
+            display: flex;
         }
 
         th, td {
+            flex: 1;
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
@@ -69,31 +66,21 @@ interface GridItem {
     providers: [
         // This makes the current instance of GridComponent available for injection
         // using its own type as the token.
-        {provide: GridComponent, useExisting: GridComponent}
+        {provide: gridToken, useExisting: GridComponent}
     ]
 })
-export class GridComponent implements OnInit {
+export class GridComponent {
 
     @Input() gridId: string = 'Default Grid'
     registeredColumns: string[] = []
-    gridData: GridItem[] = [];
-    defaultColumns = [
-        { field: 'id', header: 'ID' },
-        { field: 'name', header: 'Item Name' },
-        { field: 'value', header: 'Price' },
-        { field: 'category', header: 'Category' }
-    ];
+    gridData: GridItem[] = [
+        <GridItem>{id: 1, name: 'Laptop', value: 1200, category: 'Electronics'},
+        <GridItem>{id: 2, name: 'Mouse', value: 25, category: 'Electronics'},
+        <GridItem>{id: 3, name: 'Keyboard', value: 75, category: 'Electronics'}
+    ]
 
     constructor() {
         console.log(`[GridComponent] Instance created: ${this.gridId}`)
-    }
-
-    ngOnInit(): void {
-        this.gridData = [
-            { id: 1, name: 'Laptop', value: 1200, category: 'Electronics' },
-            { id: 2, name: 'Mouse', value: 25, category: 'Electronics' },
-            { id: 3, name: 'Keyboard', value: 75, category: 'Electronics' }
-        ];
     }
 
     // Method for child columns to register themselves

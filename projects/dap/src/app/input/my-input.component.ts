@@ -1,6 +1,6 @@
-import { Component, Host, Input, OnInit, Optional } from '@angular/core'
-import { CommonModule } from '@angular/common';
-import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, Input, OnInit } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } from '@angular/forms'
 
 @Component({
     selector: 'my-input',
@@ -67,32 +67,33 @@ import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } fro
     `]
 })
 export class MyInputComponent implements ControlValueAccessor, OnInit {
-    @Input() label: string = 'Custom Input';
-    id: string = Math.random().toString(36).substring(2, 9); // Unique ID
 
-    value: any = '';
-    isDisabled: boolean = false;
+    @Input() label: string = 'Custom Input'
+    id: string = Math.random().toString(36).substring(2, 9) // Unique ID
+
+    value: any = ''
+    isDisabled: boolean = false
     onChange: any = () => {
-    };
+    }
     onTouched: any = () => {
-    };
+    }
 
     // Internal control for when NgControl is not found (e.g., if used without ngModel/formControl)
-    internalControl = new FormControl('');
+    internalControl = new FormControl('')
 
     // **THIS IS THE KEY:**
     // We use @Host() AND @Optional() for constructor injection.
     // OR, if using inject() function directly:
-    // ngControl = inject(NgControl, { host: true, optional: true });
-    constructor(
-        @Host() @Optional() public ngControl: NgControl // THIS IS THE CRUCIAL PART
-    ) {
+    ngControl = inject(NgControl, {host: true, optional: true})
+
+    constructor() {
+        console.log('ngControl', this.ngControl)
         if (this.ngControl) {
             // If NgControl is found on the host, register this component as its ControlValueAccessor
-            this.ngControl.valueAccessor = this;
-            console.log(`[MyInputComponent - ${this.label}] NgControl found on host.`);
+            this.ngControl.valueAccessor = this
+            console.log(`[MyInputComponent - ${this.label}] NgControl found on host.`)
         } else {
-            console.warn(`[MyInputComponent - ${this.label}] No NgControl found on host. Operating standalone.`);
+            console.warn(`[MyInputComponent - ${this.label}] No NgControl found on host. Operating standalone.`)
         }
     }
 
@@ -100,40 +101,40 @@ export class MyInputComponent implements ControlValueAccessor, OnInit {
         if (!this.ngControl) {
             // If no NgControl, use the internal FormControl
             this.internalControl.valueChanges.subscribe(val => {
-                this.value = val;
-            });
+                this.value = val
+            })
         }
     }
 
     // ControlValueAccessor methods
     writeValue(obj: any): void {
-        this.value = obj;
+        this.value = obj
         if (!this.ngControl) {
-            this.internalControl.setValue(obj, {emitEvent: false});
+            this.internalControl.setValue(obj, {emitEvent: false})
         }
     }
 
     registerOnChange(fn: any): void {
-        this.onChange = fn;
+        this.onChange = fn
     }
 
     registerOnTouched(fn: any): void {
-        this.onTouched = fn;
+        this.onTouched = fn
     }
 
     setDisabledState?(isDisabled: boolean): void {
-        this.isDisabled = isDisabled;
+        this.isDisabled = isDisabled
         if (!this.ngControl) {
-            isDisabled ? this.internalControl.disable() : this.internalControl.enable();
+            isDisabled ? this.internalControl.disable() : this.internalControl.enable()
         }
     }
 
     onInput(event: Event): void {
-        const newValue = (event.target as HTMLInputElement).value;
-        this.value = newValue;
-        this.onChange(newValue); // Notify NgControl or internal control
+        const newValue = (event.target as HTMLInputElement).value
+        this.value = newValue
+        this.onChange(newValue) // Notify NgControl or internal control
         if (!this.ngControl) {
-            this.internalControl.setValue(newValue);
+            this.internalControl.setValue(newValue)
         }
     }
 }

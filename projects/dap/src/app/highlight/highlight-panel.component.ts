@@ -40,6 +40,7 @@ import { HighlightContextDirective } from './highlight-context.directive' // Imp
     // It's the HighlightContextDirective that provides it.
 })
 export class HighlightPanelComponent {
+
     @Input() title: string = 'Highlight Panel'
 
     constructor() {
@@ -55,4 +56,5 @@ export class HighlightPanelComponent {
         }
         return color
     }
+
 }

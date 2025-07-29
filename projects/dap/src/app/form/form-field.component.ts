@@ -110,6 +110,7 @@ export class FormFieldComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // this.selfValidator?.validate(this.value)
     }
 
 }

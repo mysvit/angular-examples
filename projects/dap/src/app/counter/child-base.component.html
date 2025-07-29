@@ -6,38 +6,38 @@
     <ng-container appDynamicContent></ng-container>
 
     <app-label msg="Normal"
-                       [instanceId]="normalCounter?.getInstanceId()"
-                       [location]="normalCounter?.getLocation()"
-                       [count]="normalCounter?.getCount()"
-                       [errorLabel]="normalError">
+               [instanceId]="normalCounter?.getInstanceId()"
+               [location]="normalCounter?.getLocation()"
+               [count]="normalCounter?.getCount()"
+               [errorLabel]="normalError">
     </app-label>
 
     <app-label msg="&#64;Self()"
-                       [instanceId]="selfCounter?.getInstanceId()"
-                       [location]="selfCounter?.getLocation()"
-                       [count]="selfCounter?.getCount()"
-                       [errorLabel]="selfError">
+               [instanceId]="selfCounter?.getInstanceId()"
+               [location]="selfCounter?.getLocation()"
+               [count]="selfCounter?.getCount()"
+               [errorLabel]="selfError">
     </app-label>
 
     <app-label msg="&#64;SkipSelf()"
-                       [instanceId]="skipSelfCounter?.getInstanceId()"
-                       [location]="skipSelfCounter?.getLocation()"
-                       [count]="skipSelfCounter?.getCount()"
-                       [errorLabel]="skipSelfError">
+               [instanceId]="skipSelfCounter?.getInstanceId()"
+               [location]="skipSelfCounter?.getLocation()"
+               [count]="skipSelfCounter?.getCount()"
+               [errorLabel]="skipSelfError">
     </app-label>
 
     <app-label msg="&#64;Host()"
-                       [instanceId]="hostCounter?.getInstanceId()"
-                       [location]="hostCounter?.getLocation()"
-                       [count]="hostCounter?.getCount()"
-                       [errorLabel]="hostError">
+               [instanceId]="hostCounter?.getInstanceId()"
+               [location]="hostCounter?.getLocation()"
+               [count]="hostCounter?.getCount()"
+               [errorLabel]="hostError">
     </app-label>
 
     <app-label msg="&#64;Host() &#64;Optional()"
-                       [instanceId]="optionalCounter?.getInstanceId()"
-                       [location]="optionalCounter?.getLocation()"
-                       [count]="optionalCounter?.getCount()"
-                       [errorLabel]="this.optionalCounter ? '' : 'NULL'">
+               [instanceId]="optionalCounter?.getInstanceId()"
+               [location]="optionalCounter?.getLocation()"
+               [count]="optionalCounter?.getCount()"
+               [errorLabel]="this.optionalError">
     </app-label>
 
 </div>

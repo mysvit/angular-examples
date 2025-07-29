@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable() // No providedIn: 'root'
 export class HighlightService {
+
     private highlightColor: string;
     private interactionCount = 0;
 
@@ -27,4 +28,5 @@ export class HighlightService {
         }
         return color;
     }
+
 }

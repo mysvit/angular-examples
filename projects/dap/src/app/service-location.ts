@@ -2,6 +2,6 @@ export enum ServiceLocation {
     root = 'root',
     parent = 'parent',
     child = 'child',
-    host = 'host',
+    directive = 'directive',
     projection = 'projection',
 }
