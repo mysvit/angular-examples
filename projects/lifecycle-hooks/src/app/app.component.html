@@ -5,13 +5,15 @@
             <mat-label>Select Component</mat-label>
             <mat-select [(value)]="selectedComponent">
                 <mat-option></mat-option>
-                <mat-option [value]="option.value" *ngFor="let option of components">{{ option.viewValue }}</mat-option>
+                @for (option of components; track option.value) {
+                    <mat-option [value]="option.value">{{ option.viewValue }}</mat-option>
+                }
             </mat-select>
         </mat-form-field>
     </div>
     <div>
-        <ng-container [ngSwitch]="selectedComponent">
-            <ng-container *ngSwitchCase="LifeComponents.AfterView">
+        @switch (selectedComponent) {
+            @case (LifeComponents.AfterView) {
                 <div>
                     <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something
                     changed in parent or child's components and we should used them just for specific situation.
@@ -19,9 +21,8 @@
                 <div>
                     <b>[AfterViewChecked]</b> can be used in parent to check changes in child component
                 </div>
-            </ng-container>
-
-            <ng-container *ngSwitchCase="LifeComponents.AfterContent">
+            }
+            @case (LifeComponents.AfterContent) {
                 <div>
                     <b>[DoCheck, AfterViewChecked, AfterContentChecked]</b> these hooks called every time when something
                     changed in current, parent or child's components and we should used them just for specific
@@ -31,43 +32,47 @@
                     <b>[AfterContentChecked]</b> can be used in parent to check changes in projected component by
                     &#64;ContentChild
                 </div>
-            </ng-container>
-
-            <ng-container *ngSwitchCase="LifeComponents.OnChanges">
+            }
+            @case (LifeComponents.OnChanges) {
                 <div>
                     <b>[ngOnChanges]</b> just only called for/if there is an &#64;Input variable set by parent
                 </div>
                 <div>
                     <b>[ngOnChanges]</b> can be used in child component to tracks &#64;Input changes
                 </div>
-            </ng-container>
-
-            <ng-container *ngSwitchCase="LifeComponents.OnCheck">
+            }
+            @case (LifeComponents.OnCheck) {
                 <div>
                     <b>[ngOnCheck]</b>Changes in Child component can be applied to Parent without tick
                 </div>
                 <div>
                     <b>[ngOnCheck]</b>Changes in Parent component can be applied to Child without tick
                 </div>
-            </ng-container>
-        </ng-container>
+            }
+        }
     </div>
 </div>
 
 <div class="middle-container">
-    <ng-container [ngSwitch]="selectedComponent">
-
-        <app-after-view *ngSwitchCase="LifeComponents.AfterView"></app-after-view>
-
-        <app-projected-parent *ngSwitchCase="LifeComponents.AfterContent">
-            <app-projected-child></app-projected-child>
-        </app-projected-parent>
-
-        <app-on-changes-parent *ngSwitchCase="LifeComponents.OnChanges"></app-on-changes-parent>
-
-        <app-on-check-parent *ngSwitchCase="LifeComponents.OnCheck"></app-on-check-parent>
-
-    </ng-container>
+    @switch (selectedComponent) {
+        @case (LifeComponents.AfterView) {
+            <app-after-view></app-after-view>
+        }
+        @case (LifeComponents.AfterContent) {
+            <app-projected-parent>
+                <app-projected-child></app-projected-child>
+            </app-projected-parent>
+        }
+        @case (LifeComponents.OnChanges) {
+            <app-on-changes-parent></app-on-changes-parent>
+        }
+        @case (LifeComponents.OnCheck) {
+            <app-on-check-parent></app-on-check-parent>
+        }
+        @case (LifeComponents.Render) {
+            <app-render></app-render>
+        }
+    }
 </div>
 
 <app-log class="log-container" [logs]="logs"></app-log>

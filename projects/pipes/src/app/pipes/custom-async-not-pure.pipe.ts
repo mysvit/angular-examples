@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform, signal} from '@angular/core';
+import { Pipe, PipeTransform, signal } from '@angular/core'
 
 @Pipe({
     name: 'customAsyncPipeNotPure',
@@ -6,25 +6,27 @@ import {Pipe, PipeTransform, signal} from '@angular/core';
 })
 export class customAsyncPipeNotPurePipe implements PipeTransform {
 
-    asyncValue = signal(0)
+    // *********** WITHOUT signal ******************
+    // value?: number
+    //
+    // constructor(private _ref: ChangeDetectorRef) {
+    // }
+    //
+    // transform(value: number, arg: number) {
+    //     setTimeout(() => {
+    //         this.value = value * arg
+    //         this._ref.markForCheck()
+    //     }, 3000)
+    //
+    //     return this.value
+    // }
 
-    // WITHOUT signal
-    // value = 0
-    // constructor(private _ref: ChangeDetectorRef) {}
+    asyncValue = signal<number | null>(null)
 
     transform(value: number, arg: number) {
-
         setTimeout(() => {
             this.asyncValue.set(value * arg)
-
-            // WITHOUT signal
-            // this.value = value * arg
-            // this._ref.markForCheck()
-        }, 2000)
-
-        // WITHOUT signal
-        // return this.value
-
+        }, 3000)
         return this.asyncValue()
     }
 

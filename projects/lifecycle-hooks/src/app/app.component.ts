@@ -6,7 +6,8 @@ export enum LifeComponents {
     AfterView,
     AfterContent,
     OnCheck,
-    OnChanges
+    OnChanges,
+    Render
 }
 
 @Component({
@@ -22,9 +23,10 @@ export class AppComponent extends AppBase {
         {value: LifeComponents.AfterView, viewValue: 'ngAfterView Init & Checked'},
         {value: LifeComponents.AfterContent, viewValue: 'ngAfterContent Init & Checked'},
         {value: LifeComponents.OnCheck, viewValue: 'ngOnCheck'},
-        {value: LifeComponents.OnChanges, viewValue: 'ngOnChanges'}
+        {value: LifeComponents.OnChanges, viewValue: 'ngOnChanges'},
+        {value: LifeComponents.Render, viewValue: 'Render'}
     ]
-    selectedComponent?: string;
+    selectedComponent?: LifeComponents;
 
     constructor(logger: LoggerService) {
         super(logger)

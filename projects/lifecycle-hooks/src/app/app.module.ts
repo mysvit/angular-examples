@@ -15,6 +15,7 @@ import {OnCheckChildComponent} from './on-check/on-check-child/on-check-child.co
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
+import { RenderComponent } from './render/after-next-render'
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import {MatOption, MatSelect} from "@angular/material/select";
         MatSelect,
         MatOption,
         MatLabel,
-        MatFormField
+        MatFormField,
+        RenderComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

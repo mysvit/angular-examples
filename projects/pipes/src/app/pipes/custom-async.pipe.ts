@@ -10,8 +10,8 @@ export class CustomAsyncPipe implements PipeTransform {
     transform(value: number, arg: number) {
         return of(arg)
             .pipe(
-                delay(2000),
-                tap(() => console.log('async wait 2 seconds')),
+                delay(3000),
+                tap(() => console.log('async wait 5 seconds')),
                 map(num => value * num)
             )
     }
