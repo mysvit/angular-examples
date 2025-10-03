@@ -13,6 +13,7 @@
     "4009 : Style-SCSS": "ng serve --project=style-scss --port=4009",
     "4010 : Pipes": "ng serve --project=pipes --port=4010",
     "4011 : DAP": "ng serve --project=dap --port=4011",
+    "4012 : Routes": "ng serve --project=routes --port=4012",
     "Test Jasmine": "ng test --project=test"
   },
   "private": true,

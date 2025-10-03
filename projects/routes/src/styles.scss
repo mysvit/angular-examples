@@ -1,0 +1,24 @@
+*, *:before, *:after {
+  box-sizing: inherit; // allow children elements change property
+}
+
+html {
+  box-sizing: border-box;
+}
+
+a {
+  padding: 10px;
+  display: inline-block;
+
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+div {
+  border: 1px solid lightgray;
+}
+
+.outlet {
+  border: 1px solid blue;
+}
