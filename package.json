@@ -34,8 +34,8 @@
     "moment": "latest"
   },
   "devDependencies": {
-    "@angular/build": "^20.0.1",
-    "@angular/cli": "^20.0.1",
+    "@angular/build": "^20.3.4",
+    "@angular/cli": "^20.3.4",
     "@angular/compiler-cli": "^20.0.2",
     "@types/jasmine": "~3.10.0",
     "@types/lodash": "^4.17.13",
